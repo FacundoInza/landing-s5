@@ -1,0 +1,20 @@
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.body_text {
+  color: #333;
+}
+
+.link {
+  color: #003AFA;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+} 
