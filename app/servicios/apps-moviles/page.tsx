@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Smartphone, ArrowLeft, Layers, Zap, Globe } from 'lucide-react'
+import { Smartphone, ArrowLeft, Zap, Globe } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 

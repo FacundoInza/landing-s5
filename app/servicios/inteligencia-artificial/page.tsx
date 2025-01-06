@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bot, ArrowLeft, Brain, Network, Cpu } from 'lucide-react'
+import { Bot, ArrowLeft, Brain, Network } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 
