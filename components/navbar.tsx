@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { Code, Smartphone, Bot } from 'lucide-react'
 
 export default function Navbar() {
   return (
