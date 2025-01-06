@@ -20,7 +20,7 @@ export default function Home() {
           <div className="flex justify-between h-16 items-center">
             <div className="flex items-center">
               <Link href="/" className="flex items-center">
-                <Image src="/logo-s5-w.png" alt="Silver5 AI" width={60} height={50} />
+                <Image src="/logo-s5-w.png" alt="Silver5 AI" width={40} height={40} />
                 <span className="font-bold text-xl">Silver5</span>
               </Link>
             </div>
