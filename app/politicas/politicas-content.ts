@@ -64,7 +64,7 @@ export const politicasContent = `
     <div><br></div>
     <div style="line-height: 1.5;"><span style="color: rgb(127, 127, 127);"><span
                 style="color: rgb(89, 89, 89); font-size: 15px;"><span data-custom-class="body_text">This Privacy Notice
-                    for <bdt class="question">Silver5<bdt class="block-component"></bdt>
+                    for <bdt class="question">Kiwi App<bdt class="block-component"></bdt>
                     </bdt> (<bdt class="block-component"></bdt>"<strong>we</strong>," "<strong>us</strong>," or
                     "<strong>our</strong>"<bdt class="statement-end-if-in-editor"></bdt></span><span
                     data-custom-class="body_text">), describes how and why we might access, collect, store, use, and/or
@@ -123,7 +123,7 @@ export const politicasContent = `
                             making decisions about how your personal information is processed. If you do not agree with
                             our policies and practices, please do not use our Services.<bdt class="block-component">
                             </bdt> If you still have any questions or concerns, please contact us at <bdt
-                                class="question">office@silver5ai.com</bdt>.</span></span></span></div>
+                                class="question">office@Kiwi Appai.com</bdt>.</span></span></span></div>
             <div style="line-height: 1.5;"><br></div>
             <div style="line-height: 1.5;"><br></div>
             <div style="line-height: 1.5;"><strong><span style="font-size: 15px;"><span
@@ -4709,7 +4709,7 @@ export const politicasContent = `
                                                                                                                                             at
                                                                                                                                             <bdt
                                                                                                                                                 class="question">
-                                                                                                                                                office@silver5ai.com
+                                                                                                                                                office@Kiwi Appai.com
                                                                                                                                             </bdt>
                                                                                                                                             .
                                                                                                                                         </span></span>
@@ -7495,7 +7495,7 @@ export const politicasContent = `
                                                                                                                                                                                                     at
                                                                                                                                                                                                     <bdt
                                                                                                                                                                                                         class="question">
-                                                                                                                                                                                                        office@silver5ai.com
+                                                                                                                                                                                                        office@Kiwi Appai.com
                                                                                                                                                                                                     </bdt>
                                                                                                                                                                                                     ,
                                                                                                                                                                                                     <bdt
@@ -7840,7 +7840,7 @@ export const politicasContent = `
                                                                                                                                                                                     </bdt>
                                                                                                                                                                                     <bdt
                                                                                                                                                                                         class="question">
-                                                                                                                                                                                        office@silver5ai.com
+                                                                                                                                                                                        office@Kiwi Appai.com
                                                                                                                                                                                     </bdt>
                                                                                                                                                                                     <bdt
                                                                                                                                                                                         class="else-block">
@@ -8330,7 +8330,7 @@ export const politicasContent = `
                                                                                                                                                                                                 at
                                                                                                                                                                                                 <bdt
                                                                                                                                                                                                     class="question">
-                                                                                                                                                                                                    office@silver5ai.com
+                                                                                                                                                                                                    office@Kiwi Appai.com
                                                                                                                                                                                                     or 
                                                                                                                                                                                                 </bdt>
                                                                                                                                                                                                 <bdt
@@ -8364,7 +8364,7 @@ export const politicasContent = `
                                                                                                                                                                                                         data-custom-class="body_text">
                                                                                                                                                                                                         <bdt
                                                                                                                                                                                                             class="question">
-                                                                                                                                                                                                            Silver5
+                                                                                                                                                                                                            Kiwi App
                                                                                                                                                                                                         </bdt>
                                                                                                                                                                                                     </span></span></span></span></span><span
                                                                                                                                                                                         data-custom-class="body_text"><span
@@ -8715,4 +8715,4 @@ export const politicasContent = `
                                                                                                                                                                             }
                                                                                                                                                                         </style>
                                                                                                                                                                     </div>
-`; 
+`;
