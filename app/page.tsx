@@ -18,6 +18,9 @@ export default function Home() {
   // Estado para la imagen seleccionada
   const [selectedImage, setSelectedImage] = useState(t.useCases.cases[0].image);
 
+  // Estado para el caso de uso seleccionado
+  const [selectedCase, setSelectedCase] = useState(0);
+
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
       {/* Navbar */}
@@ -49,23 +52,29 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen">
+      <section className="relative pt-20 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/15 via-transparent to-transparent" />
           <div className="absolute top-40 left-[20%] animate-float">
-            <Box className="h-8 w-8 text-purple-400 opacity-50" />
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
           </div>
           <div className="absolute top-32 right-[25%] animate-float-delayed">
-            <Shield className="h-8 w-8 text-cyan-400 opacity-50" />
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
           </div>
           <div className="absolute bottom-40 left-[35%] animate-float-delayed">
-            <Bot className="h-8 w-8 text-purple-400 opacity-50" />
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
+          </div>
+          <div className="absolute bottom-20 right-[15%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+          <div className="absolute top-10 left-[50%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-8">
-              {t.hero.title} <span className="text-cyan-400">{t.hero.titleHighlight}</span> {t.hero.titleEnd}
+            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight mb-8">
+              {t.hero.title} <span className="text-cyan-400">{t.hero.titleHighlight}</span>
             </h1>
             <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
               {t.hero.description}
@@ -73,12 +82,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href={calendlyUrl}>
                 <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
-                  {t.hero.startProject}
-                </Button>
-              </Link>
-              <Link href={calendlyUrl}>
-                <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full">
-                  {t.hero.viewDemo}
+                  {t.hero.cta}
                 </Button>
               </Link>
             </div>
@@ -86,228 +90,232 @@ export default function Home() {
         </div>
       </section>
 
-      {/* New Technologies Section */}
-      <section className="border-t border-gray-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2">
+      {/* Sección de Tecnologías */}
+      <section className="relative flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-10 left-[10%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
+          </div>
+          <div className="absolute bottom-10 right-[20%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-5 right-[30%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">Tecnologías que Utilizamos</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { name: 'AWS', description: 'Implementamos de manera rápida y personalizada en los servidores de AWS.', logo: '/aws.png' },
+              { name: 'Binance', description: 'Automatización y gestión de operaciones en Binance.', logo: '/binance-logo.svg' },
               { name: 'N8N', description: 'Automatización de flujos de trabajo con N8N.', logo: '/n8n.png' },
-              { name: 'DeepSeek', description: 'Análisis de datos avanzado con DeepSeek.', logo: '/deepseek-color.png' },
-              { name: 'OpenAI', description: 'Integración de IA avanzada con OpenAI.', logo: '/openai.png' },
+              { name: 'AWS', description: 'Implementación rápida y personalizada en servidores de AWS.', logo: '/aws.png' },
             ].map((tech, index) => (
-              <div key={index} className="flex flex-col sm:flex-row items-center justify-between bg-gray-900 p-8 rounded-lg">
-                <div className="flex items-center space-x-4 mb-4 sm:mb-0">
-                  <Image src={tech.logo} alt={tech.name} width={80} height={80}  />
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{tech.name}</h3>
-                    <p className="text-gray-400">{tech.description}</p>
+              <div key={index} className="flex flex-col items-center bg-gray-900 p-8 rounded-lg shadow-lg">
+                <img src={tech.logo} alt={tech.name} className="mb-4 w-20 h-20 object-contain" />
+                <h3 className={`text-2xl font-bold mb-2 ${tech.name === 'Binance' ? 'text-yellow-500' : 'text-white'}`}>{tech.name}</h3>
+                <p className="text-gray-400 text-center">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+            {/* Casos de Uso */}
+            <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.useCases.title}</h2>
+          <div className="flex justify-center mb-8">
+            {t.useCases.cases.map((useCase, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedCase(index)}
+                className={`px-4 py-2 mx-2 rounded-full ${selectedCase === index ? 'bg-cyan-400 text-gray-900' : 'bg-gray-800 text-white'}`}
+              >
+                {useCase.title}
+              </button>
+            ))}
+          </div>
+          <div className="flex flex-col items-center">
+            <img src={t.useCases.cases[selectedCase].image} alt={t.useCases.cases[selectedCase].title} className="mb-4 object-contain" />
+            <p className="text-gray-400 text-center">{t.useCases.cases[selectedCase].description}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Identificación de Dolor */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-20 left-[15%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
+          </div>
+          <div className="absolute bottom-20 right-[25%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-5 right-[10%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.painPoints.title}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+            {t.painPoints.points.map((point, index) => (
+              <div key={index} className="bg-gray-900 rounded-xl p-6 shadow-lg">
+                <h3 className="text-xl font-semibold mb-2 text-white">{point.title}</h3>
+                <p className="text-gray-400">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Llamado a la Acción Final */}
+      <section className="border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
+          <Link href={calendlyUrl}>
+            <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
+              {t.finalCta.cta}
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+
+
+
+      {/* Nuestros Servicios Automatizados */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-10 right-[10%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
+          </div>
+          <div className="absolute bottom-10 left-[20%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-5 left-[30%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.servicesAutomated.title}</h2>
+          <ul className="space-y-8">
+            {t.servicesAutomated.services.map((service, index) => (
+              <li key={index} className="flex items-start space-x-4">
+                <div className="flex-shrink-0">
+                  <div className="h-12 w-12 rounded-full bg-cyan-500 flex items-center justify-center">
+                    <span className="text-white font-bold">{index + 1}</span>
                   </div>
                 </div>
-                <Link href={calendlyUrl}>
-                  <Button className="bg-cyan-400 hover:bg-red-600 text-white rounded-full px-6 py-2">
-                    CONSÚLTENOS
-                  </Button>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section id="servicios" className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <h2 className="text-3xl font-bold text-center mb-16">
-            {t.services?.title || 'Título de Servicios'}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
-            {[
-              {
-                icon: <Code className="h-8 w-8 text-cyan-400" />,
-                title: t.services?.custom?.title || 'Desarrollo a Medida',
-                description: t.services?.custom?.description || 'Soluciones personalizadas para tu negocio con las últimas tecnologías.',
-                details: t.services?.custom?.details
-              },
-              {
-                icon: <Cpu className="h-8 w-8 text-cyan-400" />,
-                title: t.services?.mobile?.title || 'Apps Móviles',
-                description: t.services?.mobile?.description || 'Aplicaciones nativas y multiplataforma de alto rendimiento.',
-                details: t.services?.mobile?.details
-              },
-              {
-                icon: <Bot className="h-8 w-8 text-cyan-400" />,
-                title: t.services?.ai?.title || 'IA y Automatización',
-                description: t.services?.ai?.description || 'Implementación de IA y chatbots para optimizar procesos.',
-                details: t.services?.ai?.details
-              },
-              {
-                icon: <Box className="h-8 w-8 text-cyan-400" />,
-                title: t.services?.cloudMigration?.title || 'Migración a la Nube',
-                description: t.services?.cloudMigration?.description || 'Servicios de Migración a la Nube para AWS',
-                details: t.services?.cloudMigration?.details
-              }
-            ].map((service, index) => (
-              <div key={index} className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm transform transition-transform hover:scale-105">
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-gray-400 mb-4">{service.description}</p>
-                {service.details && service.details.length > 0 && (
-                  <ul className="mt-4 text-sm text-gray-400 list-disc list-inside space-y-2">
-                    {service.details.map((item, idx) => (
-                      <li key={idx}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-                <Link href={calendlyUrl}>
-                  <Button className="mt-4 bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
-                    {index === 0 ? 'Descubre más' : index === 1 ? 'Ver Apps' : index === 2 ? 'Automatiza ahora' : 'Migra a la Nube'}
-                  </Button>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Security Section */}
-      <section id="seguridad" className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <h2 className="text-3xl font-bold text-center mb-16">{t.security.title}</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Shield className="h-8 w-8 text-cyan-400" />,
-                title: t.security.code.title,
-                description: t.security.code.description
-              },
-              {
-                icon: <Lock className="h-8 w-8 text-cyan-400" />,
-                title: t.security.audits.title,
-                description: t.security.audits.description
-              },
-              {
-                icon: <Box className="h-8 w-8 text-cyan-400" />,
-                title: t.security.infrastructure.title,
-                description: t.security.infrastructure.description
-              }
-            ].map((feature, index) => (
-              <div key={index} className="text-center transform transition-transform hover:scale-105">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-cyan-400/10 mb-4">
-                  {feature.icon}
+                <div>
+                  <h3 className="text-xl font-semibold text-white">{service.title}</h3>
+                  <p className="text-gray-400">{service.description}</p>
                 </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400">{feature.description}</p>
-                <Link href={calendlyUrl}>
-                  <Button className="mt-4 bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
-                    {index === 0 ? 'Asegura tu código' : index === 1 ? 'Solicita una auditoría' : 'Optimiza tu infraestructura'}
-                  </Button>
-                </Link>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="border-t border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">{t.cta.title}</h2>
-            <p className="text-gray-400 mb-8">
-              {t.cta.description}
-            </p>
-            <Link href={calendlyUrl}>
-              <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
-                {t.cta.button}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
 
-      {/* About Us Section */}
-      <section className="border-t border-gray-800 py-20">
+      {/* Sección de LinkedIn */}
+      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16">Sobre Nosotros</h2>
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.linkedIn.title}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {[
-              { name: 'Julian Besteiro', linkedin: 'https://www.linkedin.com/in/julian-besteiro-software-engineer/', image: '/juli.jpeg' },
-              { name: 'Facundo Inza', linkedin: 'https://www.linkedin.com/in/facundo-inza/', image: '/facu.jpeg' },
-              { name: 'Miguel Angel Lupani', linkedin: 'https://www.linkedin.com/in/miguel-angel-lupani-5847b720a/', image: '/migue.jpeg' },
-            ].map((person, index) => (
-              <div key={index} className="bg-gray-900 p-6 rounded-xl text-center">
-                <Image src={person.image} alt={person.name} width={100} height={100} className="mx-auto rounded-full mb-4 filter grayscale" />
-                <h3 className="text-xl font-semibold text-white mb-2">{person.name}</h3>
-                <Link href={person.linkedin} className="text-cyan-400 hover:text-cyan-500">
-                  Ver perfil en LinkedIn
-                </Link>
+            {t.linkedIn.profiles.map((profile, index) => (
+              <div key={index} className="flex flex-col items-center bg-gray-900 p-8 rounded-lg shadow-lg">
+                <img src={profile.image} alt={profile.name} className="mb-4 w-24 h-24 rounded-full object-cover" />
+                <h3 className="text-xl font-bold text-white mb-2">{profile.name}</h3>
+                <a href={profile.url} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
+                  LinkedIn
+                </a>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="border-t border-gray-800 py-20 bg-[#0A0B14]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-around">
+      {/* Beneficios Clave */}
+      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-15 left-[30%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
+          </div>
+          <div className="absolute bottom-15 right-[35%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-5 right-[20%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.keyBenefits.title}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+            {t.keyBenefits.benefits.map((benefit, index) => (
+              <div key={index} className={`bg-gray-${index % 2 === 0 ? '900' : '800'} rounded-xl p-6 shadow-md`}>
+                <h3 className="text-xl font-semibold mb-2 text-white">{benefit.title}</h3>
+                <p className="text-gray-400">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonios / Casos de Éxito */}
+      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-5 left-[25%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
+          </div>
+          <div className="absolute bottom-5 right-[30%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-10 right-[15%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.testimonials.title}</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+            {t.testimonials.cases.map((testimonial, index) => (
+              <div key={index} className="bg-gray-900 rounded-xl p-6 shadow-lg">
+                <p className="text-gray-400 italic">"{testimonial.content}"</p>
+                <h3 className="text-xl font-semibold mt-4 text-white">{testimonial.author}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Sección de Contacto */}
+      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-5 left-[20%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
+          </div>
+          <div className="absolute bottom-5 right-[25%] animate-float-delayed">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
+          </div>
+          <div className="absolute top-10 right-[10%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-around relative z-10">
           <div>
             <h2 className="text-3xl font-bold text-cyan-400 mb-4">Contacto</h2>
             <p className="text-gray-300 mb-4">Resuelve todas tus dudas antes de nuestra reunión.</p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <Image src="/wpp.png" alt="WhatsApp" width={40} height={40}  />
+                <img src="/wpp.png" alt="WhatsApp" width={40} height={40} />
                 <span className="text-xl font-semibold text-white">{process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}</span>
               </div>
             </div>
             <p className="text-gray-300 mt-4 mb-4">Escanea el código y escríbenos</p>
-            <Image src="/qrwpp.png" alt="QR Code" width={100} height={100}  />
+            <img src="/qrwpp.png" alt="QR Code" width={100} height={100} />
           </div>
           <div>
-            <Image src="/blueprint.png" alt="Contact Illustration" width={300} height={300} />
-          </div>
-        </div>
-      </section>
-
-      {/* Sección de Casos de Uso */}
-      <section className="border-t border-gray-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16">{t.useCases.title}</h2>
-          <div className="flex justify-center mb-8">
-            <div className="border-4 border-cyan-400 rounded-lg p-2 max-w-full lg:max-w-lg">
-              <Image src={selectedImage} alt="Caso de Uso" layout="responsive" width={600} height={400} className="rounded-lg" />
-            </div>
-          </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {t.useCases.cases.map((useCase, index) => (
-              <div
-                key={index}
-                className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm transform transition-transform hover:scale-105 cursor-pointer"
-                onClick={() => setSelectedImage(useCase.image)}
-              >
-                <h3 className="text-xl font-semibold mb-2">{useCase.title}</h3>
-                <p className="text-gray-400">{useCase.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sección de Automatizaciones para CRM */}
-      <section className="border-t border-gray-800 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16">{t.crmAutomations.title}</h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {t.crmAutomations.cases.map((caseItem, index) => (
-              <div
-                key={index}
-                className="bg-gray-800/50 rounded-xl p-6 backdrop-blur-sm transform transition-transform hover:scale-105 cursor-pointer"
-              >
-                <Image src={caseItem.image} alt={caseItem.title} width={300} height={200} className="rounded-lg mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{caseItem.title}</h3>
-                <p className="text-gray-400">{caseItem.description}</p>
-              </div>
-            ))}
+            <img src="/blueprint.png" alt="Contact Illustration" width={300} height={300} />
           </div>
         </div>
       </section>
