@@ -220,13 +220,17 @@ export default function Home() {
       {/* Sección de LinkedIn */}
       <section id="linkedin" className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.linkedIn.title}</h2>
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">Conéctate con Nosotros</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {t.linkedIn.profiles.map((profile, index) => (
+            {[
+              { name: 'Julian Besteiro', linkedin: 'https://www.linkedin.com/in/julian-besteiro-software-engineer/', image: '/juli.jpeg' },
+              { name: 'Facundo Inza', linkedin: 'https://www.linkedin.com/in/facundo-inza/', image: '/facu.jpeg' },
+              { name: 'Miguel Angel Lupani', linkedin: 'https://www.linkedin.com/in/miguel-angel-lupani-5847b720a/', image: '/migue.jpeg' },
+            ].map((profile, index) => (
               <div key={index} className="flex flex-col items-center bg-gray-900 p-8 rounded-lg shadow-lg">
                 <img src={profile.image} alt={profile.name} className="mb-4 w-24 h-24 rounded-full object-cover" />
                 <h3 className="text-xl font-bold text-white mb-2">{profile.name}</h3>
-                <a href={profile.url} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
+                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
                   LinkedIn
                 </a>
               </div>
