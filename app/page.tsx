@@ -34,11 +34,14 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="#servicios" className="text-gray-300 hover:text-white hidden sm:block">
-                {t.nav.services}
+              <Link href="#tecnologias" className="text-gray-300 hover:text-white hidden sm:block">
+                Tecnologías
               </Link>
-              <Link href="#seguridad" className="text-gray-300 hover:text-white hidden sm:block">
-                {t.nav.security}
+              <Link href="#casos-de-uso" className="text-gray-300 hover:text-white hidden sm:block">
+                Casos de Uso
+              </Link>
+              <Link href="#contacto" className="text-gray-300 hover:text-white hidden sm:block">
+                Contacto
               </Link>
               <LanguageSwitcher />
               <Link href={calendlyUrl}>
@@ -52,7 +55,7 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen bg-[#0A0B14]">
+      <section id="hero" className="relative pt-20 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/15 via-transparent to-transparent" />
           <div className="absolute top-40 left-[20%] animate-float">
@@ -91,7 +94,7 @@ export default function Home() {
       </section>
 
       {/* Sección de Tecnologías */}
-      <section className="relative flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="tecnologias" className="relative flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-10 left-[10%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
@@ -121,8 +124,8 @@ export default function Home() {
         </div>
       </section>
 
-            {/* Casos de Uso */}
-            <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      {/* Casos de Uso */}
+      <section id="casos-de-uso" className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.useCases.title}</h2>
           <div className="flex justify-center mb-8">
@@ -144,7 +147,7 @@ export default function Home() {
       </section>
 
       {/* Identificación de Dolor */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="identificacion-de-dolor" className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-20 left-[15%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
@@ -170,7 +173,7 @@ export default function Home() {
       </section>
 
       {/* Llamado a la Acción Final */}
-      <section className="border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="cta-final" className="border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
           <Link href={calendlyUrl}>
@@ -181,11 +184,8 @@ export default function Home() {
         </div>
       </section>
 
-
-
-
       {/* Nuestros Servicios Automatizados */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="servicios-automatizados" className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-10 right-[10%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
@@ -217,9 +217,8 @@ export default function Home() {
         </div>
       </section>
 
-
       {/* Sección de LinkedIn */}
-      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="linkedin" className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.linkedIn.title}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
@@ -237,7 +236,7 @@ export default function Home() {
       </section>
 
       {/* Beneficios Clave */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="beneficios-clave" className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-15 left-[30%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
@@ -263,7 +262,7 @@ export default function Home() {
       </section>
 
       {/* Testimonios / Casos de Éxito */}
-      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="testimonios" className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-5 left-[25%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
@@ -289,7 +288,7 @@ export default function Home() {
       </section>
 
       {/* Sección de Contacto */}
-      <section className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="contacto" className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-5 left-[20%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
@@ -329,9 +328,9 @@ export default function Home() {
                 {t.footer.company}
               </h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-gray-400 hover:text-white">{t.footer.about}</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">{t.footer.services}</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">Contacto</Link></li>
+                <li><Link href="#tecnologias" className="text-gray-400 hover:text-white">Tecnologías</Link></li>
+                <li><Link href="#casos-de-uso" className="text-gray-400 hover:text-white">Casos de Uso</Link></li>
+                <li><Link href="#contacto" className="text-gray-400 hover:text-white">Contacto</Link></li>
               </ul>
             </div>
             <div>
@@ -339,9 +338,9 @@ export default function Home() {
                 {t.footer.services}
               </h3>
               <ul className="space-y-2">
-                <li><Link href="#" className="text-gray-400 hover:text-white">{t.footer.webDev}</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">{t.footer.mobileDev}</Link></li>
-                <li><Link href="#" className="text-gray-400 hover:text-white">Automatizaciones</Link></li>
+                <li><Link href="#tecnologias" className="text-gray-400 hover:text-white">Tecnologías</Link></li>
+                <li><Link href="#casos-de-uso" className="text-gray-400 hover:text-white">Casos de Uso</Link></li>
+                <li><Link href="#contacto" className="text-gray-400 hover:text-white">Contacto</Link></li>
               </ul>
             </div>
             <div>
