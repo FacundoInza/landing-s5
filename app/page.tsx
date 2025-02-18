@@ -11,6 +11,10 @@ import { useState } from 'react'
 
 // Asegúrate de que la variable de entorno esté disponible
 const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
+
+// Importa la variable de entorno del correo electrónico
+const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai"
+
 export default function Home() {
   const { language } = useLanguage()
   const t = translations[language]
@@ -310,12 +314,10 @@ export default function Home() {
             <p className="text-gray-300 mb-4">Resuelve todas tus dudas antes de nuestra reunión.</p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <img src="/wpp.png" alt="WhatsApp" width={40} height={40} />
-                <span className="text-xl font-semibold text-white">{process.env.NEXT_PUBLIC_WHATSAPP_NUMBER}</span>
+                <span className="text-xl font-semibold text-white">{emailContact}</span>
               </div>
             </div>
-            <p className="text-gray-300 mt-4 mb-4">Escanea el código y escríbenos</p>
-            <img src="/qrwpp.png" alt="QR Code" width={100} height={100} />
+            <p className="text-gray-300 mt-4 mb-4">Contáctanos por correo: {emailContact}</p>
           </div>
           <div>
             <img src="/blueprint.png" alt="Contact Illustration" width={300} height={300} />
