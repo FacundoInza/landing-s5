@@ -16,4 +16,3 @@ services:
       PORT2: ${PORT2}
     volumes:
       - .:/app
-    restart: unless-stopped
