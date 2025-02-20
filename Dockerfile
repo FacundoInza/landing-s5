@@ -22,12 +22,16 @@ FROM node:18-alpine AS runner
 # Establece el directorio de trabajo
 WORKDIR /app
 
+# Copia package.json y package-lock.json
+COPY package.json package-lock.json ./
+
+# Instala dependencias en la imagen final
+RUN npm install --omit=dev
+
 # Copia los archivos de construcción desde el contenedor builder
 COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
 
-# Expone los puertos en los que la aplicación se ejecutará
+# Expone el puerto
 EXPOSE 3001
 
 # Comando para ejecutar la aplicación
