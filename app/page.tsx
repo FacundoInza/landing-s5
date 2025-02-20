@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useLanguage } from './contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { translations } from './translations'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Asegúrate de que la variable de entorno esté disponible
 const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
@@ -20,6 +20,16 @@ export default function Home() {
 
   // Estado para el caso de uso seleccionado
   const [selectedCase, setSelectedCase] = useState(0);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://assets.calendly.com/assets/external/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
@@ -55,39 +65,46 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="relative pt-20 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen bg-[#0A0B14]">
+      <section id="hero" className="relative pt-44 pb-32 flex flex-col justify-center items-center overflow-hidden h-screen bg-[#0A0B14]">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/15 via-transparent to-transparent" />
-          <div className="absolute top-40 left-[20%] animate-float">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10 opacity-50" />
-          </div>
-          <div className="absolute top-32 right-[25%] animate-float-delayed">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
-          </div>
-          <div className="absolute bottom-40 left-[35%] animate-float-delayed">
+          <div className="absolute top-10 left-[10%] animate-float">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12 opacity-50" />
           </div>
-          <div className="absolute bottom-20 right-[15%] animate-float">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
-          </div>
-          <div className="absolute top-10 left-[50%] animate-float-delayed">
+          <div className="absolute bottom-10 right-[20%] animate-float-delayed">
             <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8 opacity-50" />
           </div>
+          <div className="absolute top-5 right-[30%] animate-float">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6 opacity-50" />
+          </div>
         </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/15 via-transparent to-transparent" />
+        </div>
+        <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-10 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl sm:text-5xl lg:text-5xl font-bold tracking-tight mb-8">
-              {t.hero.title} <span className="text-cyan-400">{t.hero.titleHighlight}</span>
+            <h1 className="text-base sm:text-lg lg:text-xl tracking-tight mb-4 text-white uppercase">
+              {t.hero.title}
             </h1>
-            <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-              {t.hero.description}
+            <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-400 mb-8">
+              {t.hero.description.split(' ').map((word, index) => {
+                if (word === 'Anuncios' || word === 'Volumen' || word === 'Bot' || 
+                    word === 'Sin' || word === 'Pantalla' || word === 'Manual' || word === 'Margen' ||
+                    word === 'Without' || word === 'Screen' || word === 'Manual' || word === 'Margin') {
+                  return <span key={index} className="text-cyan-400">{word} </span>;
+                }
+                return word + ' ';
+              })}
             </p>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight mb-6 text-white">
+              {t.hero.cta}
+            </h2>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href={calendlyUrl}>
-                <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
-                  {t.hero.cta}
-                </Button>
-              </Link>
+              <div
+                className="calendly-inline-widget"
+                data-url={calendlyUrl}
+                style={{ width: '100%', maxWidth: '600px', height: '630px' }}
+              ></div>
             </div>
           </div>
         </div>
@@ -118,6 +135,36 @@ export default function Home() {
                 <img src={tech.logo} alt={tech.name} className="mb-4 w-20 h-20 object-contain" />
                 <h3 className={`text-2xl font-bold mb-2 ${tech.name === 'Binance' ? 'text-yellow-500' : 'text-white'}`}>{tech.name}</h3>
                 <p className="text-gray-400 text-center">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Características del Bot */}
+      <section className="relative flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.botFeatures.title}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.botFeatures.features.map((feature, index) => (
+              <div key={index} className="bg-gray-900 p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
+                <p className="text-gray-400">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Beneficios del Bot */}
+      <section className="relative flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.botBenefits.title}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.botBenefits.benefits.map((benefit, index) => (
+              <div key={index} className="bg-gray-900 p-6 rounded-lg shadow-lg">
+                <h3 className="text-xl font-semibold mb-4 text-white">{benefit.title}</h3>
+                <p className="text-gray-400">{benefit.description}</p>
               </div>
             ))}
           </div>

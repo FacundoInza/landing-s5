@@ -6,10 +6,10 @@ export const translations = {
       launchApp: 'Iniciar Proyecto'
     },
     hero: {
-      title: 'Automatiza y Centraliza tus Operaciones en Binance P2P',
+      title: 'Sólo para Comerciantes de Binance P2P que Quieren Dominar el Mercado',
       titleHighlight: '',
-      description: 'Optimiza procesos, reduce cargas operativas y asegura el cumplimiento regulatorio con soluciones personalizadas para financieras.',
-      cta: 'Solicita una Demo'
+      description: 'Descubre Cómo Mantener Tus Anuncios Siempre Arriba y Multiplicar Tu Volumen de Operaciones 🚀 Sin Estar Pegado a la Pantalla, Sin Monitoreo Manual y Sin Perder Margen de Ganancia',
+      cta: '👇 Activa Tu Bot Automático Hoy y Toma Ventaja 👇'
     },
     technologies: {
       title: 'Tecnologías de punta',
@@ -250,6 +250,48 @@ export const translations = {
         },
       ],
     },
+    botFeatures: {
+      title: '¿Cómo Funciona Nuestro Bot?',
+      features: [
+        {
+          title: 'Conexión Segura a Binance',
+          description: 'Utilizando tus API keys, el bot se conecta de forma segura a Binance, garantizando que tus datos se manejen de manera confidencial y exclusivamente para actualizar tus anuncios.'
+        },
+        {
+          title: 'Actualización Automática de Precios',
+          description: 'El bot analiza el mercado y ajusta tus precios según la estrategia que definas, ya sea mediante un enfoque agresivo (seleccionando competidores específicos) o conservador (estableciendo umbrales de diferencia mínima).'
+        },
+        {
+          title: 'Configuración Personalizada',
+          description: 'Selecciona los anuncios que deseas optimizar, define límites de competencia y elige opciones de pago específicas. Nuestro sistema se adapta a tus necesidades para maximizar tus oportunidades en el mercado.'
+        },
+        {
+          title: 'Activación Manual Inicial',
+          description: 'En esta fase, nuestro equipo activa manualmente el servicio para cada cliente. Esto nos permite ofrecer una configuración personalizada y soporte directo, garantizando una experiencia impecable desde el inicio.'
+        }
+      ]
+    },
+    botBenefits: {
+      title: 'Beneficios de Nuestro Bot',
+      benefits: [
+        {
+          title: 'Eficiencia y Ahorro de Tiempo',
+          description: 'Automatiza la gestión de tus precios, eliminando la necesidad de ajustes manuales constantes y permitiéndote centrar en otras áreas de tu negocio.'
+        },
+        {
+          title: 'Competitividad Mejorada',
+          description: 'Con precios siempre optimizados, tus anuncios se posicionan mejor en el mercado, dándote una ventaja competitiva significativa.'
+        },
+        {
+          title: 'Seguridad y Transparencia',
+          description: 'Tus API keys se gestionan de forma segura y solo se utilizan para actualizar tus anuncios, brindándote total confianza en el manejo de tus datos.'
+        },
+        {
+          title: 'Soporte Dedicado',
+          description: 'Al activar el servicio manualmente, garantizamos una implementación a medida y una atención personalizada para maximizar el rendimiento de tu bot.'
+        }
+      ]
+    }
   },
   en: {
     nav: {
@@ -260,8 +302,8 @@ export const translations = {
     hero: {
       title: 'Automate and Centralize Your Operations on Binance P2P',
       titleHighlight: '',
-      description: 'Optimize processes, reduce operational burdens, and ensure regulatory compliance with tailored solutions for financial institutions.',
-      cta: 'Request a Demo'
+      description: 'Discover How to Keep Your Ads Always on Top and Multiply Your Trading Volume 🚀 Without Being Glued to the Screen, Without Manual Monitoring, and Without Losing Profit Margin',
+      cta: '👇 Activate Your Automatic Bot Today and Take Advantage 👇'
     },
     technologies: {
       title: 'Technologies We Use',
@@ -502,6 +544,48 @@ export const translations = {
         },
       ],
     },
+    botFeatures: {
+      title: 'How Our Bot Works',
+      features: [
+        {
+          title: 'Secure Binance Connection',
+          description: 'Using your API keys, the bot securely connects to Binance, ensuring your data is handled confidentially and exclusively for updating your ads.'
+        },
+        {
+          title: 'Automatic Price Updates',
+          description: 'The bot analyzes the market and adjusts your prices according to your defined strategy, whether through an aggressive approach (selecting specific competitors) or conservative (setting minimum difference thresholds).'
+        },
+        {
+          title: 'Custom Configuration',
+          description: 'Select the ads you want to optimize, define competition limits, and choose specific payment options. Our system adapts to your needs to maximize your market opportunities.'
+        },
+        {
+          title: 'Initial Manual Activation',
+          description: 'In this phase, our team manually activates the service for each client. This allows us to offer personalized configuration and direct support, ensuring a flawless experience from the start.'
+        }
+      ]
+    },
+    botBenefits: {
+      title: 'Bot Benefits',
+      benefits: [
+        {
+          title: 'Efficiency and Time Savings',
+          description: 'Automate your price management, eliminating the need for constant manual adjustments and allowing you to focus on other areas of your business.'
+        },
+        {
+          title: 'Enhanced Competitiveness',
+          description: 'With always-optimized prices, your ads are better positioned in the market, giving you a significant competitive advantage.'
+        },
+        {
+          title: 'Security and Transparency',
+          description: 'Your API keys are managed securely and only used to update your ads, giving you complete confidence in data handling.'
+        },
+        {
+          title: 'Dedicated Support',
+          description: 'By manually activating the service, we ensure custom implementation and personalized attention to maximize your bot\'s performance.'
+        }
+      ]
+    }
   }
 }
 
