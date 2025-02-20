@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT1}:3000"
+      - "${PORT2}:3002"
+    environment:
+      NODE_ENV: production
+      NEXT_PUBLIC_CALENDLY_URL: ${NEXT_PUBLIC_CALENDLY_URL}
+      NEXT_PUBLIC_EMAIL_CONTACT: ${NEXT_PUBLIC_EMAIL_CONTACT}
+      PORT1: ${PORT1}
+      PORT2: ${PORT2}
+    volumes:
+      - .:/app
+    restart: unless-stopped
