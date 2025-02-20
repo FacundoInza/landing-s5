@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Lock } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
@@ -18,9 +17,6 @@ const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai
 export default function Home() {
   const { language } = useLanguage()
   const t = translations[language]
-
-  // Estado para la imagen seleccionada
-  const [selectedImage, setSelectedImage] = useState(t.useCases.cases[0].image);
 
   // Estado para el caso de uso seleccionado
   const [selectedCase, setSelectedCase] = useState(0);
@@ -287,7 +283,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
             {t.testimonials.cases.map((testimonial, index) => (
               <div key={index} className="bg-gray-900 rounded-xl p-6 shadow-lg">
-                <p className="text-gray-400 italic">"{testimonial.content}"</p>
+                <p className="text-gray-400 italic">&quot;{testimonial.content}&quot;</p>
                 <h3 className="text-xl font-semibold mt-4 text-white">{testimonial.author}</h3>
               </div>
             ))}
