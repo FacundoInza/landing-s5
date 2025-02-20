@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "${PORT1}:3000"
-      - "${PORT2}:3002"
+      - "${PORT1}:${PORT1}"
+      - "${PORT2}:${PORT2}"
     environment:
       NODE_ENV: production
       NEXT_PUBLIC_CALENDLY_URL: ${NEXT_PUBLIC_CALENDLY_URL}
