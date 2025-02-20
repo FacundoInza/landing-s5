@@ -29,7 +29,6 @@ COPY --from=builder /app/package.json ./package.json
 
 # Expone los puertos en los que la aplicación se ejecutará
 EXPOSE 3001
-EXPOSE 3002
 
 # Comando para ejecutar la aplicación
-CMD ["npm", "start"] 
+CMD ["npm", "start"]
