@@ -11,9 +11,6 @@ import {
   trackScheduleMeeting, 
   trackContact, 
   trackViewContent, 
-  trackSearch,
-  trackSubscribe,
-  trackStartTrial,
   trackCustomEvent
 } from './utils/analytics'
 

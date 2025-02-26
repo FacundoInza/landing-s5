@@ -3,10 +3,20 @@
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
+// Reemplazar 'any' con tipos específicos
+interface FacebookPixel {
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[];
+  push: (...args: unknown[]) => void;
+  loaded: boolean;
+  version: string;
+  (...args: unknown[]): void;
+}
+
 declare global {
   interface Window {
-    fbq: any
-    _fbq: any
+    fbq: FacebookPixel;
+    _fbq: FacebookPixel;
   }
 }
 
@@ -16,16 +26,19 @@ export default function MetaPixel({ pixelId }: { pixelId: string }) {
   useEffect(() => {
     // Inicializar el pixel
     if (!window.fbq) {
-      window.fbq = function() {
-        // @ts-ignore
-        window.fbq.callMethod ? window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments)
-      }
+      window.fbq = function(...args: unknown[]) {
+        if (window.fbq.callMethod) {
+          window.fbq.callMethod(...args);
+        } else {
+          window.fbq.queue.push(args);
+        }
+      } as FacebookPixel;
       
-      if (!window._fbq) window._fbq = window.fbq
-      window.fbq.push = window.fbq
-      window.fbq.loaded = true
-      window.fbq.version = '2.0'
-      window.fbq.queue = []
+      if (!window._fbq) window._fbq = window.fbq;
+      window.fbq.push = window.fbq;
+      window.fbq.loaded = true;
+      window.fbq.version = '2.0';
+      window.fbq.queue = [];
     }
 
     // Cargar el script de Facebook
@@ -67,4 +80,4 @@ export default function MetaPixel({ pixelId }: { pixelId: string }) {
       />
     </noscript>
   )
-} 
+}

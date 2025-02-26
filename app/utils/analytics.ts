@@ -1,8 +1,8 @@
-export function trackFacebookEvent(eventName: string, params?: Record<string, any>) {
-  if (typeof window !== 'undefined' && window.fbq) {
-    window.fbq('track', eventName, params)
-  }
-}
+export function trackFacebookEvent(eventName: string, params?: Record<string, unknown>) {
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', eventName, params)
+    }
+  } 
 
 // Ejemplos de eventos comunes
 export function trackLead(value?: number, currency?: string) {
@@ -68,6 +68,6 @@ export function trackStartTrial(value?: number, currency?: string, predictedLtv?
   })
 }
 
-export function trackCustomEvent(eventName: string, params?: Record<string, any>) {
+export function trackCustomEvent(eventName: string, params?: Record<string, unknown>) {
   trackFacebookEvent(eventName, params)
 } 
