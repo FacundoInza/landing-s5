@@ -7,6 +7,15 @@ import { useLanguage } from './contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { translations } from './translations'
 import { useState, useEffect } from 'react'
+import { 
+  trackScheduleMeeting, 
+  trackContact, 
+  trackViewContent, 
+  trackSearch,
+  trackSubscribe,
+  trackStartTrial,
+  trackCustomEvent
+} from './utils/analytics'
 
 // Asegúrate de que la variable de entorno esté disponible
 const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
@@ -31,6 +40,78 @@ export default function Home() {
     };
   }, []);
 
+  // Rastrear vista de secciones importantes
+  useEffect(() => {
+    // Rastrear vista de la página principal
+    trackViewContent('Homepage', 'Landing Page')
+    
+    // Configurar observadores para secciones importantes
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id
+          switch(sectionId) {
+            case 'tecnologias':
+              trackViewContent('Tecnologías', 'Section')
+              break
+            case 'casos-de-uso':
+              trackViewContent('Casos de Uso', 'Section')
+              break
+            case 'identificacion-de-dolor':
+              trackViewContent('Puntos de Dolor', 'Section')
+              break
+            case 'servicios-automatizados':
+              trackViewContent('Servicios Automatizados', 'Section')
+              break
+            case 'contacto':
+              trackViewContent('Contacto', 'Section')
+              break
+          }
+          // Desconectar después de ver la sección
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.5 })
+    
+    // Observar todas las secciones importantes
+    const sections = [
+      'tecnologias', 
+      'casos-de-uso', 
+      'identificacion-de-dolor',
+      'servicios-automatizados',
+      'contacto'
+    ]
+    
+    sections.forEach(sectionId => {
+      const element = document.getElementById(sectionId)
+      if (element) observer.observe(element)
+    })
+    
+    return () => observer.disconnect()
+  }, [])
+
+  // Rastrear cuando alguien programa una reunión
+  const handleScheduleMeeting = (e: React.MouseEvent) => {
+    e.preventDefault()
+    trackScheduleMeeting()
+    window.open(calendlyUrl, '_blank')
+  }
+  
+  // Rastrear cuando alguien contacta por email
+  const handleEmailContact = () => {
+    trackContact()
+    trackCustomEvent('EmailContact')
+  }
+  
+  // Rastrear cuando alguien selecciona un caso de uso
+  const handleCaseSelection = (index: number) => {
+    setSelectedCase(index)
+    trackViewContent(
+      t.useCases.cases[index].title, 
+      'Caso de Uso'
+    )
+  }
+
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
       {/* Navbar */}
@@ -44,17 +125,29 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Link href="#tecnologias" className="text-gray-300 hover:text-white hidden sm:block">
+              <Link 
+                href="#tecnologias" 
+                className="text-gray-300 hover:text-white hidden sm:block"
+                onClick={() => trackCustomEvent('NavClick', { section: 'Tecnologías' })}
+              >
                 Tecnologías
               </Link>
-              <Link href="#casos-de-uso" className="text-gray-300 hover:text-white hidden sm:block">
+              <Link 
+                href="#casos-de-uso" 
+                className="text-gray-300 hover:text-white hidden sm:block"
+                onClick={() => trackCustomEvent('NavClick', { section: 'Casos de Uso' })}
+              >
                 Casos de Uso
               </Link>
-              <Link href="#contacto" className="text-gray-300 hover:text-white hidden sm:block">
+              <Link 
+                href="#contacto" 
+                className="text-gray-300 hover:text-white hidden sm:block"
+                onClick={() => trackCustomEvent('NavClick', { section: 'Contacto' })}
+              >
                 Contacto
               </Link>
               <LanguageSwitcher />
-              <Link href={calendlyUrl}>
+              <Link href={calendlyUrl} onClick={handleScheduleMeeting}>
                 <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 rounded-full">
                   {t.nav.launchApp}
                 </Button>
@@ -172,23 +265,115 @@ export default function Home() {
       </section>
 
       {/* Casos de Uso */}
-      <section id="casos-de-uso" className="relative min-h-screen flex flex-col justify-center items-center border-t border-gray-800 py-20 bg-[#0A0B14]">
+      <section id="casos-de-uso" className="relative py-16 border-t border-gray-800 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.useCases.title}</h2>
-          <div className="flex justify-center mb-8">
-            {t.useCases.cases.map((useCase, index) => (
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-cyan-400">{t.useCases.title}</h2>
+          
+          {/* Visualización móvil: Carrusel con navegación */}
+          <div className="block sm:hidden">
+            {/* Caso seleccionado */}
+            <div className="mb-6">
+              <div className="bg-gray-900 rounded-t-lg overflow-hidden">
+                <div className="aspect-[4/3] relative">
+                  <img 
+                    src={t.useCases.cases[selectedCase].image} 
+                    alt={t.useCases.cases[selectedCase].title} 
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold mb-2 text-cyan-400">
+                    {t.useCases.cases[selectedCase].title}
+                  </h3>
+                  <p className="text-sm text-gray-400">
+                    {t.useCases.cases[selectedCase].description}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Navegación de carrusel */}
+            <div className="flex items-center justify-between mb-4">
               <button
-                key={index}
-                onClick={() => setSelectedCase(index)}
-                className={`px-4 py-2 mx-2 rounded-full ${selectedCase === index ? 'bg-cyan-400 text-gray-900' : 'bg-gray-800 text-white'}`}
+                onClick={() => handleCaseSelection(
+                  selectedCase === 0 ? t.useCases.cases.length - 1 : selectedCase - 1
+                )}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-white"
+                aria-label="Caso anterior"
               >
-                {useCase.title}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+                </svg>
               </button>
-            ))}
+              
+              <div className="flex space-x-2">
+                {t.useCases.cases.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleCaseSelection(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      selectedCase === index ? 'bg-cyan-400 w-5' : 'bg-gray-600'
+                    }`}
+                    aria-label={`Ver caso ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
+              <button
+                onClick={() => handleCaseSelection(
+                  selectedCase === t.useCases.cases.length - 1 ? 0 : selectedCase + 1
+                )}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-white"
+                aria-label="Caso siguiente"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </button>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <img src={t.useCases.cases[selectedCase].image} alt={t.useCases.cases[selectedCase].title} className="mb-4 object-contain" />
-            <p className="text-gray-400 text-center">{t.useCases.cases[selectedCase].description}</p>
+          
+          {/* Visualización desktop: Pestañas y contenido */}
+          <div className="hidden sm:block">
+            {/* Pestañas de navegación */}
+            <div className="flex flex-wrap justify-center mb-10 gap-3">
+              {t.useCases.cases.map((useCase, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleCaseSelection(index)}
+                  className={`px-4 py-2 rounded-full transition-all duration-300 ${
+                    selectedCase === index 
+                      ? 'bg-cyan-400 text-gray-900 shadow-lg shadow-cyan-400/20' 
+                      : 'bg-gray-800 text-white hover:bg-gray-700'
+                  }`}
+                >
+                  {useCase.title}
+                </button>
+              ))}
+            </div>
+            
+            {/* Contenido del caso seleccionado */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
+                  <h3 className="text-xl font-semibold mb-4 text-cyan-400">
+                    {t.useCases.cases[selectedCase].title}
+                  </h3>
+                  <p className="text-gray-400">
+                    {t.useCases.cases[selectedCase].description}
+                  </p>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="bg-gray-800 rounded-lg overflow-hidden shadow-xl">
+                  <img 
+                    src={t.useCases.cases[selectedCase].image} 
+                    alt={t.useCases.cases[selectedCase].title} 
+                    className="w-full h-auto" 
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -223,8 +408,10 @@ export default function Home() {
       <section id="cta-final" className="border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
-          <Link href={calendlyUrl}>
-            <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full">
+          <Link href={calendlyUrl} onClick={handleScheduleMeeting}>
+            <Button 
+              className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full"
+            >
               {t.finalCta.cta}
             </Button>
           </Link>
@@ -277,7 +464,13 @@ export default function Home() {
               <div key={index} className="flex flex-col items-center bg-gray-900 p-8 rounded-lg shadow-lg">
                 <img src={profile.image} alt={profile.name} className="mb-4 w-24 h-24 rounded-full object-cover" />
                 <h3 className="text-xl font-bold text-white mb-2">{profile.name}</h3>
-                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:underline">
+                <a 
+                  href={profile.linkedin} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-cyan-400 hover:underline"
+                  onClick={() => trackCustomEvent('LinkedInClick', { profile: profile.name })}
+                >
                   LinkedIn
                 </a>
               </div>
@@ -360,7 +553,16 @@ export default function Home() {
                 <span className="text-xl font-semibold text-white">{emailContact}</span>
               </div>
             </div>
-            <p className="text-gray-300 mt-4 mb-4">Contáctanos por correo: {emailContact}</p>
+            <p className="text-gray-300 mt-4 mb-4">
+              Contáctanos por correo: 
+              <a 
+                href={`mailto:${emailContact}`} 
+                className="text-cyan-400 hover:underline ml-1"
+                onClick={handleEmailContact}
+              >
+                {emailContact}
+              </a>
+            </p>
           </div>
           <div>
             <img src="/blueprint.png" alt="Contact Illustration" width={300} height={300} />

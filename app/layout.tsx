@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import './globals.css'
 import { LanguageProvider } from './contexts/language-context'
+import MetaPixel from './components/meta-pixel'
 
 export const metadata: Metadata = {
   title: {
@@ -118,6 +119,7 @@ export default function RootLayout({
         <LanguageProvider>
           {children}
         </LanguageProvider>
+        <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID || "666652519119327"} />
       </body>
     </html>
   )
