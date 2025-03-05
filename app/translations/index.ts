@@ -9,7 +9,8 @@ export const translations = {
       title: 'Sólo para Comerciantes de Binance P2P que Quieren Dominar el Mercado',
       titleHighlight: '',
       description: 'Descubre Cómo Mantener Tus Anuncios Siempre Arriba y Multiplicar Tu Volumen de Operaciones 🚀 Sin Estar Pegado a la Pantalla, Sin Monitoreo Manual y Sin Perder Margen de Ganancia',
-      cta: '👇 Activa Tu Bot Automático Hoy y Toma Ventaja 👇'
+      cta: '👇 Activa GRATIS Tu Bot Automático Hoy y Pruébalo Durante 7 Días Sin Costo 👇',
+      trialButton: 'Comenzar Prueba Gratuita'
     },
     technologies: {
       title: 'Tecnologías de punta',
@@ -228,7 +229,7 @@ export const translations = {
     },
     finalCta: {
       title: '¿Listo para revolucionar tu operativa financiera?',
-      cta: 'Contáctanos para una asesoría personalizada'
+      cta: 'Comenzar Prueba Gratuita de 7 Días'
     },
     linkedIn: {
       title: 'Conéctate con Nosotros',
@@ -303,7 +304,8 @@ export const translations = {
       title: 'Automate and Centralize Your Operations on Binance P2P',
       titleHighlight: '',
       description: 'Discover How to Keep Your Ads Always on Top and Multiply Your Trading Volume 🚀 Without Being Glued to the Screen, Without Manual Monitoring, and Without Losing Profit Margin',
-      cta: '👇 Activate Your Automatic Bot Today and Take Advantage 👇'
+      cta: '👇 Activate Your Automatic Bot for FREE Today and Try It for 7 Days at No Cost 👇',
+      trialButton: 'Start Free Trial'
     },
     technologies: {
       title: 'Technologies We Use',
@@ -522,7 +524,7 @@ export const translations = {
     },
     finalCta: {
       title: 'Ready to revolutionize your financial operations?',
-      cta: 'Contact us for personalized advice'
+      cta: 'Start Your 7-Day Free Trial'
     },
     linkedIn: {
       title: 'Connect with Us',

@@ -70,4 +70,32 @@ export function trackStartTrial(value?: number, currency?: string, predictedLtv?
 
 export function trackCustomEvent(eventName: string, params?: Record<string, unknown>) {
   trackFacebookEvent(eventName, params)
+}
+
+export const trackLeadSubmission = (formData: {
+  name: string;
+  phone: string;
+  countryCode: string;
+  isVerifiedTrader: boolean;
+  exchanges: string[];
+  primaryCurrency: string;
+  tradingFrequency: string;
+}) => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    // Enviar evento de conversión a Meta Pixel
+    window.fbq('track', 'Lead', {
+      content_name: 'Lead Form Submission',
+      content_category: 'Form',
+      value: 1.00,
+      currency: 'USD',
+    })
+    
+    // También podemos enviar un evento personalizado con más detalles
+    window.fbq('trackCustom', 'LeadFormSubmission', {
+      name: formData.name,
+      isVerifiedTrader: formData.isVerifiedTrader,
+      exchanges: formData.exchanges.join(','),
+      primaryCurrency: formData.primaryCurrency,
+    })
+  }
 } 

@@ -1,0 +1,35 @@
+.vsl-player-container {
+  width: 100%;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.vsl-player-container iframe {
+  border: none;
+}
+
+/* Clase para mantener relación de aspecto 16:9 */
+.aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+/* Estilos responsivos */
+@media (min-width: 768px) {
+  .vsl-player-container {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vsl-player-container {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .vsl-player-container {
+    max-width: 1000px;
+  }
+} 
