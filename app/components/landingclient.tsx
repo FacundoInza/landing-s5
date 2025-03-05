@@ -137,27 +137,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="flex items-center space-x-4">
-              <Link 
-                href="#tecnologias" 
-                className="text-gray-300 hover:text-white hidden sm:block"
-                onClick={() => trackCustomEvent('NavClick', { section: 'Tecnologías' })}
-              >
-                Tecnologías
-              </Link>
-              <Link 
-                href="#casos-de-uso" 
-                className="text-gray-300 hover:text-white hidden sm:block"
-                onClick={() => trackCustomEvent('NavClick', { section: 'Casos de Uso' })}
-              >
-                Casos de Uso
-              </Link>
-              <Link 
-                href="#contacto" 
-                className="text-gray-300 hover:text-white hidden sm:block"
-                onClick={() => trackCustomEvent('NavClick', { section: 'Contacto' })}
-              >
-                Contacto
-              </Link>
+             
               <LanguageSwitcher />
               <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); }}>
                 <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 rounded-full">
