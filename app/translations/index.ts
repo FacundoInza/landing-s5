@@ -3,20 +3,38 @@ export const translations = {
     nav: {
       services: 'Servicios',
       security: 'Seguridad',
-      launchApp: 'Iniciar Proyecto'
+      launchApp: 'Comenzar Prueba Gratuita'
     },
     hero: {
       title: 'Sólo para Comerciantes de Binance P2P que Quieren Dominar el Mercado',
       titleHighlight: '',
       description: 'Descubre Cómo Mantener Tus Anuncios Siempre Arriba y Multiplicar Tu Volumen de Operaciones 🚀 Sin Estar Pegado a la Pantalla, Sin Monitoreo Manual y Sin Perder Margen de Ganancia',
       cta: '👇 Activa GRATIS Tu Bot Automático Hoy y Pruébalo Durante 7 Días Sin Costo 👇',
-      trialButton: 'Comenzar Prueba Gratuita'
+      trialButton: 'Comenzar Prueba Gratuita',
+      noCard: 'Sin tarjeta de crédito. Cancela cuando quieras.',
+      activateTrial: 'Activa tu prueba gratuita hoy',
+      noCommitment: 'Sin compromisos. Cancela en cualquier momento.'
     },
     technologies: {
       title: 'Tecnologías de punta',
       description: 'Silver5 es una agencia de desarrollo de software especializada en desarrollo de aplicaciones empresariales, móviles e implementaciones de IA de última generación.',
       startProject: 'Iniciar Proyecto',
-      viewDemo: 'Ver Demo'
+      viewDemo: 'Ver Demo',
+      tryFree: 'Probar Gratis',
+      techs: [
+        { 
+          name: 'Binance', 
+          description: 'Automatización y gestión de operaciones en Binance.' 
+        },
+        { 
+          name: 'N8N', 
+          description: 'Automatización de flujos de trabajo con N8N.' 
+        },
+        { 
+          name: 'AWS', 
+          description: 'Implementación rápida y personalizada en servidores de AWS.' 
+        }
+      ]
     },
     stats: {
       projects: 'Proyectos',
@@ -229,7 +247,9 @@ export const translations = {
     },
     finalCta: {
       title: '¿Listo para revolucionar tu operativa financiera?',
-      cta: 'Comenzar Prueba Gratuita de 7 Días'
+      cta: 'Comenzar Prueba Gratuita de 7 Días',
+      startTrial: 'Comenzar Mi Prueba',
+      tryBot: 'Probar Bot'
     },
     linkedIn: {
       title: 'Conéctate con Nosotros',
@@ -250,6 +270,11 @@ export const translations = {
           image: '/juan-besteiro.png',
         },
       ],
+      connectWithUs: 'Conéctate con Nosotros'
+    },
+    contact: {
+      title: 'Contacto',
+      button: 'Contactar'
     },
     botFeatures: {
       title: '¿Cómo Funciona Nuestro Bot?',
@@ -298,20 +323,38 @@ export const translations = {
     nav: {
       services: 'Services',
       security: 'Security',
-      launchApp: 'Launch Project'
+      launchApp: 'Start Free Trial'
     },
     hero: {
       title: 'Automate and Centralize Your Operations on Binance P2P',
       titleHighlight: '',
       description: 'Discover How to Keep Your Ads Always on Top and Multiply Your Trading Volume 🚀 Without Being Glued to the Screen, Without Manual Monitoring, and Without Losing Profit Margin',
       cta: '👇 Activate Your Automatic Bot for FREE Today and Try It for 7 Days at No Cost 👇',
-      trialButton: 'Start Free Trial'
+      trialButton: 'Start Free Trial',
+      noCard: 'No credit card required. Cancel anytime.',
+      activateTrial: 'Activate your free trial today',
+      noCommitment: 'No commitment. Cancel anytime.'
     },
     technologies: {
       title: 'Technologies We Use',
       description: 'Silver5 is a software factory specialized in enterprise applications, mobile development, and cutting-edge AI implementations.',
       startProject: 'Start Project',
-      viewDemo: 'View Demo'
+      viewDemo: 'View Demo',
+      tryFree: 'Try for Free',
+      techs: [
+        { 
+          name: 'Binance', 
+          description: 'Automation and management of operations in Binance.' 
+        },
+        { 
+          name: 'N8N', 
+          description: 'Workflow automation with N8N.' 
+        },
+        { 
+          name: 'AWS', 
+          description: 'Fast and customized implementation on AWS servers.' 
+        }
+      ]
     },
     stats: {
       projects: 'Projects',
@@ -524,7 +567,9 @@ export const translations = {
     },
     finalCta: {
       title: 'Ready to revolutionize your financial operations?',
-      cta: 'Start Your 7-Day Free Trial'
+      cta: 'Start Your 7-Day Free Trial',
+      startTrial: 'Start My Trial',
+      tryBot: 'Try Bot'
     },
     linkedIn: {
       title: 'Connect with Us',
@@ -545,6 +590,11 @@ export const translations = {
           image: '/juan-besteiro.png',
         },
       ],
+      connectWithUs: 'Connect with Us'
+    },
+    contact: {
+      title: 'Contact',
+      button: 'Contact Us'
     },
     botFeatures: {
       title: 'How Our Bot Works',

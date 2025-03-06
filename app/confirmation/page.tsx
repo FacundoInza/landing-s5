@@ -18,7 +18,7 @@ export default function ConfirmationPage() {
       backHome: 'Volver al inicio',
       nextSteps: 'Próximos pasos:',
       steps: [
-        'Recibirás un mensaje de WhatsApp en las próximas 24 horas',
+        'Recibirás un mensaje de WhatsApp en las próximas 24 horas hábiles',
         'Te ayudaremos a configurar tu bot para Binance P2P',
         'Comenzarás tu prueba gratuita de 7 días'
       ]
@@ -30,7 +30,7 @@ export default function ConfirmationPage() {
       backHome: 'Back to home',
       nextSteps: 'Next steps:',
       steps: [
-        'You will receive a WhatsApp message within the next 24 hours',
+        'You will receive a WhatsApp message within the next 24 business hours',
         'We will help you set up your Binance P2P bot',
         'You will start your 7-day free trial'
       ]

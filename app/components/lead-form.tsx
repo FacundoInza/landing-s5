@@ -264,7 +264,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
   const translations = {
     es: {
       title: 'Cuéntanos más sobre ti',
-      subtitle: 'Completa este formulario para que podamos contactarte',
+      subtitle: 'Completa el formulario para conseguir la prueba gratuita',
       name: 'Nombre completo',
       phone: 'WhatsApp para que te contactemos',
       countryCode: 'Código de país',
@@ -273,8 +273,8 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       no: 'No',
       exchanges: '¿Qué exchanges utilizas?',
       primaryCurrency: '¿Cuáles son las monedas que más operas?',
-      tradingFrequency: '¿Con qué frecuencia operas?',
-      acceptContact: 'Acepto y solicito que me contacten por WhatsApp al número proporcionado para más información y seguimiento',
+      tradingFrequency: '¿Cuántas horas en promedio operas por día?',
+      acceptContact: 'Acepto y solicito que me contacten por WhatsApp al número proporcionado para obtener la prueba gratuita',
       submit: 'Enviar',
       required: 'Este campo es obligatorio',
       invalidPhone: 'Ingresa un número de teléfono válido',
@@ -282,10 +282,11 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       exchangesRequired: 'Selecciona al menos un exchange',
       success: 'Formulario enviado correctamente',
       searchCountry: 'Buscar país...',
+      freeTrial: 'Prueba gratuita por 7 días - Sin tarjeta de crédito'
     },
     en: {
       title: 'Tell us more about you',
-      subtitle: 'Complete this form so we can contact you',
+      subtitle: 'Complete the form to get your free trial',
       name: 'Full name',
       phone: 'WhatsApp where we can contact you',
       countryCode: 'Country code',
@@ -294,8 +295,8 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       no: 'No',
       exchanges: 'Which exchanges do you use?',
       primaryCurrency: 'Which cryptocurrencies do you trade the most?',
-      tradingFrequency: 'How often do you trade?',
-      acceptContact: 'I accept and request to be contacted via WhatsApp at the provided number for more information and follow-up',
+      tradingFrequency: 'How many hours on average do you trade per day?',
+      acceptContact: 'I accept and request to be contacted via WhatsApp at the provided number to get my free trial',
       submit: 'Submit',
       required: 'This field is required',
       invalidPhone: 'Enter a valid phone number',
@@ -303,6 +304,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       exchangesRequired: 'Select at least one exchange',
       success: 'Form submitted successfully',
       searchCountry: 'Search country...',
+      freeTrial: '7-day free trial - No credit card required'
     }
   }
 
@@ -407,10 +409,9 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
   return (
     <div className={`bg-gradient-to-br from-gray-900 to-gray-800 rounded-lg p-8 shadow-xl border border-gray-700 ${className}`}>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-white mb-3">{t.title}</h2>
-        <p className="text-gray-300 text-lg">{t.subtitle}</p>
+        <h1 className="text-gray-300 text-lg">{t.subtitle}</h1>
         <div className="mt-4 inline-block bg-cyan-400/20 px-4 py-2 rounded-full">
-          <p className="text-cyan-400 text-sm font-medium">Prueba gratuita por 7 días - Sin tarjeta de crédito</p>
+          <p className="text-cyan-400 text-sm font-medium">{t.freeTrial}</p>
         </div>
       </div>
       
@@ -479,6 +480,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
               <Label htmlFor="verified-no" className="text-white">{t.no}</Label>
             </div>
           </RadioGroup>
+          {errors.isVerifiedTrader && <p className="text-red-400 text-sm mt-1">{errors.isVerifiedTrader}</p>}
         </div>
         
         <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
@@ -505,7 +507,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
             id="primaryCurrency"
             value={formData.primaryCurrency}
             onChange={handleChange}
-            placeholder="BTC, ETH, SOL, etc."
+            placeholder="USDT, USDC, BTC, ETH, SOL, etc."
             className={`bg-gray-700 border-gray-600 text-white focus:ring-cyan-400 focus:border-cyan-400 mt-1 ${errors.primaryCurrency ? 'border-red-500' : ''}`}
             rows={3}
             required
@@ -519,7 +521,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
             id="tradingFrequency"
             value={formData.tradingFrequency}
             onChange={handleChange}
-            placeholder="Diariamente, semanalmente, etc."
+            placeholder="2-3 hs, 4 hs, etc."
             className={`bg-gray-700 border-gray-600 text-white focus:ring-cyan-400 focus:border-cyan-400 mt-1 ${errors.tradingFrequency ? 'border-red-500' : ''}`}
             rows={3}
             required

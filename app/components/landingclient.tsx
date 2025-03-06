@@ -205,7 +205,7 @@ export default function Home() {
                   {t.hero.trialButton}
                 </Button>
               </Link>
-              <p className="text-gray-400 mt-2 text-sm">Sin tarjeta de crédito. Cancela cuando quieras.</p>
+              <p className="text-gray-400 mt-2 text-sm">{t.hero.noCard}</p>
             </div>
           </div>
         </div>
@@ -225,16 +225,18 @@ export default function Home() {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">Tecnologías que Utilizamos</h2>
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.technologies.title}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { name: 'Binance', description: 'Automatización y gestión de operaciones en Binance.', logo: '/binance-logo.svg' },
-              { name: 'N8N', description: 'Automatización de flujos de trabajo con N8N.', logo: '/n8n.png' },
-              { name: 'AWS', description: 'Implementación rápida y personalizada en servidores de AWS.', logo: '/aws.png' },
-            ].map((tech, index) => (
+            {t.technologies.techs.map((tech, index) => (
               <div key={index} className="flex flex-col items-center bg-gray-900 p-8 rounded-lg shadow-lg">
-                <img src={tech.logo} alt={tech.name} className="mb-4 w-20 h-20 object-contain" />
-                <h3 className={`text-2xl font-bold mb-2 ${tech.name === 'Binance' ? 'text-yellow-500' : 'text-white'}`}>{tech.name}</h3>
+                <img 
+                  src={tech.name === 'Binance' ? '/binance-logo.svg' : `/${tech.name.toLowerCase()}.png`} 
+                  alt={tech.name} 
+                  className="mb-4 w-20 h-20 object-contain" 
+                />
+                <h3 className={`text-2xl font-bold mb-2 ${tech.name === 'Binance' ? 'text-yellow-500' : 'text-white'}`}>
+                  {tech.name}
+                </h3>
                 <p className="text-gray-400 text-center">{tech.description}</p>
               </div>
             ))}
@@ -259,7 +261,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); trackCustomEvent('FeaturesCTAClick'); }}>
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-6 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-110">
-                Probar Gratis por 7 Días
+                {t.technologies.tryFree}
               </Button>
             </Link>
           </div>
@@ -396,7 +398,7 @@ export default function Home() {
             <div className="mt-12 text-center">
               <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); trackCustomEvent('UseCasesCTAClick'); }}>
                 <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-6 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-110">
-                  Comenzar Mi Prueba Gratuita
+                  {t.finalCta.startTrial}
                 </Button>
               </Link>
             </div>
@@ -434,7 +436,7 @@ export default function Home() {
       <section id="cta-final" className="border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
-          <p className="text-xl text-gray-300 mb-8">Activa tu prueba gratuita de 7 días y descubre cómo nuestro bot puede transformar tu operativa en Binance P2P.</p>
+          <p className="text-xl text-gray-300 mb-8">{t.hero.activateTrial}</p>
           <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); trackCustomEvent('FinalCTAClick'); }}>
             <Button 
               className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full font-bold py-3 px-8 text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-110"
@@ -442,7 +444,7 @@ export default function Home() {
               {t.finalCta.cta}
             </Button>
           </Link>
-          <p className="text-gray-400 mt-4">Sin compromisos. Sin tarjeta de crédito. Cancela cuando quieras.</p>
+          <p className="text-gray-400 mt-4">{t.hero.noCommitment}</p>
         </div>
       </section>
 
@@ -482,7 +484,7 @@ export default function Home() {
       {/* Sección de LinkedIn */}
       <section id="linkedin" className="relative border-t border-gray-800 py-20 bg-[#0A0B14]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">Conéctate con Nosotros</h2>
+          <h2 className="text-3xl font-bold text-center mb-16 text-cyan-400">{t.linkedIn.connectWithUs}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             {[
               { name: 'Julian Besteiro', linkedin: 'https://www.linkedin.com/in/julian-besteiro-software-engineer/', image: '/juli.jpeg' },
@@ -535,7 +537,7 @@ export default function Home() {
           <div className="mt-12 text-center">
             <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); trackCustomEvent('BenefitsCTAClick'); }}>
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-6 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-110">
-                Probar Bot Gratis Durante 7 Días
+                {t.finalCta.tryBot}
               </Button>
             </Link>
           </div>
@@ -583,7 +585,7 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-around relative z-10">
           <div>
-            <h2 className="text-3xl font-bold text-cyan-400 mb-4">Contacto</h2>
+            <h2 className="text-3xl font-bold text-cyan-400 mb-4">{t.contact.title}</h2>
             <p className="text-gray-300 mb-4">Resuelve todas tus dudas antes de nuestra reunión.</p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
