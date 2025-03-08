@@ -274,7 +274,9 @@ export const translations = {
     },
     contact: {
       title: 'Contacto',
-      button: 'Contactar'
+      button: 'Contactar',
+      description: 'Resuelve todas tus dudas antes de nuestra reunión.',
+      emailText: 'Contáctanos por correo:'
     },
     botFeatures: {
       title: '¿Cómo Funciona Nuestro Bot?',
@@ -594,7 +596,9 @@ export const translations = {
     },
     contact: {
       title: 'Contact',
-      button: 'Contact Us'
+      button: 'Contact Us',
+      description: 'Resolve all your questions before our meeting.',
+      emailText: 'Contact us by email:'
     },
     botFeatures: {
       title: 'How Our Bot Works',

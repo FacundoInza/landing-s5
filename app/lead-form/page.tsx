@@ -43,13 +43,11 @@ export default function LeadFormPage() {
         {isSubmitted ? (
           <div className="text-center">
             <h2 className="text-2xl font-bold text-white mb-4">{t.success}</h2>
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-cyan-400 mx-auto"></div>
           </div>
         ) : (
           <>
             <div className="text-center">
               <h1 className="text-3xl font-bold text-cyan-400 mb-2">{t.title}</h1>
-              <p className="text-gray-400">{t.subtitle}</p>
             </div>
             <LeadForm onSubmit={handleFormSubmit} />
           </>

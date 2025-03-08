@@ -139,11 +139,6 @@ export default function Home() {
             <div className="flex items-center space-x-4">
              
               <LanguageSwitcher />
-              <Link href="/lead-form" onClick={(e) => { e.preventDefault(); router.push('/lead-form'); }}>
-                <Button variant="outline" className="border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 rounded-full">
-                  {t.nav.launchApp}
-                </Button>
-              </Link>
             </div>
           </div>
         </div>
@@ -586,14 +581,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-around relative z-10">
           <div>
             <h2 className="text-3xl font-bold text-cyan-400 mb-4">{t.contact.title}</h2>
-            <p className="text-gray-300 mb-4">Resuelve todas tus dudas antes de nuestra reunión.</p>
+            <p className="text-gray-300 mb-4">{t.contact.description}</p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <span className="text-xl font-semibold text-white">{emailContact}</span>
               </div>
             </div>
             <p className="text-gray-300 mt-4 mb-4">
-              Contáctanos por correo: 
+              {t.contact.emailText} 
               <a 
                 href={`mailto:${emailContact}`} 
                 className="text-cyan-400 hover:underline ml-1"
