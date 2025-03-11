@@ -19,6 +19,7 @@ interface LeadFormProps {
 export interface LeadFormData {
   name: string
   phone: string
+  email: string
   countryCode: string
   isVerifiedTrader: boolean
   exchanges: string[]
@@ -251,6 +252,7 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
   const [formData, setFormData] = useState<LeadFormData>({
     name: '',
     phone: '',
+    email: '',
     countryCode: '+54', // Código predeterminado para Argentina
     isVerifiedTrader: false,
     exchanges: [],
@@ -282,7 +284,9 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       exchangesRequired: 'Selecciona al menos un exchange',
       success: 'Formulario enviado correctamente',
       searchCountry: 'Buscar país...',
-      freeTrial: 'Prueba gratuita por 7 días - Sin tarjeta de crédito'
+      freeTrial: 'Prueba gratuita por 7 días - Sin tarjeta de crédito',
+      email: 'Correo electrónico',
+      invalidEmail: 'Ingresa un correo electrónico válido'
     },
     en: {
       title: 'Tell us more about you',
@@ -304,7 +308,9 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
       exchangesRequired: 'Select at least one exchange',
       success: 'Form submitted successfully',
       searchCountry: 'Search country...',
-      freeTrial: '7-day free trial - No credit card required'
+      freeTrial: '7-day free trial - No credit card required',
+      email: 'Email',
+      invalidEmail: 'Enter a valid email'
     }
   }
 
@@ -337,6 +343,12 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
     
     if (!formData.acceptContact) {
       newErrors.acceptContact = t.acceptRequired
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = t.required
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = t.invalidEmail
     }
     
     setErrors(newErrors)
@@ -461,6 +473,21 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
             </div>
           </div>
           {errors.phone && <p className="text-red-400 text-sm mt-1">{errors.phone}</p>}
+
+          
+        </div>
+
+        <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
+          <Label htmlFor="email" className="text-white text-base mb-2 block">{t.email}</Label>
+          <Input
+            id="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            className={`bg-gray-700 border-gray-600 text-white focus:ring-cyan-400 focus:border-cyan-400 ${errors.email ? 'border-red-500' : ''}`}
+            required
+          />
+          {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
         </div>
         
         <div className="bg-gray-800/50 p-6 rounded-lg border border-gray-700">
@@ -548,6 +575,8 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
             {errors.acceptContact && <p className="text-red-400 text-sm mt-1">{errors.acceptContact}</p>}
           </div>
         </div>
+        
+
         
         <Button 
           type="submit" 
