@@ -80,6 +80,9 @@ export const trackLeadSubmission = (formData: {
   exchanges: string[];
   primaryCurrency: string;
   tradingFrequency: string;
+  email?: string;
+  country?: string;
+  language?: string;
 }) => {
   if (typeof window !== 'undefined' && window.fbq) {
     // Enviar evento de conversión a Meta Pixel

@@ -13,25 +13,29 @@ export default function ConfirmationPage() {
   const translations = {
     es: {
       title: '¡Gracias por tu interés!',
-      message: 'Hemos recibido tu información y nos pondremos en contacto contigo pronto a través de WhatsApp.',
+      message: 'Hemos recibido tu información y nos pondremos en contacto contigo pronto.',
       contact: `Si tienes alguna pregunta, no dudes en escribirnos a ${emailContact}`,
       backHome: 'Volver al inicio',
       nextSteps: 'Próximos pasos:',
       steps: [
-        'Recibirás un mensaje de WhatsApp en las próximas 24 horas hábiles',
-        'Te ayudaremos a configurar tu bot para Binance P2P',
+        'Recibirás un correo electrónico con los datos de tu cuenta para acceder al bot',
+        'En el correo encontrarás un video tutorial que explica cómo configurar las API keys de Binance',
+        'Te contactaremos por WhatsApp en las próximas 24 horas hábiles',
+        'Te ayudaremos a configurar tu bot para Binance P2P si necesitas asistencia',
         'Comenzarás tu prueba gratuita de 7 días'
       ]
     },
     en: {
       title: 'Thank you for your interest!',
-      message: 'We have received your information and will contact you soon via WhatsApp.',
+      message: 'We have received your information and will contact you soon.',
       contact: `If you have any questions, feel free to email us at ${emailContact}`,
       backHome: 'Back to home',
       nextSteps: 'Next steps:',
       steps: [
-        'You will receive a WhatsApp message within the next 24 business hours',
-        'We will help you set up your Binance P2P bot',
+        'You will receive an email with your account details to access the bot',
+        'In the email you will find a video tutorial explaining how to configure the Binance API keys',
+        'We will contact you via WhatsApp within the next 24 business hours',
+        'We will help you set up your Binance P2P bot if you need assistance',
         'You will start your 7-day free trial'
       ]
     }

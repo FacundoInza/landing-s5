@@ -26,6 +26,8 @@ export interface LeadFormData {
   primaryCurrency: string
   tradingFrequency: string
   acceptContact?: boolean
+  country?: string
+  language?: string
 }
 
 // Lista de códigos de país con sus nombres
@@ -367,9 +369,16 @@ export function LeadForm({ onSubmit, className = '' }: LeadFormProps) {
     try {
       // Combinar código de país con número de teléfono
       const fullPhoneNumber = `${formData.countryCode}${formData.phone.replace(/\D/g, '')}`;
+      
+      // Obtener el nombre del país a partir del código de país
+      const countryObj = countryCodes.find(country => country.code === formData.countryCode);
+      const countryName = countryObj ? countryObj.name.split(' ')[0] : 'Argentina'; // Extraer solo el nombre del país
+      
       const dataToSubmit = {
         ...formData,
-        phone: fullPhoneNumber
+        phone: fullPhoneNumber,
+        country: countryName, // Añadir el país
+        language: language // Añadir el idioma configurado
       };
       
       // No enviamos acceptContact a n8n
