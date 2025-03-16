@@ -10,13 +10,7 @@ import { useLanguage } from "../contexts/language-context"
 import { translations } from "../translations"
 import { trackContact, trackCustomEvent, trackViewContent } from "../utils/analytics"
 import { VSLPlayer } from "./vsl-player"
-import { ChevronLeft, ChevronRight, Check, Mail, ArrowRight, X, Shield, Lock } from "lucide-react"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+import { ChevronLeft, ChevronRight, Check, Mail, ArrowRight } from "lucide-react"
 
 // Importa la variable de entorno del correo electrónico
 const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai"
@@ -35,6 +29,17 @@ export default function Home() {
   const [products, setProducts] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
+
+  // Estado para las FAQs
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+
+  // Toggle para expandir/colapsar FAQs
+  const toggleFaq = (index: number) => {
+    setExpandedFaq(expandedFaq === index ? null : index)
+    if (expandedFaq !== index) {
+      trackCustomEvent("FAQExpanded", { faqIndex: index })
+    }
+  }
 
   // Fetch de productos
   useEffect(() => {
@@ -177,6 +182,18 @@ export default function Home() {
             </div>
             <div className="flex items-center space-x-6">
               <Link
+                href="#seguridad"
+                className="text-white hover:text-cyan-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
+              >
+                Seguridad
+              </Link>
+              <Link
+                href="#faqs"
+                className="text-white hover:text-cyan-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
+              >
+                FAQs
+              </Link>
+              <Link
                 href="#pricing"
                 className="text-white hover:text-cyan-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-cyan-400 after:transition-all hover:after:w-full"
               >
@@ -302,166 +319,494 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección de Seguridad y API Keys */}
+      {/* Sección de Seguridad de API Keys */}
       <section id="seguridad" className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        {/* Background elements */}
         <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-10 left-[10%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12" />
+          </div>
+          <div className="absolute bottom-10 right-[20%] animate-float-delayed opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8" />
+          </div>
+          <div className="absolute top-5 right-[30%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6" />
+          </div>
+
+          {/* Radial gradient for depth */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,145,178,0.05),transparent_70%)]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {t.security.title}
+              Seguridad de tus API Keys
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
-            <p className="text-gray-300 mt-6 text-lg max-w-3xl mx-auto">
-              {t.security.description}
+            <p className="mt-6 text-gray-300 max-w-3xl mx-auto">
+              Entendemos que la seguridad de tus fondos es primordial. Por eso, te explicamos exactamente cómo funcionan los permisos de las API Keys de Binance.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50">
-              <h3 className="text-2xl font-bold text-cyan-400 mb-6">{t.security.apiPermissions}</h3>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-white font-semibold mb-4 flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-2" />
-                    {t.security.requiredPermissions}
-                  </h4>
-                  <div className="space-y-4 ml-7">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-4">
-                        <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <Check className="h-5 w-5 text-green-500" />
+          <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300 mb-12">
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/2">
+                <h3 className="text-2xl font-bold text-cyan-400 mb-4">Permisos limitados, máxima seguridad</h3>
+                <p className="text-gray-300 mb-6">
+                  Si en las API Keys de Binance solo activaste "Enable Reading" y "Enable Spot & Margin Trading", NO se pueden retirar fondos.
+                </p>
+                
+                <div className="space-y-4">
+                  <div className="bg-gray-800/70 p-4 rounded-lg">
+                    <h4 className="text-lg font-semibold text-white mb-2">Con estos permisos, la API puede:</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
+                          <Check className="h-4 w-4 text-green-500" />
                         </div>
-                      </div>
-                      <div>
-                        <p className="text-gray-300 font-medium">{t.security.enableReading}</p>
-                        <p className="text-gray-400 text-sm">{t.security.readingDescription}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-4">
-                        <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                          <Check className="h-5 w-5 text-green-500" />
+                        <span className="text-gray-300">Leer información de la cuenta (balances, órdenes, historial de trading, etc.).</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-green-500/20 flex items-center justify-center mr-3">
+                          <Check className="h-4 w-4 text-green-500" />
                         </div>
-                      </div>
-                      <div>
-                        <p className="text-gray-300 font-medium">{t.security.enableTrading}</p>
-                        <p className="text-gray-400 text-sm">{t.security.tradingDescription}</p>
-                      </div>
-                    </div>
+                        <span className="text-gray-300">Ejecutar órdenes de compra y venta en Spot y Margin Trading.</span>
+                      </li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-800/70 p-4 rounded-lg">
+                    <h4 className="text-lg font-semibold text-white mb-2">Pero NO puede:</h4>
+                    <ul className="space-y-2">
+                      <li className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3">
+                          <svg className="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-300">Retirar fondos.</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="flex-shrink-0 h-6 w-6 rounded-full bg-red-500/20 flex items-center justify-center mr-3">
+                          <svg className="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                          </svg>
+                        </div>
+                        <span className="text-gray-300">Modificar configuraciones de la cuenta.</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 
-                <div>
-                  <h4 className="text-white font-semibold mb-4 flex items-center">
-                    <X className="h-5 w-5 text-red-500 mr-2" />
-                    {t.security.notRequiredPermissions}
-                  </h4>
-                  <div className="space-y-4 ml-7">
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-4">
-                        <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
-                          <X className="h-5 w-5 text-red-500" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-gray-300 font-medium">{t.security.enableWithdrawals}</p>
-                        <p className="text-gray-400 text-sm">{t.security.withdrawalsDescription}</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start">
-                      <div className="flex-shrink-0 mr-4">
-                        <div className="w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center">
-                          <X className="h-5 w-5 text-red-500" />
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-gray-300 font-medium">{t.security.accountModification}</p>
-                        <p className="text-gray-400 text-sm">{t.security.modificationDescription}</p>
-                      </div>
-                    </div>
-                  </div>
+                <p className="text-gray-300 mt-6">
+                  Para permitir retiros, tendrías que activar "Enable Withdrawals", pero Binance lo tiene muy restringido por seguridad. Además, generalmente requiere whitelisting de direcciones y confirmaciones adicionales (2FA, email, etc.).
+                </p>
+                
+                <div className="mt-6 p-4 bg-cyan-400/10 border border-cyan-400/30 rounded-lg">
+                  <p className="text-cyan-400 font-medium">
+                    Si solo usas la API para trading, estás bien con la configuración actual. 🚀
+                  </p>
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-8">
-              <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-6">{t.security.additionalSecurity}</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <Shield className="h-6 w-6 text-cyan-400 mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="text-white font-semibold mb-2">{t.security.restrictedWithdrawals}</h4>
-                      <p className="text-gray-300">{t.security.withdrawalRequirements}</p>
-                      <ul className="list-disc list-inside text-gray-400 mt-2 space-y-1">
-                        <li>{t.security.twoFactor}</li>
-                        <li>{t.security.emailConfirmation}</li>
-                        <li>{t.security.whitelistAddresses}</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-gray-800/50">
-                <h3 className="text-2xl font-bold text-cyan-400 mb-6">{t.security.fullControl}</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <Lock className="h-6 w-6 text-cyan-400 mr-4 flex-shrink-0 mt-1" />
-                    <div>
-                      <h4 className="text-white font-semibold mb-2">{t.security.instantRevocation}</h4>
-                      <p className="text-gray-300">{t.security.revocationDescription}</p>
-                    </div>
-                  </div>
+              
+              <div className="md:w-1/2">
+                <div className="bg-gray-800/50 rounded-xl overflow-hidden shadow-xl border border-gray-700/50">
+                  <img
+                    src="/api-keys-security.png"
+                    alt="Configuración segura de API Keys"
+                    className="w-full h-auto"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = "/binance-logo.svg";
+                    }}
+                  />
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-12 text-center">
+      {/* Características del Bot */}
+      <section className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              {t.botFeatures.title}
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.botFeatures.features.map((feature, index) => (
+              <div
+                key={index}
+                className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-cyan-400/10 hover:translate-y-[-5px]"
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mr-4">
+                    <div className="w-10 h-10 rounded-full bg-cyan-400/20 flex items-center justify-center text-cyan-400">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+                    <p className="text-gray-400">{feature.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA después de características */}
+          <div className="mt-16 text-center">
             <Link
               href="/lead-form"
               onClick={(e) => {
                 e.preventDefault()
                 router.push("/lead-form")
-                trackCustomEvent("SecurityCTAClick")
+                trackCustomEvent("FeaturesCTAClick")
               }}
             >
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105">
-                {t.security.tryButton}
-                <ArrowRight className="ml-2 h-5 w-5" />
+                {t.technologies.tryFree}
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section id="faq" className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Beneficios del Bot */}
+      <section className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {/* Radial gradient for depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,145,178,0.05),transparent_70%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {t.faq.title}
+              {t.botBenefits.title}
             </h2>
             <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {t.faq.questions.map((question, index) => (
-                <AccordionItem key={`item-${index + 1}`} value={`item-${index + 1}`} className="border-b-0">
-                  <AccordionTrigger className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-gray-800/50 px-6 text-left hover:no-underline">
-                    <h3 className="text-xl font-bold text-cyan-400">{question.title}</h3>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pt-4">
-                    <p className="text-gray-300">{question.content}</p>
-                  </AccordionContent>
-                </AccordionItem>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {t.botBenefits.benefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="bg-gray-900/50 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-cyan-400/10 hover:translate-y-[-5px]"
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mr-4">
+                    <div className="w-10 h-10 rounded-full bg-cyan-400/20 flex items-center justify-center">
+                      <Check className="h-5 w-5 text-cyan-400" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-white">{benefit.title}</h3>
+                    <p className="text-gray-400">{benefit.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Casos de Uso */}
+      <section id="casos-de-uso" className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              {t.useCases.title}
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
+          </div>
+
+          {/* Visualización móvil: Carrusel con navegación */}
+          <div className="block sm:hidden">
+            {/* Caso seleccionado */}
+            <div className="mb-8">
+              <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-800/50">
+                <div className="aspect-[4/3] relative">
+                  <img
+                    src={t.useCases.cases[selectedCase].image || "/placeholder.svg"}
+                    alt={t.useCases.cases[selectedCase].title}
+                    className="absolute inset-0 w-full h-full object-cover object-center"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-cyan-400">{t.useCases.cases[selectedCase].title}</h3>
+                  <p className="text-gray-400">{t.useCases.cases[selectedCase].description}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Navegación de carrusel */}
+            <div className="flex items-center justify-between mb-8">
+              <button
+                onClick={() => handleCaseSelection(selectedCase === 0 ? t.useCases.cases.length - 1 : selectedCase - 1)}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-white hover:bg-cyan-400 hover:text-gray-900 transition-colors"
+                aria-label="Caso anterior"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+
+              <div className="flex space-x-2">
+                {t.useCases.cases.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleCaseSelection(index)}
+                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                      selectedCase === index ? "bg-cyan-400 w-5" : "bg-gray-600 hover:bg-gray-500"
+                    }`}
+                    aria-label={`Ver caso ${index + 1}`}
+                  />
+                ))}
+              </div>
+
+              <button
+                onClick={() => handleCaseSelection(selectedCase === t.useCases.cases.length - 1 ? 0 : selectedCase + 1)}
+                className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full text-white hover:bg-cyan-400 hover:text-gray-900 transition-colors"
+                aria-label="Caso siguiente"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+            </div>
+          </div>
+
+          {/* Visualización desktop: Pestañas y contenido */}
+          <div className="hidden sm:block">
+            {/* Pestañas de navegación */}
+            <div className="flex flex-wrap justify-center mb-12 gap-3">
+              {t.useCases.cases.map((useCase, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleCaseSelection(index)}
+                  className={`px-5 py-2.5 rounded-full transition-all duration-300 ${
+                    selectedCase === index
+                      ? "bg-cyan-400 text-gray-900 shadow-lg shadow-cyan-400/20 font-medium"
+                      : "bg-gray-800/70 text-white hover:bg-gray-700"
+                  }`}
+                >
+                  {useCase.title}
+                </button>
               ))}
-            </Accordion>
+            </div>
+
+            {/* Contenido del caso seleccionado */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="order-2 lg:order-1">
+                <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300">
+                  <h3 className="text-2xl font-semibold mb-4 text-cyan-400">{t.useCases.cases[selectedCase].title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{t.useCases.cases[selectedCase].description}</p>
+                </div>
+              </div>
+              <div className="order-1 lg:order-2">
+                <div className="bg-gray-800/50 rounded-xl overflow-hidden shadow-xl border border-gray-700/50 transform transition-all duration-500 hover:scale-[1.02] hover:shadow-cyan-400/10">
+                  <img
+                    src={t.useCases.cases[selectedCase].image || "/placeholder.svg"}
+                    alt={t.useCases.cases[selectedCase].title}
+                    className="w-full h-auto"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* CTA después de casos de uso */}
+            <div className="mt-16 text-center">
+              <Link
+                href="/lead-form"
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push("/lead-form")
+                  trackCustomEvent("UseCasesCTAClick")
+                }}
+              >
+                <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105">
+                  {t.finalCta.startTrial}
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Identificación de Dolor */}
+      <section id="identificacion-de-dolor" className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        {/* Background elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-20 left-[15%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10" />
+          </div>
+          <div className="absolute bottom-20 right-[25%] animate-float-delayed opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8" />
+          </div>
+          <div className="absolute top-5 right-[10%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6" />
+          </div>
+
+          {/* Radial gradient for depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,145,178,0.05),transparent_70%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              {t.painPoints.title}
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {t.painPoints.points.map((point, index) => (
+              <div
+                key={index}
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-cyan-400/10 hover:translate-y-[-5px]"
+              >
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 mr-4">
+                    <div className="w-10 h-10 rounded-full bg-cyan-400/20 flex items-center justify-center text-cyan-400">
+                      {index + 1}
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3 text-white">{point.title}</h3>
+                    <p className="text-gray-400 leading-relaxed">{point.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Llamado a la Acción Final */}
+      <section id="cta-final" className="border-t border-gray-800/50 py-24 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-10 rounded-2xl border border-cyan-400/20 shadow-lg shadow-cyan-400/5">
+            <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
+            <p className="text-xl text-gray-300 mb-8">{t.hero.activateTrial}</p>
+            <Link
+              href="/lead-form"
+              onClick={(e) => {
+                e.preventDefault()
+                router.push("/lead-form")
+                trackCustomEvent("FinalCTAClick")
+              }}
+            >
+              <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full font-bold py-3 px-8 text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105">
+                {t.finalCta.cta}
+              </Button>
+            </Link>
+            <p className="text-gray-400 mt-4">{t.hero.noCommitment}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Sección de FAQs */}
+      <section id="faqs" className="relative py-24 border-t border-gray-800/50 bg-[#0A0B14]">
+        {/* Background elements */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute top-20 left-[15%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-10 w-10" />
+          </div>
+          <div className="absolute bottom-20 right-[25%] animate-float-delayed opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8" />
+          </div>
+          <div className="absolute top-5 right-[10%] animate-float opacity-20">
+            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6" />
+          </div>
+
+          {/* Radial gradient for depth */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,145,178,0.05),transparent_70%)]" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Preguntas Frecuentes
+            </h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="space-y-6 max-w-4xl mx-auto">
+            {[
+              {
+                question: "¿Es seguro proporcionar mis API Keys de Binance?",
+                answer: "Sí, siempre que configures correctamente los permisos. Recomendamos activar solo 'Enable Reading' y 'Enable Spot & Margin Trading'. Con esta configuración, es imposible retirar fondos o modificar la configuración de tu cuenta. Además, nunca almacenamos tus claves en texto plano y utilizamos encriptación de nivel bancario."
+              },
+              {
+                question: "¿Cómo funciona el bot exactamente?",
+                answer: "Nuestro bot opera de forma automática en Binance utilizando estrategias de trading algorítmicas. Analiza el mercado en tiempo real, identifica oportunidades según los parámetros configurados y ejecuta operaciones de compra/venta sin necesidad de intervención manual. Todo esto ocurre en segundo plano, sin necesidad de mantener una pantalla abierta."
+              },
+              {
+                question: "¿Necesito conocimientos de trading para usar el bot?",
+                answer: "No, el bot está diseñado para ser fácil de usar incluso si no tienes experiencia previa en trading. Ofrecemos configuraciones predeterminadas optimizadas y guías paso a paso. Sin embargo, usuarios avanzados también pueden personalizar parámetros según sus estrategias."
+              },
+              {
+                question: "¿Qué pasa si quiero detener el bot?",
+                answer: "Puedes pausar o detener el bot en cualquier momento desde tu panel de control. Cuando lo detienes, el bot deja de operar inmediatamente. También puedes revocar tus API Keys en Binance en cualquier momento para cortar completamente el acceso."
+              },
+              {
+                question: "¿Qué rendimiento puedo esperar?",
+                answer: "El rendimiento varía según las condiciones del mercado, la estrategia seleccionada y el capital invertido. Aunque no podemos garantizar resultados específicos, nuestros usuarios reportan rendimientos consistentes. Recomendamos comenzar con una inversión pequeña para familiarizarte con el sistema."
+              },
+              {
+                question: "¿Cómo se manejan los impuestos sobre las ganancias?",
+                answer: "Nuestro bot proporciona informes detallados de todas las operaciones realizadas, que puedes utilizar para tus declaraciones fiscales. Sin embargo, no ofrecemos asesoramiento fiscal, por lo que te recomendamos consultar con un profesional sobre las implicaciones fiscales en tu país."
+              },
+              {
+                question: "¿Qué pasa si Binance no está disponible en mi país?",
+                answer: "Actualmente, nuestro bot está optimizado para funcionar con Binance. Si Binance no está disponible en tu país, puedes considerar usar una VPN o esperar a futuras actualizaciones donde planeamos integrar más exchanges."
+              },
+              {
+                question: "¿Puedo probar el bot antes de pagar?",
+                answer: "¡Absolutamente! Ofrecemos una prueba gratuita para que puedas experimentar todas las funcionalidades del bot sin compromiso. Durante este período, puedes evaluar su rendimiento y decidir si se adapta a tus necesidades."
+              }
+            ].map((faq, index) => (
+              <div 
+                key={index}
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300"
+              >
+                <button
+                  onClick={() => toggleFaq(index)}
+                  className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                >
+                  <h3 className="text-xl font-semibold text-white">{faq.question}</h3>
+                  <div className={`transition-transform duration-300 ${expandedFaq === index ? 'rotate-180' : ''}`}>
+                    <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <div 
+                  className={`px-6 overflow-hidden transition-all duration-300 ${
+                    expandedFaq === index ? 'max-h-96 pb-6' : 'max-h-0'
+                  }`}
+                >
+                  <p className="text-gray-300">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA después de FAQs */}
+          <div className="mt-16 text-center">
+            <p className="text-xl text-gray-300 mb-6">¿Tienes más preguntas? No dudes en contactarnos</p>
+            <Link
+              href="/lead-form"
+              onClick={(e) => {
+                e.preventDefault()
+                router.push("/lead-form")
+                trackCustomEvent("FAQsCTAClick")
+              }}
+            >
+              <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-8 rounded-full text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105">
+                Probar Gratis
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -517,56 +862,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonios / Casos de Éxito */}
-      <section id="testimonios" className="relative border-t border-gray-800/50 py-24 bg-[#0A0B14]">
-        {/* Background elements */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <div className="absolute top-5 left-[25%] animate-float opacity-20">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-12 w-12" />
-          </div>
-          <div className="absolute bottom-5 right-[30%] animate-float-delayed opacity-20">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-8 w-8" />
-          </div>
-          <div className="absolute top-10 right-[15%] animate-float opacity-20">
-            <img src="/binance-logo.svg" alt="Binance Logo" className="h-6 w-6" />
-          </div>
-
-          {/* Radial gradient for depth */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(8,145,178,0.05),transparent_70%)]" />
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4 inline-block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              {t.testimonials.title}
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 mx-auto rounded-full"></div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {t.testimonials.cases.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-300 hover:shadow-cyan-400/10"
-              >
-                <div className="relative">
-                  <svg
-                    className="absolute -top-4 -left-4 h-10 w-10 text-cyan-400/30"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                  <p className="text-gray-300 italic leading-relaxed mb-6">&quot;{testimonial.content}&quot;</p>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-cyan-400/20 rounded-full flex items-center justify-center text-cyan-400 font-bold text-xl">
-                    {testimonial.author.charAt(0)}
-                  </div>
-                  <h3 className="text-xl font-semibold ml-4 text-white">{testimonial.author}</h3>
-                </div>
-              </div>
-            ))}
+      {/* Llamado a la Acción Final */}
+      <section id="cta-final" className="border-t border-gray-800/50 py-24 bg-[#0A0B14]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="max-w-3xl mx-auto bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-10 rounded-2xl border border-cyan-400/20 shadow-lg shadow-cyan-400/5">
+            <h2 className="text-3xl font-bold mb-4 text-cyan-400">{t.finalCta.title}</h2>
+            <p className="text-xl text-gray-300 mb-8">{t.hero.activateTrial}</p>
+            <Link
+              href="/lead-form"
+              onClick={(e) => {
+                e.preventDefault()
+                router.push("/lead-form")
+                trackCustomEvent("FinalCTAClick")
+              }}
+            >
+              <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full font-bold py-3 px-8 text-lg shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105">
+                {t.finalCta.cta}
+              </Button>
+            </Link>
+            <p className="text-gray-400 mt-4">{t.hero.noCommitment}</p>
           </div>
         </div>
       </section>
@@ -631,17 +945,11 @@ export default function Home() {
                       <h3 className="text-2xl font-bold text-white mb-3">{product.name}</h3>
                       <div className="flex items-center mb-6">
                         <div className="text-4xl font-bold text-cyan-400">
-                          {product.price === 0 ? (
-                            "Hablemos"
-                          ) : (
-                            <>
-                              ${product.price}
-                              <span className="text-sm text-gray-400 ml-1">
-                                {t.pricing.currency}
-                                {t.pricing.perMonth}
-                              </span>
-                            </>
-                          )}
+                          ${product.price}
+                          <span className="text-sm text-gray-400 ml-1">
+                            {t.pricing.currency}
+                            {t.pricing.perMonth}
+                          </span>
                         </div>
                         <img src="/binance-logo.svg" alt="Binance" className="h-6 w-6 ml-3" />
                       </div>
@@ -711,12 +1019,10 @@ export default function Home() {
                         </div>
                       </div>
                       <button
-                        onClick={product.price === 0 
-                          ? () => window.open('https://calendly.com/silver5ai/15min', '_blank')
-                          : () => handlePricingClick(product.id, product.name)}
+                        onClick={() => handlePricingClick(product.id, product.name)}
                         className="w-full rounded-full bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 px-4 shadow-lg shadow-cyan-400/30 hover:shadow-cyan-400/50 transition-all duration-300 flex items-center justify-center"
                       >
-                        {product.price === 0 ? t.pricing.scheduleMeeting : t.pricing.startTrial}
+                        {t.pricing.startTrial}
                         <ArrowRight className="ml-2 h-5 w-5" />
                       </button>
                     </div>
@@ -839,24 +1145,24 @@ export default function Home() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-4">{t.footer.services}</h3>
+              <h3 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-4">Recursos</h3>
               <ul className="space-y-3">
                 <li>
                   <Link
-                    href="#tecnologias"
+                    href="#seguridad"
                     className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2" />
-                    Tecnologías
+                    Seguridad
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="#casos-de-uso"
+                    href="#faqs"
                     className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center"
                   >
                     <ArrowRight className="h-3 w-3 mr-2" />
-                    Casos de Uso
+                    FAQs
                   </Link>
                 </li>
                 <li>

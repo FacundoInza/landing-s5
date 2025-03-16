@@ -3,7 +3,8 @@ export const translations = {
     nav: {
       services: 'Servicios',
       security: 'Seguridad',
-      launchApp: 'Comenzar Prueba Gratuita'
+      launchApp: 'Comenzar Prueba Gratuita',
+      pricing: 'Precios'
     },
     hero: {
       title: 'Sólo para Comerciantes de Binance P2P que Quieren Dominar el Mercado',
@@ -79,6 +80,28 @@ export const translations = {
     },
     security: {
       title: 'Seguridad Garantizada',
+      description: 'Solo necesitamos permisos básicos de trading. Activando únicamente "Enable Reading" y "Enable Spot & Margin Trading" en tus API Keys de Binance, garantizamos una operación segura.',
+      apiPermissions: 'Permisos de API Keys',
+      requiredPermissions: 'Permisos que necesitamos:',
+      enableReading: 'Enable Reading',
+      readingDescription: 'Para leer balances, órdenes e historial de trading',
+      enableTrading: 'Enable Spot & Margin Trading',
+      tradingDescription: 'Para ejecutar órdenes de compra y venta',
+      notRequiredPermissions: 'Permisos que NO necesitamos:',
+      enableWithdrawals: 'Enable Withdrawals',
+      withdrawalsDescription: 'No solicitamos ni necesitamos permisos de retiro de fondos',
+      accountModification: 'Modificación de Cuenta',
+      modificationDescription: 'No podemos modificar ninguna configuración de tu cuenta',
+      additionalSecurity: 'Seguridad Adicional de Binance',
+      restrictedWithdrawals: 'Retiros Restringidos',
+      withdrawalRequirements: 'Binance requiere permisos especiales y múltiples confirmaciones para habilitar retiros, incluyendo:',
+      twoFactor: 'Autenticación 2FA',
+      emailConfirmation: 'Confirmación por email',
+      whitelistAddresses: 'Whitelist de direcciones',
+      fullControl: 'Control Total',
+      instantRevocation: 'Revocación Instantánea',
+      revocationDescription: 'Puedes revocar los permisos de la API Key en cualquier momento desde tu panel de Binance, dándote control total sobre el acceso.',
+      tryButton: 'Prueba Gratis y Seguro',
       code: {
         title: 'Código Seguro',
         description: 'Implementamos las mejores prácticas de seguridad en cada línea de código.'
@@ -319,13 +342,58 @@ export const translations = {
           description: 'Al activar el servicio manualmente, garantizamos una implementación a medida y una atención personalizada para maximizar el rendimiento de tu bot.'
         }
       ]
+    },
+    pricing: {
+      title: 'Planes y Precios',
+      perMonth: '/mes',
+      botsIncluded: 'bots incluidos',
+      support: 'Soporte 24/7',
+      updates: 'Actualizaciones gratuitas',
+      startTrial: 'Comenzar Prueba Gratuita',
+      scheduleMeeting: 'Agendar Llamada',
+      customPlan: '¿Necesitas un plan personalizado? Contáctanos para más información.',
+      loading: 'Cargando planes...',
+      error: 'Error al cargar los productos',
+      paymentMethod: 'Pago a través de Binance',
+      allPayments: 'Todos los pagos se procesan a través de Binance',
+      currency: 'USDT'
+    },
+    faq: {
+      title: "Preguntas Frecuentes",
+      questions: [
+        {
+          title: "¿Cómo funciona el periodo de prueba gratuito?",
+          content: "Obtienes acceso completo a todas las funcionalidades durante 7 días, sin compromiso. No necesitas tarjeta de crédito para comenzar."
+        },
+        {
+          title: "¿Es seguro usar las API Keys de Binance?",
+          content: "Sí, las API Keys que utilizamos solo tienen permisos de trading, sin acceso a retiros. Además, puedes revocar los permisos en cualquier momento desde Binance."
+        },
+        {
+          title: "¿Qué pasa si quiero cancelar mi suscripción?",
+          content: "Puedes cancelar en cualquier momento. No hay contratos a largo plazo ni penalizaciones por cancelación."
+        },
+        {
+          title: "¿Qué soporte técnico ofrecen?",
+          content: "Ofrecemos soporte técnico 24/7 a través de email y chat. Nuestro equipo está siempre disponible para ayudarte."
+        },
+        {
+          title: "¿Cómo protegen mis datos?",
+          content: "Utilizamos encriptación de grado militar para tus API Keys y datos. Nuestros sistemas son monitoreados y auditados constantemente."
+        },
+        {
+          title: "¿Puedo usar el bot en múltiples cuentas?",
+          content: "Sí, dependiendo del plan elegido, puedes conectar múltiples cuentas de Binance al bot."
+        }
+      ]
     }
   },
   en: {
     nav: {
       services: 'Services',
       security: 'Security',
-      launchApp: 'Start Free Trial'
+      launchApp: 'Start Free Trial',
+      pricing: 'Pricing'
     },
     hero: {
       title: 'Automate and Centralize Your Operations on Binance P2P',
@@ -401,6 +469,28 @@ export const translations = {
     },
     security: {
       title: 'Guaranteed Security',
+      description: 'We only need basic trading permissions. By activating only "Enable Reading" and "Enable Spot & Margin Trading" in your Binance API Keys, we ensure secure operation.',
+      apiPermissions: 'API Key Permissions',
+      requiredPermissions: 'Permisos que necesitamos:',
+      enableReading: 'Enable Reading',
+      readingDescription: 'Para leer balances, órdenes e historial de trading',
+      enableTrading: 'Enable Spot & Margin Trading',
+      tradingDescription: 'Para ejecutar órdenes de compra y venta',
+      notRequiredPermissions: 'Permisos que NO necesitamos:',
+      enableWithdrawals: 'Enable Withdrawals',
+      withdrawalsDescription: 'No solicitamos ni necesitamos permisos de retiro de fondos',
+      accountModification: 'Modificación de Cuenta',
+      modificationDescription: 'No podemos modificar ninguna configuración de tu cuenta',
+      additionalSecurity: 'Seguridad Adicional de Binance',
+      restrictedWithdrawals: 'Retiros Restringidos',
+      withdrawalRequirements: 'Binance requiere permisos especiales y múltiples confirmaciones para habilitar retiros, incluyendo:',
+      twoFactor: 'Autenticación 2FA',
+      emailConfirmation: 'Confirmación por email',
+      whitelistAddresses: 'Whitelist de direcciones',
+      fullControl: 'Control Total',
+      instantRevocation: 'Revocación Instantánea',
+      revocationDescription: 'Puedes revocar los permisos de la API Key en cualquier momento desde tu panel de Binance, dándote control total sobre el acceso.',
+      tryButton: 'Prueba Gratis y Seguro',
       code: {
         title: 'Secure Code',
         description: 'We implement security best practices in every line of code.'
@@ -639,6 +729,50 @@ export const translations = {
         {
           title: 'Dedicated Support',
           description: 'By manually activating the service, we ensure custom implementation and personalized attention to maximize your bot\'s performance.'
+        }
+      ]
+    },
+    pricing: {
+      title: 'Plans and Pricing',
+      perMonth: '/month',
+      botsIncluded: 'bots included',
+      support: '24/7 Support',
+      updates: 'Free updates',
+      startTrial: 'Start Free Trial',
+      scheduleMeeting: 'Schedule Call',
+      customPlan: 'Need a custom plan? Contact us for more information.',
+      loading: 'Loading plans...',
+      error: 'Error loading products',
+      paymentMethod: 'Payment through Binance',
+      allPayments: 'All payments are processed through Binance',
+      currency: 'USDT'
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      questions: [
+        {
+          title: "How does the free trial period work?",
+          content: "You get full access to all features for 7 days, with no commitment. No credit card required to start."
+        },
+        {
+          title: "Is it safe to use Binance API Keys?",
+          content: "Yes, the API Keys we use only have trading permissions, with no withdrawal access. Plus, you can revoke permissions anytime from Binance."
+        },
+        {
+          title: "What happens if I want to cancel my subscription?",
+          content: "You can cancel at any time. There are no long-term contracts or cancellation penalties."
+        },
+        {
+          title: "What technical support do you offer?",
+          content: "We offer 24/7 technical support via email and chat. Our team is always available to help you."
+        },
+        {
+          title: "How do you protect my data?",
+          content: "We use military-grade encryption for your API Keys and data. Our systems are constantly monitored and audited."
+        },
+        {
+          title: "Can I use the bot with multiple accounts?",
+          content: "Yes, depending on your chosen plan, you can connect multiple Binance accounts to the bot."
         }
       ]
     }
