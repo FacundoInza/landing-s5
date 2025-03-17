@@ -3,19 +3,20 @@ export const translations = {
     nav: {
       services: 'Servicios',
       security: 'Seguridad',
+      p2pBot: 'Bot P2P',
       launchApp: 'Iniciar Proyecto'
     },
     hero: {
-      title: 'Desarrollo de software',
-      titleHighlight: 'innovador',
-      titleEnd: 'y seguro',
-      description: 'Silver5 es una agencia de desarrollo de software especializada en desarrollo de aplicaciones empresariales, móviles e implementaciones de IA de última generación.',
+      title: 'Soluciones de automatización',
+      titleHighlight: 'financiera',
+      titleEnd: 'para VASPs',
+      description: 'Especialistas en automatización de procesos críticos para proveedores de servicios de activos virtuales (VASPs), integrando Binance y otras plataformas con sistemas de compliance y gestión.',
       startProject: 'Iniciar Proyecto',
       viewDemo: 'Ver Demo'
     },
     technologies: {
       title: 'Tecnologías de punta',
-      description: 'Silver5 es una agencia de desarrollo de software especializada en desarrollo de aplicaciones empresariales, móviles e implementaciones de IA de última generación.',
+      description: 'Utilizamos tecnologías avanzadas para crear soluciones seguras, escalables y eficientes para el sector financiero.',
       startProject: 'Iniciar Proyecto',
       viewDemo: 'Ver Demo'
     },
@@ -28,57 +29,61 @@ export const translations = {
     services: {
       title: 'Nuestros Servicios',
       custom: {
-        title: 'Desarrollo a Medida',
-        description: 'Soluciones personalizadas para tu negocio con las últimas tecnologías.',
+        title: 'Automatización de Procesos',
+        description: 'Automatizamos la recopilación de datos y operaciones financieras para reducir costos operativos.',
         details: [
-          'Desarrollamos un MVP rápido para lanzar tu idea.',
-          'Migramos tu base de datos a la nube para optimizar procesos.',
+          'Integración con Binance y múltiples exchanges',
+          'Automatización de carga de operaciones en bases centralizadas',
+          'Reducción de trabajo manual en procesos críticos'
         ]
       },
       mobile: {
-        title: 'Apps Móviles',
-        description: 'Aplicaciones nativas y multiplataforma de alto rendimiento.',
+        title: 'Cumplimiento Normativo',
+        description: 'Soluciones para ayudar a VASPs a cumplir con normativas locales e internacionales (FATF, UE).',
         details: [
-          'Diseñamos y desarrollamos tu app móvil.',
-          'Publicamos en Play Store y App Store.'
+          'Verificación automatizada de clientes (KYC)',
+          'Monitorización de transacciones (AML/CFT)',
+          'Integración con listas de sanciones y análisis de riesgo'
         ]
       },
       ai: {
-        title: 'IA y Automatización',
-        description: 'Implementación de IA y chatbots para optimizar procesos.',
+        title: 'Bots de Trading P2P',
+        description: 'Automatización inteligente para posicionamiento y optimización en mercados P2P.',
         details: [
-          'Integramos tu sistema para automatizar tareas.',
-          'Implementamos chatbots de texto y voz.'
+          'Bots para Binance P2P con posicionamiento automático',
+          'Optimización con IA para estrategias de trading',
+          'Interfaz web avanzada para gestión de bots'
         ]
       },
       cloudMigration: {
-        title: 'Migración a la Nube',
-        description: 'Servicios de Migración a la Nube para AWS',
+        title: 'Infraestructura en AWS',
+        description: 'Soluciones en la nube escalables y seguras para operaciones financieras.',
         details: [
-          'Migramos tu sistema a AWS optimizando costos.',
-          'Cumplimos con los estándares de seguridad de AWS.'
+          'Infraestructura como código (IaC) para despliegue rápido',
+          'Cumplimiento con GDPR y normativas de privacidad',
+          'Arquitectura segura para datos financieros sensibles'
         ]
       }
     },
     security: {
-      title: 'Seguridad Garantizada',
+      title: 'Seguridad y Compliance',
       code: {
         title: 'Código Seguro',
-        description: 'Implementamos las mejores prácticas de seguridad en cada línea de código.'
+        description: 'Implementamos las mejores prácticas de seguridad en cada línea de código para proteger datos financieros sensibles.'
       },
       audits: {
-        title: 'Auditorías',
-        description: 'Realizamos auditorías regulares de seguridad en todos nuestros proyectos.'
+        title: 'Auditorías AML/CFT',
+        description: 'Facilitamos auditorías regulares y reportes automáticos para cumplimiento normativo en tiempo real.'
       },
       infrastructure: {
-        title: 'Infraestructura',
-        description: 'Utilizamos infraestructura de última generación para máxima seguridad.'
+        title: 'Infraestructura Segura',
+        description: 'Utilizamos AWS con los más altos estándares de seguridad para garantizar la protección de datos y transacciones.'
       }
     },
     cta: {
-      title: '¿Listo para comenzar?',
-      description: 'Contáctanos hoy mismo para discutir tu próximo proyecto.',
-      button: 'Contactar'
+      title: '¿Listo para optimizar tus operaciones?',
+      description: 'Contáctanos hoy mismo para discutir cómo podemos automatizar y asegurar tus procesos financieros.',
+      button: 'Agendar Consulta'
     },
     footer: {
       company: 'Empresa',
@@ -86,9 +91,9 @@ export const translations = {
       careers: 'Carreras',
       blog: 'Blog',
       services: 'Servicios',
-      webDev: 'Desarrollo Web',
-      mobileDev: 'Apps Móviles',
-      ai: 'IA & Machine Learning',
+      webDev: 'Automatización Financiera',
+      mobileDev: 'Compliance AML/KYC',
+      ai: 'Bots de Trading',
       legal: 'Legal',
       privacy: 'Privacidad',
       terms: 'Términos',
@@ -96,73 +101,99 @@ export const translations = {
       rights: '© 2024 Silver5. Todos los derechos reservados.'
     },
     useCases: {
-      title: 'Casos de uso de Automatización de Leads',
+      title: 'Casos de Uso para VASPs',
       cases: [
         {
-          title: 'Validación de Emails',
-          description: 'Automatiza la validación de emails para asegurar la calidad de tus leads.',
+          title: 'Integración Multi-Exchange',
+          description: 'Automatización de recopilación de datos de múltiples exchanges en una plataforma centralizada.',
           image: '/lead-2.png',
         },
         {
-          title: 'Integración con CRM',
-          description: 'Conecta automáticamente tus leads con tu CRM favorito.',
+          title: 'Compliance Automatizado',
+          description: 'Sistema de verificación KYC y monitoreo AML/CFT con alertas automáticas.',
           image: '/lead-1.png',
         },
         {
-          title: 'Notificaciones en Slack',
-          description: 'Recibe alertas en Slack cuando se detecten leads sospechosos.',
+          title: 'Trading P2P Optimizado',
+          description: 'Bots inteligentes que maximizan oportunidades en mercados P2P de Binance y otras plataformas.',
           image: '/lead-3.png',
         },
       ],
     },
     crmAutomations: {
-      title: 'Automatizaciones para CRM',
+      title: 'Soluciones para Operadores Financieros',
       cases: [
         {
-          title: 'Integración de datos personalizada',
-          description: 'Integración con cualquier API o base de datos, permitiendo extracciones de datos de sistemas heredados o de nicho.',
+          title: 'Integración de datos financieros',
+          description: 'Conexión con APIs de Binance y otras plataformas para centralizar datos de transacciones.',
           image: '/crm-1.png',
         },
         {
-          title: 'Enriquecimiento de datos automatizado',
-          description: 'Conexión con APIs y bases de datos para obtener información adicional, enriqueciendo los datos del CRM.',
+          title: 'Reportes regulatorios automáticos',
+          description: 'Generación automática de reportes para cumplimiento con reguladores locales e internacionales.',
           image: '/crm-2.png',
         },
         {
-          title: 'Puntuación y enrutamiento de leads avanzado',
-          description: 'Integración con modelos de aprendizaje automático para puntuación y enrutamiento de leads.',
+          title: 'Análisis de riesgo en tiempo real',
+          description: 'Monitoreo continuo de transacciones con alertas automáticas para operaciones sospechosas.',
           image: '/crm-3.png',
         },
         {
-          title: 'Notificaciones y alertas personalizadas',
-          description: 'Permite notificaciones personalizadas a través de varios canales, activadas por criterios definidos.',
+          title: 'Dashboard de operaciones P2P',
+          description: 'Visualización en tiempo real del rendimiento de bots y operaciones P2P en múltiples plataformas.',
           image: '/crm-4.png',
         },
         {
-          title: 'Personalización automatizada con IA',
-          description: 'Automatiza la personalización de la comunicación utilizando IA para segmentar clientes.',
+          title: 'Optimización con IA',
+          description: 'Algoritmos de IA que mejoran continuamente las estrategias de trading basados en datos históricos.',
           image: '/crm-5.png',
         },
       ],
+    },
+    p2pBot: {
+      title: 'Bot de Trading P2P para Binance',
+      subtitle: 'Automatiza tu posicionamiento en el mercado P2P',
+      description: 'Nuestro bot de posicionamiento automático te permite mantener tus anuncios siempre en las primeras posiciones del mercado P2P de Binance, maximizando tu visibilidad y oportunidades de negocio.',
+      features: [
+        {
+          title: 'Posicionamiento Automático',
+          description: 'El bot ajusta automáticamente tus precios para mantenerte siempre en las primeras posiciones del mercado.'
+        },
+        {
+          title: 'Monitoreo 24/7',
+          description: 'Funciona sin interrupciones, ajustando tus anuncios incluso mientras duermes.'
+        },
+        {
+          title: 'Configuración Personalizada',
+          description: 'Define tus propios parámetros de precio, margen y estrategia de posicionamiento.'
+        },
+        {
+          title: 'Panel de Control',
+          description: 'Interfaz intuitiva para monitorear el rendimiento de tus anuncios en tiempo real.'
+        }
+      ],
+      cta: 'Acceder al Bot P2P',
+      secondaryCta: 'Solicitar Demo'
     },
   },
   en: {
     nav: {
       services: 'Services',
       security: 'Security',
+      p2pBot: 'P2P Bot',
       launchApp: 'Launch Project'
     },
     hero: {
-      title: 'Software development',
-      titleHighlight: 'innovative',
-      titleEnd: 'and secure',
-      description: 'Silver5 is a software factory specialized in enterprise applications, mobile development, and cutting-edge AI implementations.',
+      title: 'Financial automation',
+      titleHighlight: 'solutions',
+      titleEnd: 'for VASPs',
+      description: 'Specialists in automating critical processes for virtual asset service providers (VASPs), integrating Binance and other platforms with compliance and management systems.',
       startProject: 'Start Project',
       viewDemo: 'View Demo'
     },
     technologies: {
-      title: 'Technologies We Use',
-      description: 'Silver5 is a software factory specialized in enterprise applications, mobile development, and cutting-edge AI implementations.',
+      title: 'Cutting-Edge Technologies',
+      description: 'We use advanced technologies to create secure, scalable, and efficient solutions for the financial sector.',
       startProject: 'Start Project',
       viewDemo: 'View Demo'
     },
@@ -175,57 +206,61 @@ export const translations = {
     services: {
       title: 'Our Services',
       custom: {
-        title: 'Custom Development',
-        description: 'Tailored solutions for your business with the latest technologies.',
+        title: 'Process Automation',
+        description: 'We automate financial data collection and operations to reduce operational costs.',
         details: [
-          'We quickly develop an MVP to launch your idea.',
-          'We migrate your database to the cloud to optimize processes.',
+          'Integration with Binance and multiple exchanges',
+          'Automated operations loading into centralized databases',
+          'Reduction of manual work in critical processes'
         ]
       },
       mobile: {
-        title: 'Mobile Apps',
-        description: 'High-performance native and cross-platform applications.',
+        title: 'Regulatory Compliance',
+        description: 'Solutions to help VASPs comply with local and international regulations (FATF, EU).',
         details: [
-          'We design and develop your mobile app.',
-          'We publish on Play Store and App Store.'
+          'Automated customer verification (KYC)',
+          'Transaction monitoring (AML/CFT)',
+          'Integration with sanction lists and risk analysis'
         ]
       },
       ai: {
-        title: 'AI & Automation',
-        description: 'AI and chatbot implementation to optimize processes.',
+        title: 'P2P Trading Bots',
+        description: 'Intelligent automation for positioning and optimization in P2P markets.',
         details: [
-          'We integrate your system to automate tasks.',
-          'We implement text and voice chatbots.'
+          'Bots for Binance P2P with automatic positioning',
+          'AI optimization for trading strategies',
+          'Advanced web interface for bot management'
         ]
       },
       cloudMigration: {
-        title: 'Cloud Migration',
-        description: 'AWS Cloud Migration Services',
+        title: 'AWS Infrastructure',
+        description: 'Scalable and secure cloud solutions for financial operations.',
         details: [
-          'We migrate your system to AWS, optimizing costs.',
-          'We comply with AWS security standards.'
+          'Infrastructure as Code (IaC) for rapid deployment',
+          'GDPR compliance and privacy regulations',
+          'Secure architecture for sensitive financial data'
         ]
       }
     },
     security: {
-      title: 'Guaranteed Security',
+      title: 'Security and Compliance',
       code: {
         title: 'Secure Code',
-        description: 'We implement security best practices in every line of code.'
+        description: 'We implement security best practices in every line of code to protect sensitive financial data.'
       },
       audits: {
-        title: 'Audits',
-        description: 'We perform regular security audits on all our projects.'
+        title: 'AML/CFT Audits',
+        description: 'We facilitate regular audits and automatic reports for real-time regulatory compliance.'
       },
       infrastructure: {
-        title: 'Infrastructure',
-        description: 'We use state-of-the-art infrastructure for maximum security.'
+        title: 'Secure Infrastructure',
+        description: 'We use AWS with the highest security standards to ensure the protection of data and transactions.'
       }
     },
     cta: {
-      title: 'Ready to start?',
-      description: 'Contact us today to discuss your next project.',
-      button: 'Contact Us'
+      title: 'Ready to optimize your operations?',
+      description: 'Contact us today to discuss how we can automate and secure your financial processes.',
+      button: 'Schedule Consultation'
     },
     footer: {
       company: 'Company',
@@ -233,9 +268,9 @@ export const translations = {
       careers: 'Careers',
       blog: 'Blog',
       services: 'Services',
-      webDev: 'Web Development',
-      mobileDev: 'Mobile Apps',
-      ai: 'AI & Machine Learning',
+      webDev: 'Financial Automation',
+      mobileDev: 'AML/KYC Compliance',
+      ai: 'Trading Bots',
       legal: 'Legal',
       privacy: 'Privacy',
       terms: 'Terms',
@@ -243,54 +278,79 @@ export const translations = {
       rights: '© 2024 Silver5. All rights reserved.'
     },
     useCases: {
-      title: 'Lead Automation Use Cases',
+      title: 'Use Cases for VASPs',
       cases: [
         {
-          title: 'Email Validation',
-          description: 'Automate email validation to ensure the quality of your leads.',
+          title: 'Multi-Exchange Integration',
+          description: 'Automation of data collection from multiple exchanges into a centralized platform.',
           image: '/lead-2.png',
         },
         {
-          title: 'CRM Integration',
-          description: 'Automatically connect your leads with your favorite CRM.',
+          title: 'Automated Compliance',
+          description: 'KYC verification and AML/CFT monitoring system with automatic alerts.',
           image: '/lead-1.png',
         },
         {
-          title: 'Slack Notifications',
-          description: 'Receive alerts in Slack when suspicious leads are detected.',
+          title: 'Optimized P2P Trading',
+          description: 'Intelligent bots that maximize opportunities in P2P markets on Binance and other platforms.',
           image: '/lead-3.png',
         },
       ],
     },
     crmAutomations: {
-      title: 'CRM Automations',
+      title: 'Solutions for Financial Operators',
       cases: [
         {
-          title: 'Custom data integration',
-          description: 'Integration with any API or database, allowing data pulls from legacy or niche systems.',
+          title: 'Financial data integration',
+          description: 'Connection with Binance APIs and other platforms to centralize transaction data.',
           image: '/crm-1.png',
         },
         {
-          title: 'Automated data enrichment',
-          description: 'Connection to APIs and databases to fetch additional information, enriching CRM data.',
+          title: 'Automatic regulatory reports',
+          description: 'Automatic generation of reports for compliance with local and international regulators.',
           image: '/crm-2.png',
         },
         {
-          title: 'Advanced lead scoring and routing',
-          description: 'Integration with machine learning models for lead scoring and routing.',
+          title: 'Real-time risk analysis',
+          description: 'Continuous monitoring of transactions with automatic alerts for suspicious operations.',
           image: '/crm-3.png',
         },
         {
-          title: 'Custom notifications and alerts',
-          description: 'Allows custom notifications across various channels, triggered by defined criteria.',
+          title: 'P2P operations dashboard',
+          description: 'Real-time visualization of bot performance and P2P operations across multiple platforms.',
           image: '/crm-4.png',
         },
         {
-          title: 'Automated personalization with AI',
-          description: 'Automates communication personalization using AI to segment customers.',
+          title: 'AI optimization',
+          description: 'AI algorithms that continuously improve trading strategies based on historical data.',
           image: '/crm-5.png',
         },
       ],
+    },
+    p2pBot: {
+      title: 'P2P Trading Bot for Binance',
+      subtitle: 'Automate your positioning in the P2P market',
+      description: 'Our automatic positioning bot allows you to keep your ads always in the top positions of Binance P2P market, maximizing your visibility and business opportunities.',
+      features: [
+        {
+          title: 'Automatic Positioning',
+          description: 'The bot automatically adjusts your prices to keep you always in the top positions of the market.'
+        },
+        {
+          title: '24/7 Monitoring',
+          description: 'Works without interruptions, adjusting your ads even while you sleep.'
+        },
+        {
+          title: 'Custom Configuration',
+          description: 'Define your own price parameters, margin, and positioning strategy.'
+        },
+        {
+          title: 'Dashboard',
+          description: 'Intuitive interface to monitor the performance of your ads in real time.'
+        }
+      ],
+      cta: 'Access P2P Bot',
+      secondaryCta: 'Request Demo'
     },
   }
 }
