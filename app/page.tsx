@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Lock, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X } from 'lucide-react'
+import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
@@ -94,6 +94,7 @@ export default function Home() {
         throw new Error('Error al enviar el formulario');
       }
     } catch (error) {
+      console.error('Error al enviar el formulario:', error);
       setFormStatus({
         isSubmitting: false,
         isSuccess: false,
