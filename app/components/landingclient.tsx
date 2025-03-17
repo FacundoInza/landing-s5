@@ -10,7 +10,7 @@ import { useLanguage } from "../contexts/language-context"
 import { translations } from "../translations"
 import { trackContact, trackCustomEvent, trackViewContent } from "../utils/analytics"
 import { VSLPlayer } from "./vsl-player"
-import { ChevronLeft, ChevronRight, Check, Mail, ArrowRight, X, Shield, Lock } from "lucide-react"
+import { Check, Mail, ArrowRight, X, Shield, Lock } from "lucide-react"
 import {
   Accordion,
   AccordionContent,
@@ -28,13 +28,20 @@ export default function Home() {
   const [searchParamsReady, setSearchParamsReady] = useState(false)
   const t = translations[language]
 
-  // Estado para el caso de uso seleccionado
-  const [selectedCase, setSelectedCase] = useState(0)
-
   // Estado para los productos
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<Product[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState<string | null>(null)
+
+  // Definimos la interfaz para Product
+  interface Product {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    features: string[];
+    amount: string;
+  }
 
   // Fetch de productos
   useEffect(() => {
@@ -48,9 +55,9 @@ export default function Home() {
         const data = await response.json()
         setProducts(data)
         setIsLoading(false)
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Error fetching products:", err)
-        setError(err.message)
+        setError(err instanceof Error ? err.message : 'Error desconocido')
         setIsLoading(false)
       }
     }
@@ -137,12 +144,6 @@ export default function Home() {
   const handleEmailContact = () => {
     trackContact()
     trackCustomEvent("EmailContact")
-  }
-
-  // Rastrear cuando alguien selecciona un caso de uso
-  const handleCaseSelection = (index: number) => {
-    setSelectedCase(index)
-    trackViewContent(t.useCases.cases[index].title, "Caso de Uso")
   }
 
   // Rastrear cuando alguien hace clic en un botón de pricing
@@ -622,7 +623,7 @@ export default function Home() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {products &&
-                products.map((product: any) => (
+                products.map((product: Product) => (
                   <div
                     key={product.id}
                     className="bg-gray-900/50 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-500 hover:shadow-xl hover:shadow-cyan-400/10 transform hover:scale-[1.02]"
