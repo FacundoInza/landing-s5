@@ -20,7 +20,7 @@ import {
 
 // Importa la variable de entorno del correo electrónico
 const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai"
-const apiUrl = "http://localhost:5000/api/v1"
+const apiUrl = "https://api.silver5ai.com/api/v1"
 
 export default function Home() {
   const { language, setLanguage } = useLanguage()
