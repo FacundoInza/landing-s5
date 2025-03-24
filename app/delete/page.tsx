@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react'
-import LandingClient from './components/landingclient'
+import LandingClient from '../components/landingclient'
 
 const Page = () => {
   return (
