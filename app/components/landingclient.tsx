@@ -10,7 +10,7 @@ import { useLanguage } from "../contexts/language-context"
 import { translations } from "../translations"
 import { trackContact, trackCustomEvent, trackViewContent } from "../utils/analytics"
 import { VSLPlayer } from "./vsl-player"
-import { Check, Mail, ArrowRight, X, Shield, Lock, MessageSquare, Bot } from "lucide-react"
+import { Check, Mail, ArrowRight, X, Shield, Lock, Bot } from "lucide-react"
 import {
   Accordion,
   AccordionContent,

@@ -34,10 +34,6 @@ import {
   Twitter,
   Linkedin,
   Github,
-  Code,
-  Shield,
-  Box,
-  Cpu
 } from 'lucide-react'
 
 export default function AgentPage() {
@@ -1155,7 +1151,7 @@ export default function AgentPage() {
                 
                 {/* Quote icon con gradiente */}
                 <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-gradient-to-r from-cyan-400/20 to-blue-500/20 flex items-center justify-center group-hover:from-cyan-400/30 group-hover:to-blue-500/30 transition-all duration-300">
-                  <span className="text-2xl text-cyan-400">"</span>
+                  <span className="text-2xl text-cyan-400">&quot;</span>
                 </div>
                 
                 <div className="relative z-10">
