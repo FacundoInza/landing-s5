@@ -10,7 +10,7 @@ import { useLanguage } from "../contexts/language-context"
 import { translations } from "../translations"
 import { trackContact, trackCustomEvent, trackViewContent } from "../utils/analytics"
 import { VSLPlayer } from "./vsl-player"
-import { Check, Mail, ArrowRight, X, Shield, Lock } from "lucide-react"
+import { Check, Mail, ArrowRight, X, Shield, Lock, MessageSquare, Bot } from "lucide-react"
 import {
   Accordion,
   AccordionContent,
@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/accordion"
 
 // Importa la variable de entorno del correo electrónico
-const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai"
+const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5ai.com"
 const apiUrl = "https://api.silver5ai.com/api/v1"
 
 export default function Home() {
@@ -300,6 +300,34 @@ export default function Home() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
+        </div>
+      </section>
+
+      {/* Banner del Agente WhatsApp */}
+      <section className="relative py-6 overflow-hidden border-t border-b border-gray-800/50">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-900/10 to-blue-900/10 z-0"></div>
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center">
+              <div className="bg-gradient-to-r from-cyan-400/20 to-blue-500/20 rounded-full p-2 mr-3">
+                <Bot className="h-6 w-6 text-cyan-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-gray-100">
+                  {language === 'es' ? '¡Nuevo! Agente Inteligente para WhatsApp' : 'New! Intelligent WhatsApp Agent'}
+                </h3>
+                <p className="text-gray-400 text-sm">
+                  {language === 'es' ? 'Automatiza las respuestas a preguntas frecuentes de tus clientes' : 'Automate responses to your customers\' frequently asked questions'}
+                </p>
+              </div>
+            </div>
+            <Link href="/agent">
+              <Button className="bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-500 hover:to-blue-600 text-white shadow-lg hover:shadow-cyan-500/20 transition-all duration-200 hover:scale-[1.02]">
+                {language === 'es' ? 'Conocer más' : 'Learn more'}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
 

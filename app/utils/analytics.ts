@@ -101,4 +101,36 @@ export const trackLeadSubmission = (formData: {
       primaryCurrency: formData.primaryCurrency,
     })
   }
+}
+
+export const trackWhatsAppAgentSubmission = (formData: {
+  fullName: string;
+  whatsappNumber: string;
+  email: string;
+  linkedinProfile: string;
+  businessDescription: string;
+  messageVolume?: string;
+  frequentQuestions?: string;
+  mainChallenge?: string;
+  expectedImpact?: string;
+  country?: string;
+  language?: string;
+}) => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    // Enviar evento de conversión estándar a Meta Pixel
+    window.fbq('track', 'Lead', {
+      content_name: 'WhatsApp Agent Lead Form',
+      content_category: 'WhatsApp Agent',
+      value: 1.00,
+      currency: 'USD',
+    })
+    
+    // Enviar evento personalizado con detalles específicos
+    window.fbq('trackCustom', 'WhatsAppAgentSubmission', {
+      name: formData.fullName,
+      business_type: formData.businessDescription.substring(0, 50),
+      message_volume: formData.messageVolume || 'No especificado',
+      country: formData.country || 'No especificado',
+    })
+  }
 } 

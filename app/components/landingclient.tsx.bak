@@ -13,7 +13,7 @@ import { VSLPlayer } from "./vsl-player"
 import { ChevronLeft, ChevronRight, Check, Mail, ArrowRight } from "lucide-react"
 
 // Importa la variable de entorno del correo electrónico
-const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5.ai"
+const emailContact = process.env.NEXT_PUBLIC_EMAIL_CONTACT || "office@silver5ai.com"
 const apiUrl = "http://localhost:5000/api/v1"
 
 export default function Home() {

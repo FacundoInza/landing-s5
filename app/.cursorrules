@@ -1,0 +1,80 @@
+# Reglas de desarrollo para landing page de Agente para WhatsApp
+# Silver5 - Asistente Virtual WhatsApp
+
+## Estilo y Marca
+- Mantener paleta de colores principal: fondo oscuro (#0A0B14) y acentos en cyan (#22d3ee)
+- Usar gradientes sutiles para textos destacados (bg-gradient-to-r from-cyan-400 to-blue-500)
+- Aplicar bg-clip-text text-transparent para textos con efecto gradiente
+- Mantener el estilo minimalista futurista con elementos flotantes en el fondo
+- Asegurar contraste WCAG AA mínimo para todos los textos (4.5:1)
+- Sustituir elementos de Binance por iconos de WhatsApp/mensajería
+
+## Estructura y Componentes
+- Usar componentes shadcn/ui manteniendo consistencia con la landing actual
+- Implementar estructura mobile-first y responsive design completo
+- Secciones requeridas:
+  * Navbar fijo con logo, nombre y language switcher
+  * Hero con ilustración o mockup del agente de WhatsApp
+  * Capacidades principales del agente (focus en automatización y FAQ)
+  * Beneficios (ahorro de tiempo, atención 24/7, escalabilidad)
+  * Demostración visual/interactiva simple del flujo de WhatsApp
+  * Testimonios o casos de uso (si están disponibles)
+  * Precios
+  * Formulario de captura de leads específico para WhatsApp
+  * FAQ
+  * Footer
+
+## Elementos Visuales y Animaciones
+- Usar elementos flotantes con opacidad reducida (opacity-20) como fondo
+- Mantener animate-float para elementos decorativos
+- Aplicar hover:scale para feedback visual en elementos interactivos
+- Implementar backdrop-blur-sm para elementos superpuestos
+- Incorporar iconos de Lucide como Mail, ArrowRight, Check
+- Mantener animaciones sutiles: hover:translate-x-1, animate-pulse
+- Usar border-gray-800/50 para separadores visuales consistentes
+
+## Formulario de Lead (Prioridad Alta)
+- Incluir TODOS los campos mencionados en el brief:
+  * Nombre Completo (requerido)
+  * Número de WhatsApp (requerido, con validación)
+  * Correo Electrónico (requerido, con validación)
+  * Perfil de LinkedIn (requerido)
+  * Descripción de actividad o negocio (textarea)
+  * Volumen de mensajes diarios (selector o campo numérico)
+  * Preguntas frecuentes de clientes (textarea)
+  * Desafío principal en gestión de WhatsApp (textarea)
+  * Impacto esperado del agente (textarea o selección)
+- Implementar validación client-side con feedback visual inmediato
+- Diseñar formulario por pasos para mejorar tasa de conversión
+- Incluir indicadores de progreso en formularios multi-paso
+- Guardar datos parciales en localStorage para recuperación
+
+## Accesibilidad y Rendimiento
+- Usar HTML semántico (section, nav, header, footer)
+- Mantener role="button" y tabindex para elementos interactivos no nativos
+- Implementar alt descriptivos en todas las imágenes
+- Asegurar navegación completa por teclado
+- Optimizar imágenes con next/image y formatos modernos (WebP)
+- Implementar lazy loading para contenido bajo el fold
+- Priorizar Core Web Vitals con Largest Contentful Paint < 2.5s
+
+## Contenido y Copywriting
+- Enfatizar los puntos de dolor: falta de tiempo, sobrecarga de consultas
+- Destacar soluciones: automatización, disponibilidad 24/7, consistencia
+- Mantener tono profesional pero cercano
+- Incluir CTAs claros y específicos en cada sección
+- Implementar soporte multiidioma manteniendo estructura translations
+- Adaptar secciones para enfocarse en WhatsApp vs Gmail o Binance
+
+## Adaptaciones Específicas
+- Cambiar imágenes de Binance por iconos o elementos de WhatsApp
+- Modificar secciones de casos de uso para reflejar escenarios de WhatsApp
+- Adaptar sección de beneficios para mostrar métricas relevantes a WhatsApp
+- Incluir mockups o screenshots del agente en acción dentro de WhatsApp
+- Crear visualización del flujo de conversación automatizada
+
+## Tracking y Analytics
+- Mantener trackViewContent para todas las secciones principales
+- Implementar trackCustomEvent para interacciones clave del formulario
+- Seguir progreso del formulario multi-paso
+- Rastrear CTAs y clics en botones de contacto/pricing

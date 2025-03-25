@@ -108,3 +108,163 @@
   animation: float-delayed 8s ease-in-out infinite;
 }
 
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-left {
+  animation: fadeLeft 0.5s ease-out forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.animate-fade-right {
+  animation: fadeRight 0.5s ease-out forwards;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* WhatsApp Chat Styles */
+.whatsapp-message {
+  position: relative;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: messageAppear 0.5s ease-out forwards;
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.whatsapp-message:hover {
+  transform: scale(1.02);
+}
+
+.whatsapp-message::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.whatsapp-message.sent::before {
+  right: -8px;
+  top: 8px;
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent #005C4B;
+}
+
+.whatsapp-message.received::before {
+  left: -8px;
+  top: 8px;
+  border-width: 8px 8px 8px 0;
+  border-color: transparent #202C33 transparent transparent;
+}
+
+/* Typing animation */
+.typing-animation {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 4px;
+}
+
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #A0AEC0;
+  border-radius: 50%;
+  animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 60%, 100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-6px);
+  }
+}
+
+/* Calendar button styles */
+.calendar-button {
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Message input and send button */
+.message-input {
+  transition: all 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.message-input:focus-within {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(34, 211, 238, 0.1);
+}
+
+.send-button {
+  transition: all 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+
+.send-button:hover {
+  transform: scale(1.1);
+  color: #22d3ee;
+}
+
+/* Smooth scroll behavior */
+.chat-container {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
