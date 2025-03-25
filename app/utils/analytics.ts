@@ -107,7 +107,7 @@ export const trackWhatsAppAgentSubmission = (formData: {
   fullName: string;
   whatsappNumber: string;
   email: string;
-  linkedinProfile: string;
+  webProfile: string;
   businessDescription: string;
   messageVolume?: string;
   frequentQuestions?: string;

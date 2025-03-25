@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../contexts/language-context'
-import { ArrowLeft, Bot, Calendar, CheckCircle2, MessageSquare, Send, Sparkles } from 'lucide-react'
+import { ArrowLeft, Bot, CheckCircle2, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 
 // Importa la variable de entorno del correo electrónico
