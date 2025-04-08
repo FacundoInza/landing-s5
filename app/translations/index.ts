@@ -4,7 +4,8 @@ export const translations = {
       services: 'Servicios',
       security: 'Seguridad',
       p2pBot: 'Bot P2P',
-      launchApp: 'Iniciar Proyecto'
+      launchApp: 'Iniciar Proyecto',
+      scheduleCall: 'Agendar Llamada'
     },
     hero: {
       title: 'Soluciones de automatización',
@@ -181,7 +182,8 @@ export const translations = {
       services: 'Services',
       security: 'Security',
       p2pBot: 'P2P Bot',
-      launchApp: 'Launch Project'
+      launchApp: 'Launch Project',
+      scheduleCall: 'Schedule Call'
     },
     hero: {
       title: 'Financial automation',

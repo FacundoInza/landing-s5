@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X } from 'lucide-react'
+import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X, ChevronDown, Inbox } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
@@ -19,6 +19,7 @@ export default function Home() {
   const [selectedImage, setSelectedImage] = useState(t.useCases.cases[0].image);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   
   // Estados para el formulario de contacto
   const [formData, setFormData] = useState({
@@ -33,6 +34,14 @@ export default function Home() {
     isError: false,
     message: ''
   });
+
+  // Lista de servicios para el desplegable
+  const servicios = [
+    { path: '/servicios/p2p-manager', name: 'P2P Manager', icon: <Bot className="w-4 h-4 mr-2 text-cyan-400" /> },
+    { path: '/servicios/compliance', name: 'Compliance', icon: <Shield className="w-4 h-4 mr-2 text-purple-400" /> },
+    { path: '/servicios/email-assistant', name: 'Asistente para Gmail', icon: <Inbox className="w-4 h-4 mr-2 text-blue-400" /> },
+    { path: '/servicios/inteligencia-artificial', name: 'Inteligencia Artificial', icon: <Cpu className="w-4 h-4 mr-2 text-yellow-400" /> },
+  ];
 
   // Manejar cambios en los campos del formulario
   const handleFormChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -181,22 +190,61 @@ export default function Home() {
 
             {/* Desktop Navigation - Mejorado */}
             <div className="hidden md:flex items-center space-x-1">
-              {[
-                { href: "#servicios", label: t.nav.services },
-                { href: "#p2pbot", label: t.nav.p2pBot },
-                { href: "#tecnologias", label: "Tecnologías" },
-                { href: "#sobre-nosotros", label: "Sobre Nosotros" },
-                { href: "#contacto", label: "Contacto" }
-              ].map((item, index) => (
-                <Link 
-                  key={index}
-                  href={item.href} 
-                  className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+              {/* Menú desplegable de servicios */}
+              <div className="relative">
+                <button 
+                  className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
+                  onClick={() => setServicesOpen(!servicesOpen)}
                 >
-                  <span>{item.label}</span>
+                  <span>{t.nav.services}</span>
+                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
                   <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </Link>
-              ))}
+                </button>
+                
+                {/* Dropdown menu */}
+                {servicesOpen && (
+                  <div 
+                    className="absolute left-0 mt-2 w-64 bg-gray-900 border border-gray-800 rounded-lg shadow-xl z-50 py-2"
+                    onMouseLeave={() => setServicesOpen(false)}
+                  >
+                    {servicios.map((servicio, index) => (
+                      <Link
+                        key={index}
+                        href={servicio.path}
+                        className="flex items-center px-4 py-2.5 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors"
+                      >
+                        {servicio.icon}
+                        <span>{servicio.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              <Link 
+                href="#p2pbot" 
+                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+              >
+                <span>{t.nav.p2pBot}</span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </Link>
+              
+              <Link 
+                href="#sobre-nosotros" 
+                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+              >
+                <span>Sobre Nosotros</span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </Link>
+              
+              <Link 
+                href="#contacto" 
+                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+              >
+                <span>Contacto</span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              </Link>
+              
               <div className="ml-2">
                 <LanguageSwitcher />
               </div>
@@ -232,32 +280,62 @@ export default function Home() {
         </div>
 
         {/* Mobile Menu - Mejorado */}
-        <div 
-          className={`md:hidden fixed top-16 left-0 right-0 z-50 transform transition-all duration-300 ease-in-out ${
-            mobileMenuOpen 
-              ? "opacity-100 translate-y-0" 
-              : "opacity-0 -translate-y-4 pointer-events-none"
-          }`}
-        >
-          <div className="mx-4 mt-2 rounded-xl overflow-hidden bg-gray-900/95 backdrop-blur-md border border-gray-800/50 shadow-2xl">
-            <div className="px-3 pt-3 pb-4 space-y-1">
-              {[
-                { href: "#servicios", label: t.nav.services },
-                { href: "#p2pbot", label: t.nav.p2pBot },
-                { href: "#tecnologias", label: "Tecnologías" },
-                { href: "#sobre-nosotros", label: "Sobre Nosotros" },
-                { href: "#contacto", label: "Contacto" }
-              ].map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.href}
-                  className="flex items-center px-4 py-3 rounded-lg text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800/80 transition-all duration-200"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-3"></span>
-                  {item.label}
-                </Link>
-              ))}
+        <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'} z-40`}>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[80vh] overflow-y-auto">
+            {/* Desplegable de servicios en móvil */}
+            <div className="rounded-md bg-gray-800/50 p-3">
+              <div className="font-medium text-white mb-2">Servicios</div>
+              <div className="space-y-2 ml-2">
+                {servicios.map((servicio, index) => (
+                  <Link
+                    key={index}
+                    href={servicio.path}
+                    className="flex items-center py-2 px-2 text-gray-300 hover:text-white transition-colors"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {servicio.icon}
+                    <span>{servicio.name}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+            
+            <Link
+              href="#p2pbot"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              {t.nav.p2pBot}
+            </Link>
+            
+            <Link
+              href="#sobre-nosotros"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Sobre Nosotros
+            </Link>
+            
+            <Link
+              href="#contacto"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contacto
+            </Link>
+            
+            <div className="ml-2">
+              <LanguageSwitcher />
+            </div>
+            
+            <div className="mt-3 px-3">
+              <Link
+                href={calendlyUrl}
+                className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t.nav.scheduleCall}
+              </Link>
             </div>
           </div>
         </div>
@@ -1011,8 +1089,8 @@ export default function Home() {
                   </div>
             <div>
                     <div className="text-sm text-gray-400">Email</div>
-                    <a href="mailto:info@silver5ai.com" className="text-white hover:text-cyan-400 transition-colors duration-300">
-                      info@silver5ai.com
+                    <a href="mailto:office@silver5ai.com" className="text-white hover:text-cyan-400 transition-colors duration-300">
+                      office@silver5ai.com
                     </a>
                   </div>
                 </div>
@@ -1277,11 +1355,11 @@ export default function Home() {
               <ul className="space-y-3">
                 <li>
                   <a 
-                    href="mailto:info@silver5ai.com" 
+                    href="mailto:office@silver5ai.com" 
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <Mail className="w-4 h-4 mr-2" />
-                    info@silver5ai.com
+                    office@silver5ai.com
                   </a>
                 </li>
                 <li>
