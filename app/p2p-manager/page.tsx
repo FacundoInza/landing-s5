@@ -85,68 +85,68 @@ export default function P2PManagerPage() {
   const translations: Record<string, Translations> = {
     es: {
       hero: {
-        badge: 'Bot de Posicionamiento P2P',
-        title: 'Automatizá tu posicionamiento en el',
-        titleHighlight: 'mercado P2P de Binance',
-        titleEnd: 'y mantené tus anuncios siempre en el TOP',
-        description: 'Desarrollamos una herramienta pensada para traders, OTCs y exchanges que operan activamente en Binance P2P y necesitan mantenerse en el TOP sin tener que estar pendientes del mercado las 24 horas.',
-        primaryCta: 'Probar Gratis 7 Días',
-        secondaryCta: 'Ver Demo',
+        badge: 'Silver P2P Manager',
+        title: 'Automatizá y optimizá tu flujo',
+        titleHighlight: 'de operaciones P2P',
+        titleEnd: 'con seguridad, velocidad y control total',
+        description: '🎯 ¿Hacés P2P todos los días? Silver Manager automatiza tu flujo con seguridad, velocidad y control total. Evitá errores manuales, respondé a tus clientes en segundos y gestioná múltiples cuentas sin caos. Ideal para traders de alto volumen.',
+        primaryCta: 'Ver Demo',
+        secondaryCta: 'Agendar Cita',
       },
       features: {
-        title: 'Bot de Posicionamiento Automático',
-        subtitle: 'Operá 24/7 sin intervención manual',
-        description: 'Optimizá tu estrategia con control total mientras nuestro bot se encarga de mantener tu posicionamiento.',
+        title: 'Una plataforma completa para P2P',
+        subtitle: 'Operá 24/7 con máxima eficiencia',
+        description: 'Optimizá tu estrategia con control total mientras nuestro sistema se encarga de la gestión de tus operaciones P2P.',
       },
       keyFeatures: [
         {
-          title: "Detección en Tiempo Real",
-          description: "Monitoreo constante del mercado P2P para detectar movimientos y oportunidades de forma instantánea.",
+          title: "Evitá errores manuales",
+          description: "Sistema de gestión inteligente que minimiza los errores humanos en operaciones P2P de alto volumen.",
           icon: <Bot className="h-12 w-12 text-cyan-400" />,
           points: [
-            "Detección de movimientos del mercado en tiempo real",
-            "Análisis automático de la competencia",
-            "Alertas instantáneas de cambios significativos",
-            "Monitoreo 24/7 sin interrupciones"
+            "Validación automática de transacciones",
+            "Alertas de prevención de errores",
+            "Detección de patrones sospechosos",
+            "Comprobaciones de seguridad integradas"
           ]
         },
         {
-          title: "Posicionamiento Inteligente",
-          description: "Mantené tus anuncios siempre competitivos con reposicionamiento automático basado en el mercado.",
+          title: "Respuesta rápida a clientes",
+          description: "Gestión centralizada de chats que te permite responder a todos tus clientes en segundos.",
           icon: <Laptop className="h-12 w-12 text-purple-400" />,
           points: [
-            "Reposicionamiento automático de anuncios",
-            "Estrategias personalizables de pricing",
-            "Mantenimiento en el TOP del mercado",
-            "Control total de parámetros"
+            "Chat centralizado multi-cuenta",
+            "Respuestas predefinidas personalizables",
+            "Notificaciones instantáneas",
+            "Historial completo de conversaciones"
           ]
         },
         {
-          title: "Operación Automatizada",
-          description: "Enfocate en tu estrategia mientras el bot se encarga de la ejecución continua.",
+          title: "Gestión multi-cuenta",
+          description: "Administrá múltiples cuentas P2P desde una única interfaz sin complicaciones.",
           icon: <MessageSquare className="h-12 w-12 text-green-400" />,
           points: [
-            "Funcionamiento 24/7 sin intervención",
-            "Gestión automática de órdenes",
-            "Panel de control unificado",
-            "Reportes detallados de operaciones"
+            "Panel unificado para todas tus cuentas",
+            "Gestión centralizada de órdenes",
+            "Sincronización en tiempo real",
+            "Reportes consolidados de operaciones"
           ]
         },
         {
           title: "Seguridad y Control",
-          description: "Operá con tranquilidad gracias a nuestros protocolos de seguridad y sistema de permisos avanzado.",
+          description: "Operá con tranquilidad gracias a nuestros protocolos de seguridad avanzados y sistema de permisos.",
           icon: <Shield className="h-12 w-12 text-yellow-400" />,
           points: [
             "Conexión segura con Binance",
             "Sistema de permisos multinivel",
             "Auditoría completa de acciones",
-            "Backups automáticos"
+            "Backups automáticos de datos"
           ]
         }
       ],
       otcPartners: {
-        title: "Integración Completa con Binance P2P",
-        description: "Optimiza tus operaciones P2P con nuestra integración nativa de Binance. Gestiona múltiples cuentas y chats desde una única interfaz centralizada.",
+        title: "Ideal para traders de alto volumen",
+        description: "Silver P2P Manager está diseñado específicamente para traders, OTCs y exchanges que necesitan gestionar grandes volúmenes de operaciones P2P con eficiencia y seguridad.",
         features: [
           "Gestión multicuenta centralizada",
           "Panel unificado de chats P2P",
@@ -192,8 +192,8 @@ export default function P2PManagerPage() {
         }
       },
       demo: {
-        title: "Vea la plataforma en acción",
-        description: "Solicite una demostración personalizada y descubra cómo Silver P2P Manager puede transformar sus operaciones P2P.",
+        title: "Ve la plataforma en acción",
+        description: "Solicita una demostración personalizada y descubre cómo Silver P2P Manager puede transformar tu flujo de operaciones P2P.",
         cta: "Solicitar Demostración"
       },
       benefits: {
@@ -222,10 +222,10 @@ export default function P2PManagerPage() {
         ]
       },
       cta: {
-        title: "¿Listo para transformar sus operaciones P2P?",
-        description: "Únase a los principales VASPs y exchanges que ya optimizan sus operaciones con Silver P2P Manager.",
-        primary: "Solicitar Demo",
-        secondary: "Hablar con un Especialista"
+        title: "¿Listo para escalar tus operaciones P2P?",
+        description: "📩 Escribinos y empezá a escalar tu negocio P2P con la solución preferida por traders profesionales.",
+        primary: "Ver Demo",
+        secondary: "Agendar Cita"
       }
     },
     en: {
