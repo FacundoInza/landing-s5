@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bot, Shield, Code, Cpu, Mail, MapPin, Clock, CheckCircle, ChevronRight, Laptop, MessageSquare, LockKeyhole, Users, FileCheck, AlertTriangle, BarChart3 } from 'lucide-react'
+import { Shield, CheckCircle, FileCheck, AlertTriangle, BarChart3 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 

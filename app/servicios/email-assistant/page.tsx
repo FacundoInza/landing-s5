@@ -1,7 +1,4 @@
 import { Metadata } from "next";
-import Link from "next/link";
-import Image from "next/image";
-import { LanguageSwitcher } from "@/components/language-switcher";
 
 export const metadata: Metadata = {
   title: "Silver5 - Agente Inteligente para Gmail",
@@ -246,7 +243,7 @@ export default function CorreoPage() {
               </div>
               <div className="pt-4">
                 <p className="text-gray-300 italic mb-6">
-                  "Silver5 ha transformado mi forma de trabajar. Antes pasaba 2 horas diarias revisando emails, ahora en 20 minutos tengo todo gestionado. La inteligencia con la que organiza mi bandeja es impresionante."
+                  &quot;Silver5 ha transformado mi forma de trabajar. Antes pasaba 2 horas diarias revisando emails, ahora en 20 minutos tengo todo gestionado. La inteligencia con la que organiza mi bandeja es impresionante.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 text-xl font-semibold mr-4">
@@ -271,7 +268,7 @@ export default function CorreoPage() {
               </div>
               <div className="pt-4">
                 <p className="text-gray-300 italic mb-6">
-                  "Como emprendedor, recibo cientos de emails diarios. Silver5 no solo me ayuda a filtrarlos, sino que me sugiere respuestas contextuales que suenan exactamente como yo. Es como tener un asistente personal 24/7."
+                  &quot;Como emprendedor, recibo cientos de emails diarios. Silver5 no solo me ayuda a filtrarlos, sino que me sugiere respuestas contextuales que suenan exactamente como yo. Es como tener un asistente personal 24/7.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 text-xl font-semibold mr-4">
@@ -296,7 +293,7 @@ export default function CorreoPage() {
               </div>
               <div className="pt-4">
                 <p className="text-gray-300 italic mb-6">
-                  "La función de detección de phishing me ha salvado varias veces de caer en estafas. Además, la categorización automática hace que encuentre cualquier email en segundos. No puedo imaginar volver a usar Gmail sin Silver5."
+                  &quot;La función de detección de phishing me ha salvado varias veces de caer en estafas. Además, la categorización automática hace que encuentre cualquier email en segundos. No puedo imaginar volver a usar Gmail sin Silver5.&quot;
                 </p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-gray-300 text-xl font-semibold mr-4">
@@ -325,7 +322,7 @@ export default function CorreoPage() {
                 </div>
                 <div>
                   <p className="text-xl md:text-2xl text-white italic font-light mb-4">
-                    "Silver5 ha cambiado radicalmente cómo gestionamos la comunicación en nuestra empresa. El ROI ha sido inmediato: 30% menos tiempo en email y 25% más productividad en el equipo."
+                    &quot;Silver5 ha cambiado radicalmente cómo gestionamos la comunicación en nuestra empresa. El ROI ha sido inmediato: 30% menos tiempo en email y 25% más productividad en el equipo.&quot;
                   </p>
                   <div>
                     <h4 className="text-white font-medium">Laura Sánchez</h4>
@@ -581,7 +578,7 @@ export default function CorreoPage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-gray-300">
-                  <p>Cancelar es fácil y sin complicaciones. Puedes hacerlo en cualquier momento desde tu panel de control en la sección "Suscripción". No hay períodos de permanencia ni penalizaciones por cancelación. Si cancelas, mantendrás acceso al servicio hasta el final del período facturado. También ofrecemos la opción de pausar tu suscripción si solo necesitas un descanso temporal.</p>
+                  <p>Cancelar es fácil y sin complicaciones. Puedes hacerlo en cualquier momento desde tu panel de control en la sección &quot;Suscripción&quot;. No hay períodos de permanencia ni penalizaciones por cancelación. Si cancelas, mantendrás acceso al servicio hasta el final del período facturado. También ofrecemos la opción de pausar tu suscripción si solo necesitas un descanso temporal.</p>
                 </div>
               </details>
             </div>

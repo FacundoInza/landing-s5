@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, MapPin, Twitter, Linkedin, Github, Instagram } from 'lucide-react'
+import { Mail, MapPin, Twitter, Linkedin, Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../contexts/language-context'
 import { translations } from '../translations'
@@ -13,8 +12,7 @@ const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.co
 
 export default function ContactPage() {
   const { language } = useLanguage()
-  const t = translations[language]
-  
+
   // Estados para el formulario de contacto
   const [formData, setFormData] = useState({
     nombre: '',

@@ -1,8 +1,7 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
-import { Bot, ArrowLeft, Brain, Network, CheckCircle, Code, Cpu, Shield, MessageSquare, ArrowRight, Laptop, ChevronRight } from 'lucide-react'
+import { Bot, Brain, Network, CheckCircle, Code, Cpu, Shield, MessageSquare, ArrowRight, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 
@@ -285,7 +284,7 @@ export default function InteligenciaArtificial() {
     }
   };
 
-  const t = translations[language];
+  const content = translations[language];
 
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
@@ -336,19 +335,19 @@ export default function InteligenciaArtificial() {
             <div className="w-full md:w-1/2 text-center md:text-left">
               <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-6">
                 {isSpanish ? 'Inteligencia Artificial' : 'Artificial Intelligence'}
-              </div>
+            </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-                {translations[language].hero.title} <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">{translations[language].hero.subtitle}</span>
-              </h1>
+                {content.hero.title} <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">{content.hero.subtitle}</span>
+            </h1>
               <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto md:mx-0">
-                {translations[language].hero.description}
-              </p>
+                {content.hero.description}
+            </p>
               <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <Link href={calendlyUrl}>
+              <Link href={calendlyUrl}>
                   <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full">
-                    {isSpanish ? 'Solicitar Demo' : 'Request Demo'}
-                  </Button>
-                </Link>
+                  {isSpanish ? 'Solicitar Demo' : 'Request Demo'}
+                </Button>
+              </Link>
                 <Link href="#caracteristicas">
                   <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 w-full">
                     {isSpanish ? 'Explorar Soluciones' : 'Explore Solutions'}
@@ -450,9 +449,9 @@ export default function InteligenciaArtificial() {
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                
+            </div>
+          </div>
+          
                 {/* Decorative elements */}
                 <div className="absolute -bottom-4 -left-4 bg-cyan-500 text-white px-3 py-1 rounded-md text-sm font-medium">
                   Agente Inteligente
@@ -471,15 +470,15 @@ export default function InteligenciaArtificial() {
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">{translations[language].features.title}</h2>
+            <h2 className="text-4xl font-bold mb-4">{content.features.title}</h2>
             <p className="text-cyan-400 text-xl mb-6">{isSpanish ? 'Soluciones a medida' : 'Tailored Solutions'}</p>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              {translations[language].features.description}
+              {content.features.description}
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {translations[language].agentTypes.map((feature, index) => (
+            {content.agentTypes.map((feature, index) => (
               <div 
                 key={index} 
                 className="group relative bg-gray-800/30 rounded-2xl p-8 backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/50 flex flex-col h-full"
@@ -516,7 +515,7 @@ export default function InteligenciaArtificial() {
             <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
               {isSpanish ? 'Aplicaciones Prácticas' : 'Practical Applications'}
             </div>
-            <h2 className="text-4xl font-bold mb-6">{translations[language].useCases.title}</h2>
+            <h2 className="text-4xl font-bold mb-6">{content.useCases.title}</h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
               {isSpanish ? 
                 'Nuestros agentes de IA ya están transformando industrias enteras con aplicaciones concretas y resultados medibles.' : 
@@ -526,7 +525,7 @@ export default function InteligenciaArtificial() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {translations[language].useCases.cases.map((useCase, index) => (
+            {content.useCases.cases.map((useCase, index) => (
               <div 
                 key={index} 
                 className="group relative bg-gray-800/30 rounded-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/50"
@@ -721,7 +720,7 @@ export default function InteligenciaArtificial() {
             <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
               {isSpanish ? 'Metodología' : 'Methodology'}
             </div>
-            <h2 className="text-4xl font-bold mb-6">{translations[language].workflow.title}</h2>
+            <h2 className="text-4xl font-bold mb-6">{content.workflow.title}</h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
               {isSpanish ? 
                 'Implementamos agentes de IA mediante un proceso estructurado que garantiza soluciones efectivas y adaptadas a cada necesidad específica.' : 
@@ -735,7 +734,7 @@ export default function InteligenciaArtificial() {
             <div className="absolute top-16 left-1/2 transform -translate-x-1/2 w-0.5 h-[calc(100%-8rem)] bg-gradient-to-b from-cyan-400 to-purple-400 hidden md:block"></div>
             
             <div className="space-y-20 relative">
-              {translations[language].workflow.steps.map((step, index) => (
+              {content.workflow.steps.map((step, index) => (
                 <div key={index} className={`relative flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} items-center`}>
                   <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-16' : 'md:text-left md:pl-16'} mb-8 md:mb-0`}>
                     <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
@@ -810,9 +809,9 @@ export default function InteligenciaArtificial() {
                       <div className="h-4 w-1/2 bg-gray-700 rounded"></div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
           </div>
         </div>
       </section>
@@ -824,7 +823,7 @@ export default function InteligenciaArtificial() {
             <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
               {isSpanish ? 'Resultados Comprobados' : 'Proven Results'}
             </div>
-            <h2 className="text-4xl font-bold mb-6">{translations[language].benefits.title}</h2>
+            <h2 className="text-4xl font-bold mb-6">{content.benefits.title}</h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
               {isSpanish ? 
                 'Nuestros clientes han experimentado mejoras significativas en sus operaciones tras implementar nuestros agentes de IA.' : 
@@ -834,7 +833,7 @@ export default function InteligenciaArtificial() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {translations[language].benefits.items.map((item, index) => (
+            {content.benefits.items.map((item, index) => (
               <div 
                 key={index} 
                 className="group relative bg-gray-800/30 rounded-2xl p-6 backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/50 text-center"
@@ -863,19 +862,19 @@ export default function InteligenciaArtificial() {
             <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
               {isSpanish ? '¿Listo para comenzar?' : 'Ready to start?'}
             </div>
-            <h2 className="text-4xl font-bold mb-6">{translations[language].cta.title}</h2>
+            <h2 className="text-4xl font-bold mb-6">{content.cta.title}</h2>
             <p className="text-gray-400 text-lg mb-8">
-              {translations[language].cta.description}
+              {content.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href={calendlyUrl}>
                 <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full sm:w-auto">
-                  {translations[language].cta.primary}
+                  {content.cta.primary}
                 </Button>
               </Link>
               <Link href="/contacto">
                 <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 w-full sm:w-auto">
-                  {translations[language].cta.secondary}
+                  {content.cta.secondary}
                 </Button>
               </Link>
             </div>

@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bot, Shield, Code, Cpu, Mail, Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Bot, Shield, Cpu, Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/language-switcher'
 import { useState, useEffect } from 'react'
 

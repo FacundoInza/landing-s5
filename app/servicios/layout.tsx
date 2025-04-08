@@ -2,10 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X, ChevronDown, Inbox, Instagram } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Shield, Bot, Cpu, Mail, MapPin, Inbox, Instagram, Linkedin } from 'lucide-react'
 import { useLanguage } from '../contexts/language-context'
-import { LanguageSwitcher } from '@/components/language-switcher'
 import { translations } from '../translations'
 import { useState, useEffect } from 'react'
 
@@ -18,11 +16,9 @@ export default function ServiciosLayout({
   children: React.ReactNode
 }) {
   const { language } = useLanguage()
-  const t = translations[language]
   
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
 
   // Añadir efecto para bloquear el scroll cuando el menú está abierto
   useEffect(() => {
