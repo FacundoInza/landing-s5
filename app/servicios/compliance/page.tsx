@@ -630,16 +630,6 @@ export default function CompliancePage() {
               </Link>
             </div>
             
-            {/* Logos de certificaciones/reguladores */}
-            <div className="mt-16">
-              <p className="text-sm text-gray-500 mb-6">En cumplimiento con:</p>
-              <div className="flex flex-wrap justify-center gap-8 items-center opacity-60">
-                <div className="h-8 w-24 bg-gray-700 rounded"></div>
-                <div className="h-8 w-16 bg-gray-700 rounded"></div>
-                <div className="h-8 w-20 bg-gray-700 rounded"></div>
-                <div className="h-8 w-24 bg-gray-700 rounded"></div>
-              </div>
-            </div>
           </div>
         </div>
       </section>

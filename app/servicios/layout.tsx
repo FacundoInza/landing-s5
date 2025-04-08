@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X, ChevronDown, Inbox } from 'lucide-react'
+import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X, ChevronDown, Inbox, Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../contexts/language-context'
 import { LanguageSwitcher } from '@/components/language-switcher'
@@ -62,181 +62,6 @@ export default function ServiciosLayout({
 
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
-      {/* Overlay para el menú móvil */}
-      {mobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Navbar - Diseño mejorado */}
-      <nav className={`border-b transition-all duration-300 sticky top-0 z-50 ${
-        scrolled 
-          ? "border-gray-800/60 bg-[#0A0B14]/95 backdrop-blur-md shadow-lg" 
-          : "border-gray-800/20 bg-[#0A0B14]/80 backdrop-blur-sm"
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-3 group">
-                <div className="relative overflow-hidden rounded-full p-1 group-hover:bg-cyan-400/10 transition-all duration-300">
-                  <Image src="/logo-s5-w.png" alt="Silver5 AI" width={38} height={38} priority className="transform group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <span className="font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Silver5</span>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation - Mejorado */}
-            <div className="hidden md:flex items-center space-x-1">
-              {/* Menú desplegable de servicios */}
-              <div className="relative">
-                <button 
-                  className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                >
-                  <span>{t.nav.services}</span>
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </button>
-                
-                {/* Dropdown menu */}
-                {servicesOpen && (
-                  <div 
-                    className="absolute left-0 mt-2 w-64 bg-gray-900 border border-gray-800 rounded-lg shadow-xl z-50 py-2"
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    {servicios.map((servicio, index) => (
-                      <Link
-                        key={index}
-                        href={servicio.path}
-                        className="flex items-center px-4 py-2.5 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors"
-                      >
-                        {servicio.icon}
-                        <span>{servicio.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              <Link 
-                href="/#p2pbot" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>{t.nav.p2pBot}</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <Link 
-                href="/#sobre-nosotros" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>Sobre Nosotros</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <Link 
-                href="/#contacto" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>Contacto</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <div className="ml-2">
-                <LanguageSwitcher />
-              </div>
-              
-              <Link 
-                href={calendlyUrl}
-                className="ml-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 hover:scale-105 transition-all duration-200"
-              >
-                {t.nav.scheduleCall}
-              </Link>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none"
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              >
-                <span className="sr-only">Abrir menú principal</span>
-                {mobileMenuOpen ? (
-                  <X className="block h-6 w-6" aria-hidden="true" />
-                ) : (
-                  <Menu className="block h-6 w-6" aria-hidden="true" />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile menu, show/hide based on menu state */}
-        <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'} z-40`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[80vh] overflow-y-auto">
-            {/* Desplegable de servicios en móvil */}
-            <div className="rounded-md bg-gray-800/50 p-3">
-              <div className="font-medium text-white mb-2">Servicios</div>
-              <div className="space-y-2 ml-2">
-                {servicios.map((servicio, index) => (
-                  <Link
-                    key={index}
-                    href={servicio.path}
-                    className="flex items-center py-2 px-2 text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {servicio.icon}
-                    <span>{servicio.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            
-            <Link
-              href="/#p2pbot"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t.nav.p2pBot}
-            </Link>
-            
-            <Link
-              href="/#sobre-nosotros"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sobre Nosotros
-            </Link>
-            
-            <Link
-              href="/#contacto"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contacto
-            </Link>
-            
-            <div className="pt-4 pb-3 border-t border-gray-700">
-              <div className="px-3">
-                <LanguageSwitcher />
-              </div>
-              <div className="mt-3 px-3">
-                <Link
-                  href={calendlyUrl}
-                  className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {t.nav.scheduleCall}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Content */}
       <main>
@@ -269,28 +94,20 @@ export default function ServiciosLayout({
               </p>
               <div className="mt-4 flex space-x-4">
                 <a 
-                  href="https://twitter.com/silver5_ai" 
+                  href="https://instagram.com/silver5ai" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
                 >
-                  <Twitter className="w-5 h-5" />
+                  <Instagram className="w-5 h-5" />
                 </a>
                 <a 
-                  href="https://linkedin.com/company/silver5ai" 
+                  href="https://wwwlinkedin.com/company/silver5" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
                 >
                   <Linkedin className="w-5 h-5" />
-                </a>
-                <a 
-                  href="https://github.com/silver5-ai" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-gray-400 hover:text-cyan-400 transition-colors duration-200"
-                >
-                  <Github className="w-5 h-5" />
                 </a>
               </div>
             </div>

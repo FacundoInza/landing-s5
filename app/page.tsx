@@ -2,10 +2,9 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Menu, X, ChevronDown, Inbox } from 'lucide-react'
+import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from './contexts/language-context'
-import { LanguageSwitcher } from '@/components/language-switcher'
 import { translations } from './translations'
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 
@@ -17,9 +16,6 @@ export default function Home() {
 
   // Estado para la imagen seleccionada
   const [selectedImage, setSelectedImage] = useState(t.useCases.cases[0].image);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
   
   // Estados para el formulario de contacto
   const [formData, setFormData] = useState({
@@ -34,14 +30,6 @@ export default function Home() {
     isError: false,
     message: ''
   });
-
-  // Lista de servicios para el desplegable
-  const servicios = [
-    { path: '/servicios/p2p-manager', name: 'P2P Manager', icon: <Bot className="w-4 h-4 mr-2 text-cyan-400" /> },
-    { path: '/servicios/compliance', name: 'Compliance', icon: <Shield className="w-4 h-4 mr-2 text-purple-400" /> },
-    { path: '/servicios/email-assistant', name: 'Asistente para Gmail', icon: <Inbox className="w-4 h-4 mr-2 text-blue-400" /> },
-    { path: '/servicios/inteligencia-artificial', name: 'Inteligencia Artificial', icon: <Cpu className="w-4 h-4 mr-2 text-yellow-400" /> },
-  ];
 
   // Manejar cambios en los campos del formulario
   const handleFormChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -132,228 +120,8 @@ export default function Home() {
     };
   }, [formStatus.isSuccess, formStatus.isError]);
 
-  // Añadir efecto para bloquear el scroll cuando el menú está abierto
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [mobileMenuOpen]);
-
-  // Añadir efecto para detectar el scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 10;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [scrolled]);
-
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
-      {/* Overlay para el menú móvil */}
-      {mobileMenuOpen && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      {/* Navbar - Diseño mejorado */}
-      <nav className={`border-b transition-all duration-300 sticky top-0 z-50 ${
-        scrolled 
-          ? "border-gray-800/60 bg-[#0A0B14]/95 backdrop-blur-md shadow-lg" 
-          : "border-gray-800/20 bg-[#0A0B14]/80 backdrop-blur-sm"
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <div className="flex items-center">
-              <Link href="/" className="flex items-center space-x-3 group">
-                <div className="relative overflow-hidden rounded-full p-1 group-hover:bg-cyan-400/10 transition-all duration-300">
-                  <Image src="/logo-s5-w.png" alt="Silver5 AI" width={38} height={38} priority className="transform group-hover:scale-105 transition-transform duration-300" />
-                </div>
-                <span className="font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Silver5</span>
-              </Link>
-            </div>
-
-            {/* Desktop Navigation - Mejorado */}
-            <div className="hidden md:flex items-center space-x-1">
-              {/* Menú desplegable de servicios */}
-              <div className="relative">
-                <button 
-                  className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
-                  onClick={() => setServicesOpen(!servicesOpen)}
-                >
-                  <span>{t.nav.services}</span>
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-                </button>
-                
-                {/* Dropdown menu */}
-                {servicesOpen && (
-                  <div 
-                    className="absolute left-0 mt-2 w-64 bg-gray-900 border border-gray-800 rounded-lg shadow-xl z-50 py-2"
-                    onMouseLeave={() => setServicesOpen(false)}
-                  >
-                    {servicios.map((servicio, index) => (
-                      <Link
-                        key={index}
-                        href={servicio.path}
-                        className="flex items-center px-4 py-2.5 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors"
-                      >
-                        {servicio.icon}
-                        <span>{servicio.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-              
-              <Link 
-                href="#p2pbot" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>{t.nav.p2pBot}</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <Link 
-                href="#sobre-nosotros" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>Sobre Nosotros</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <Link 
-                href="#contacto" 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-              >
-                <span>Contacto</span>
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-              </Link>
-              
-              <div className="ml-2">
-                <LanguageSwitcher />
-              </div>
-            </div>
-
-            {/* Mobile Navigation Button - Mejorado */}
-            <div className="flex md:hidden items-center space-x-4">
-              <LanguageSwitcher />
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
-                  mobileMenuOpen 
-                    ? "bg-cyan-400/20 text-cyan-400" 
-                    : "bg-gray-800/70 text-gray-400 hover:bg-gray-700 hover:text-cyan-400"
-                }`}
-                aria-label="Menú principal"
-              >
-                <div className="relative">
-                  {mobileMenuOpen ? (
-                    <X className="h-5 w-5" />
-                  ) : (
-                    <Menu className="h-5 w-5" />
-                  )}
-                </div>
-                <span className={`absolute inset-0 rounded-full border transition-colors duration-300 ${
-                  mobileMenuOpen 
-                    ? "border-cyan-400/50" 
-                    : "border-gray-700"
-                }`}></span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu - Mejorado */}
-        <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'} z-40`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[80vh] overflow-y-auto">
-            {/* Desplegable de servicios en móvil */}
-            <div className="rounded-md bg-gray-800/50 p-3">
-              <div className="font-medium text-white mb-2">Servicios</div>
-              <div className="space-y-2 ml-2">
-                {servicios.map((servicio, index) => (
-                  <Link
-                    key={index}
-                    href={servicio.path}
-                    className="flex items-center py-2 px-2 text-gray-300 hover:text-white transition-colors"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {servicio.icon}
-                    <span>{servicio.name}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            
-            <Link
-              href="#p2pbot"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              {t.nav.p2pBot}
-            </Link>
-            
-            <Link
-              href="#sobre-nosotros"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Sobre Nosotros
-            </Link>
-            
-            <Link
-              href="#contacto"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contacto
-            </Link>
-            
-            <div className="ml-2">
-              <LanguageSwitcher />
-            </div>
-            
-            <div className="mt-3 px-3">
-              <Link
-                href={calendlyUrl}
-                className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t.nav.scheduleCall}
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Floating P2P Bot Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <Link href="https://p2p.silver5ai.com" target="_blank" rel="noopener noreferrer">
-          <div className="group relative">
-            <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
-            <button className="relative flex items-center space-x-2 bg-gray-900 text-white px-4 py-3 rounded-full border border-gray-700 hover:border-cyan-400 transition-all duration-300">
-              <Bot className="h-5 w-5 text-cyan-400" />
-              <span className="font-medium">Bot P2P</span>
-            </button>
-          </div>
-        </Link>
-      </div>
-
       {/* Hero Section */}
       <section className="min-h-screen relative overflow-hidden flex items-center">
         <div className="absolute inset-0 z-0">
@@ -799,166 +567,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Bot P2P Section */}
-      <section id="p2pbot" className="border-t border-gray-800 py-20 bg-gradient-to-b from-gray-900 to-[#0A0B14]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            {/* Left side - Bot description */}
-            <div className="w-full lg:w-1/2">
-              <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
-                Producto Destacado
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-4">{t.p2pBot.title}</h2>
-              <h3 className="text-xl text-cyan-400 mb-6">{t.p2pBot.subtitle}</h3>
-              <p className="text-gray-400 mb-8">
-                {t.p2pBot.description}
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                {t.p2pBot.features.map((feature, index) => (
-                  <div key={index} className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
-                    <h4 className="text-lg font-semibold mb-2 flex items-center">
-                      <span className="w-6 h-6 rounded-full bg-cyan-400 text-gray-900 flex items-center justify-center mr-2 text-sm font-bold">
-                        {index + 1}
-                      </span>
-                      {feature.title}
-                    </h4>
-                    <p className="text-gray-400 text-sm">{feature.description}</p>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://p2p.silver5ai.com" target="_blank" rel="noopener noreferrer">
-                  <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-6 py-3 font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full sm:w-auto">
-                    {t.p2pBot.cta}
-                  </Button>
-                </Link>
-                <Link href={calendlyUrl}>
-                  <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full px-6 py-3 font-medium transition-all duration-300 w-full sm:w-auto">
-                    {t.p2pBot.secondaryCta}
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            
-            {/* Right side - Bot screenshot/illustration */}
-            <div className="w-full lg:w-1/2">
-              <div className="relative">
-                <div className="absolute -inset-4 bg-cyan-400/20 blur-xl rounded-xl"></div>
-                <div className="relative bg-gray-900 border-2 border-cyan-400 rounded-lg overflow-hidden shadow-2xl">
-                  {/* Mockup header */}
-                  <div className="bg-gray-800 p-2 flex items-center">
-                    <div className="flex space-x-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                    </div>
-                    <div className="mx-auto text-sm text-gray-400">p2p.silver5ai.com</div>
-                  </div>
-                  
-                  {/* Bot interface mockup - Adaptado al sistema real */}
-                  <div className="p-4">
-                    {/* Barra de navegación */}
-                    <div className="bg-gray-800 p-3 rounded-md mb-3">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center">
-                          <div className="w-6 h-6 rounded-full bg-cyan-400 flex items-center justify-center mr-2">
-                            <span className="text-xs font-bold text-gray-900">S5</span>
-                          </div>
-                          <div className="text-cyan-400 font-medium">Silver5 Bot P2P</div>
-                        </div>
-                        <div className="bg-green-500 text-xs px-2 py-1 rounded-full text-white">Activo</div>
-                      </div>
-                      </div>
-                    
-                    {/* Panel de Bots Configurados */}
-                    <div className="bg-gray-800 p-3 rounded-md mb-3">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center">
-                          <div className="text-white font-medium">Bots Configurados</div>
-                          <div className="ml-2 bg-cyan-400 text-xs px-2 py-0.5 rounded-full text-gray-900">1</div>
-                        </div>
-                        <button className="text-xs bg-cyan-400 hover:bg-cyan-500 text-gray-900 px-2 py-1 rounded-md">
-                          Actualizar
-                        </button>
-                    </div>
-                    
-                      {/* Bot USDT/COP */}
-                      <div className="bg-gray-900 p-3 rounded-md border border-gray-700 mt-3">
-                        <div className="flex justify-between items-center">
-                          <div className="flex items-center">
-                            <div className="text-cyan-400 mr-2">
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
-                                <path d="M17 11h-4V7c0-.55-.45-1-1-1s-1 .45-1 1v4H7c-.55 0-1 .45-1 1s.45 1 1 1h4v4c0 .55.45 1 1 1s1-.45 1-1v-4h4c.55 0 1-.45 1-1s-.45-1-1-1z" fill="currentColor"/>
-                              </svg>
-                      </div>
-                            <div className="font-medium">USDT/COP</div>
-                          </div>
-                          <div className="bg-red-500/20 text-red-400 text-xs px-2 py-1 rounded-full">
-                            Inactivo
-                      </div>
-                    </div>
-                    
-                        <div className="mt-3 grid grid-cols-2 gap-2 text-xs">
-                          <div>
-                            <div className="text-gray-400">Precio Límite:</div>
-                            <div className="font-medium">4.000</div>
-                          </div>
-                          <div>
-                            <div className="text-gray-400">ID del anuncio:</div>
-                            <div className="font-medium truncate">12695124...</div>
-                      </div>
-                    </div>
-                    
-                        <div className="mt-3 flex justify-end">
-                          <button className="flex items-center text-red-400 hover:text-red-300 text-xs">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1">
-                              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" fill="currentColor"/>
-                            </svg>
-                            Eliminar
-                          </button>
-                      </div>
-                        </div>
-                        </div>
-                    
-                    {/* Configuración del Bot */}
-                    <div className="bg-gray-800 p-3 rounded-md">
-                      <div className="flex items-center mb-3">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-cyan-400 mr-2">
-                          <path d="M12 15c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7-5H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM19 20H5V8h14v12z" fill="currentColor"/>
-                        </svg>
-                        <div className="font-medium">Configuración del Bot</div>
-                      </div>
-                      
-                      <div className="text-xs text-gray-400 mb-2">Configura tu bot de posicionamiento automático</div>
-                      
-                      <div className="flex justify-between mt-3">
-                        <button className="bg-gray-700 hover:bg-gray-600 text-white text-xs px-3 py-1.5 rounded-md">
-                          Actualizar
-                        </button>
-                        <button className="bg-red-500/20 text-red-400 hover:bg-red-500/30 text-xs px-3 py-1.5 rounded-md">
-                          Bot Desactivado
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -bottom-4 -left-4 bg-purple-500 text-white px-3 py-1 rounded-md text-sm font-medium">
-                  Binance P2P
-                </div>
-                <div className="absolute -top-2 -right-2 animate-pulse">
-                  <div className="text-cyan-400 opacity-70 text-4xl font-bold">₿</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Sobre Nosotros Section - Mejorado */}
       <section className="border-t border-gray-800 py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
@@ -1229,28 +837,20 @@ export default function Home() {
               </p>
               <div className="flex space-x-4">
                 <a 
-                  href="https://twitter.com/silver5ai" 
+                  href="https://instagram.com/silver5ai" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Instagram className="w-4 h-4" />
                 </a>
                 <a 
-                  href="https://linkedin.com/company/silver5ai" 
+                  href="https://wwwlinkedin.com/company/silver5" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300"
                 >
                   <Linkedin className="w-4 h-4" />
-                </a>
-                <a 
-                  href="https://github.com/silver5ai" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-cyan-400 hover:text-gray-900 transition-all duration-300"
-                >
-                  <Github className="w-4 h-4" />
                 </a>
               </div>
             </div>
