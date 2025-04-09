@@ -568,7 +568,7 @@ export default function Home() {
       </section>
 
       {/* Sobre Nosotros Section - Mejorado */}
-      <section className="border-t border-gray-800 py-24 relative">
+      <section id="sobre-nosotros" className="border-t border-gray-800 py-24 relative">
         <div className="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-transparent"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16">

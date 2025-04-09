@@ -108,7 +108,7 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
             </Link>
             
             <Link 
-              href="#sobre-nosotros" 
+              href="/#sobre-nosotros" 
               className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
             >
               <span>Sobre Nosotros</span>
@@ -200,7 +200,7 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
           </Link>
           
           <Link
-            href="#sobre-nosotros"
+            href="/#sobre-nosotros"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
             onClick={() => setMobileMenuOpen(false)}
           >

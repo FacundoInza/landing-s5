@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Bot, Shield, Code, Cpu, Mail, MapPin, Clock, CheckCircle, ChevronRight, Laptop, MessageSquare, LockKeyhole, Users, Twitter, Linkedin, Github, Instagram } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useLanguage } from '../contexts/language-context'
+import ContactForm from './components/ContactForm'
 
 // Asegúrate de que la variable de entorno esté disponible
 const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
@@ -80,6 +81,7 @@ interface Translations {
 
 export default function P2PManagerPage() {
   const { language } = useLanguage();
+  const [showForm, setShowForm] = useState(false);
 
   // Traducciones específicas para esta página
   const translations: Record<string, Translations> = {
@@ -376,6 +378,25 @@ export default function P2PManagerPage() {
 
   const t = translations[language];
 
+  if (showForm) {
+    return (
+      <div className="min-h-screen bg-[#0A0B14] text-white py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
+              Solicitud de Demo
+            </div>
+            <h2 className="text-4xl font-bold mb-4">Completá el formulario</h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Contanos sobre tu operación P2P y nos pondremos en contacto contigo para coordinar una demo personalizada.
+            </p>
+          </div>
+          <ContactForm />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white">
       {/* Hero Section */}
@@ -416,12 +437,13 @@ export default function P2PManagerPage() {
                 {t.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <Link href="https://p2p.silver5ai.com">
-                  <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full">
-                    {t.hero.primaryCta}
-                  </Button>
-                </Link>
-                <Link href="#contacto">
+                <Button 
+                  onClick={() => setShowForm(true)}
+                  className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full"
+                >
+                  {t.hero.primaryCta}
+                </Button>
+                <Link href={calendlyUrl}>
                   <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 w-full">
                     {t.hero.secondaryCta}
                   </Button>
@@ -640,12 +662,13 @@ export default function P2PManagerPage() {
               {t.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button 
+                onClick={() => setShowForm(true)}
+                className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full sm:w-auto"
+              >
+                {t.cta.primary}
+              </Button>
               <Link href={calendlyUrl}>
-                <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 w-full sm:w-auto">
-                  {t.cta.primary}
-                </Button>
-              </Link>
-              <Link href="#contacto">
                 <Button variant="outline" className="border-gray-700 hover:bg-gray-800 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 w-full sm:w-auto">
                   {t.cta.secondary}
                 </Button>
