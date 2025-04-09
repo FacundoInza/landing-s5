@@ -86,85 +86,85 @@ export default function P2PManagerPage() {
     es: {
       hero: {
         badge: 'Silver P2P Manager',
-        title: 'Automatizá y optimizá tu flujo',
-        titleHighlight: 'de operaciones P2P',
-        titleEnd: 'con seguridad, velocidad y control total',
-        description: '🎯 ¿Hacés P2P todos los días? Silver Manager automatiza tu flujo con seguridad, velocidad y control total. Evitá errores manuales, respondé a tus clientes en segundos y gestioná múltiples cuentas sin caos. Ideal para traders de alto volumen.',
+        title: 'Gestión Centralizada',
+        titleHighlight: 'Multicuenta P2P',
+        titleEnd: 'para VASPs y OTC Partners',
+        description: '🎯 Sistema integral para gestionar múltiples cuentas Binance P2P sin compartir credenciales. Asigná usuarios, gestioná órdenes y generá reportes financieros desde una única plataforma. Ideal para VASPs y OTC Crypto Partners que necesitan escalar sus operaciones.',
         primaryCta: 'Ver Demo',
         secondaryCta: 'Agendar Cita',
       },
       features: {
-        title: 'Una plataforma completa para P2P',
-        subtitle: 'Operá 24/7 con máxima eficiencia',
-        description: 'Optimizá tu estrategia con control total mientras nuestro sistema se encarga de la gestión de tus operaciones P2P.',
+        title: 'Gestión Centralizada de Operaciones P2P',
+        subtitle: 'Operá múltiples cuentas Binance desde una única plataforma',
+        description: 'Silver P2P Manager te permite gestionar todas tus operaciones P2P de forma segura y eficiente, sin necesidad de compartir credenciales de Binance con tus empleados.',
       },
       keyFeatures: [
         {
-          title: "Evitá errores manuales",
-          description: "Sistema de gestión inteligente que minimiza los errores humanos en operaciones P2P de alto volumen.",
+          title: "Gestión Multicuenta Segura",
+          description: "Administrá múltiples cuentas Binance sin compartir credenciales, asignando usuarios específicos a cada cuenta.",
           icon: <Bot className="h-12 w-12 text-cyan-400" />,
           points: [
-            "Validación automática de transacciones",
-            "Alertas de prevención de errores",
-            "Detección de patrones sospechosos",
-            "Comprobaciones de seguridad integradas"
+            "Asignación de usuarios por cuenta",
+            "Sin compartir credenciales de Binance",
+            "Control de acceso granular",
+            "Auditoría de operaciones"
           ]
         },
         {
-          title: "Respuesta rápida a clientes",
-          description: "Gestión centralizada de chats que te permite responder a todos tus clientes en segundos.",
+          title: "Chat Centralizado P2P",
+          description: "Gestioná todas las conversaciones P2P desde una única interfaz, independientemente de la cuenta de Binance.",
           icon: <Laptop className="h-12 w-12 text-purple-400" />,
           points: [
-            "Chat centralizado multi-cuenta",
-            "Respuestas predefinidas personalizables",
-            "Notificaciones instantáneas",
-            "Historial completo de conversaciones"
+            "Panel unificado de conversaciones",
+            "Asignación de operadores",
+            "Notificaciones en tiempo real",
+            "Historial completo de chats"
           ]
         },
         {
-          title: "Gestión multi-cuenta",
-          description: "Administrá múltiples cuentas P2P desde una única interfaz sin complicaciones.",
+          title: "Gestión de Órdenes",
+          description: "Administrá y resolvé órdenes P2P desde el sistema, con registro completo de todas las operaciones.",
           icon: <MessageSquare className="h-12 w-12 text-green-400" />,
           points: [
-            "Panel unificado para todas tus cuentas",
-            "Gestión centralizada de órdenes",
-            "Sincronización en tiempo real",
-            "Reportes consolidados de operaciones"
+            "Panel central de órdenes",
+            "Resolución de órdenes integrada",
+            "Seguimiento de operaciones",
+            "Reportes financieros"
           ]
         },
         {
-          title: "Seguridad y Control",
+          title: "Seguridad y Compliance",
           description: "Operá con tranquilidad gracias a nuestros protocolos de seguridad avanzados y sistema de permisos.",
           icon: <Shield className="h-12 w-12 text-yellow-400" />,
           points: [
             "Conexión segura con Binance",
             "Sistema de permisos multinivel",
             "Auditoría completa de acciones",
-            "Backups automáticos de datos"
+            "Registro de clientes"
           ]
         }
       ],
       otcPartners: {
-        title: "Ideal para traders de alto volumen",
-        description: "Silver P2P Manager está diseñado específicamente para traders, OTCs y exchanges que necesitan gestionar grandes volúmenes de operaciones P2P con eficiencia y seguridad.",
+        title: "Solución Integral para VASPs y OTC Partners",
+        description: "Silver P2P Manager está diseñado específicamente para VASPs, OTCs y exchanges que necesitan gestionar múltiples cuentas Binance P2P de forma segura y eficiente, sin compartir credenciales con sus empleados.",
         features: [
           "Gestión multicuenta centralizada",
           "Panel unificado de chats P2P",
-          "Sincronización en tiempo real",
-          "Operaciones automatizadas",
-          "Notificaciones instantáneas"
+          "Sistema de permisos por usuario",
+          "Reportes financieros detallados",
+          "Registro de clientes y operaciones"
         ],
         chatFeatures: {
           title: "Chat Centralizado P2P",
-          description: "Gestiona todas tus conversaciones P2P desde una única interfaz intuitiva.",
+          description: "Gestiona todas tus conversaciones P2P desde una única interfaz, independientemente de la cuenta de Binance.",
           benefits: [
             {
               title: "Gestión Unificada",
-              description: "Administra todos tus chats P2P desde un solo panel, sin importar la cuenta."
+              description: "Administra todos tus chats P2P desde un solo panel, sin importar la cuenta de Binance."
             },
             {
-              title: "Notificaciones en Tiempo Real",
-              description: "Recibe alertas instantáneas de nuevos mensajes y actualizaciones importantes."
+              title: "Asignación de Operadores",
+              description: "Asigna operadores específicos a cada cuenta y conversación."
             },
             {
               title: "Historial Completo",
@@ -173,20 +173,20 @@ export default function P2PManagerPage() {
           ]
         },
         integrationFeatures: {
-          title: "Integración Nativa Binance",
-          description: "Aprovecha al máximo la integración directa con la plataforma líder en criptomonedas.",
+          title: "Integración Segura con Binance",
+          description: "Conecta tus cuentas de Binance de forma segura sin compartir credenciales.",
           benefits: [
             {
-              title: "Sincronización en Tiempo Real",
-              description: "Mantén tus operaciones actualizadas automáticamente con la plataforma de Binance."
+              title: "Conexión Segura",
+              description: "Conecta tus cuentas de Binance sin compartir credenciales con tus empleados."
             },
             {
-              title: "Operaciones Automatizadas",
-              description: "Configura respuestas automáticas y gestiona operaciones de forma eficiente."
+              title: "Gestión de Usuarios",
+              description: "Asigna usuarios específicos a cada cuenta de Binance."
             },
             {
-              title: "Seguridad Garantizada",
-              description: "Mantén el control total de tus operaciones con la seguridad de Binance."
+              title: "Reportes Financieros",
+              description: "Genera reportes detallados de todas tus operaciones P2P."
             }
           ]
         }
