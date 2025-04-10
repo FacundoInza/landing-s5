@@ -7,7 +7,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-10px);
   }
   100% {
     transform: translateY(0px);
@@ -26,11 +26,118 @@
   }
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(34, 211, 238, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(34, 211, 238, 0); }
+}
+
+@keyframes data-flow {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes binance-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(240, 185, 11, 0.4);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(240, 185, 11, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(240, 185, 11, 0);
+    transform: scale(1);
+  }
+}
+
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite;
 }
 
 .animate-float-delayed {
   animation: float-delayed 6s ease-in-out infinite;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-data-flow {
+  stroke-dasharray: 1000;
+  animation: data-flow 5s linear infinite;
+}
+
+.animate-binance-pulse {
+  animation: binance-pulse 2s infinite;
+}
+
+.process-step {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.process-step.in-view {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.process-line {
+  position: absolute;
+  width: 2px;
+  background: linear-gradient(to bottom, #22d3ee, #a855f7);
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.process-line:hover {
+  opacity: 1;
+}
+
+.process-icon {
+  position: relative;
+  z-index: 10;
+  transition: transform 0.3s ease;
+}
+
+.process-icon:hover {
+  transform: scale(1.1);
 }
 

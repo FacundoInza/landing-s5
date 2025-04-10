@@ -560,7 +560,7 @@ export default function Home() {
           <div className="text-center">
                   <Link href={calendlyUrl}>
               <Button className="bg-cyan-400 hover:bg-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300">
-                Implementar Solución
+                Ver Demo
                     </Button>
                   </Link>
           </div>
@@ -773,6 +773,7 @@ export default function Home() {
                     onChange={handleFormChange}
                     className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-400 transition-colors duration-300"
                     placeholder="¿En qué podemos ayudarte?"
+                    required
                   />
                 </div>
                 <div>
@@ -970,10 +971,10 @@ export default function Home() {
                 </li>
                 <li>
                   <Link 
-                    href={calendlyUrl} 
+                    href="#contacto" 
                     className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium text-gray-900 bg-cyan-400 hover:bg-cyan-500 transition-colors duration-200"
                   >
-                    Agendar Llamada
+                    Ver Demo
                   </Link>
                 </li>
               </ul>
