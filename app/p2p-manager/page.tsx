@@ -376,12 +376,61 @@ export default function P2PManagerPage() {
   const t = translations[language];
 
   const renderProcessFlow = () => {
+    const processTranslations = {
+      es: {
+        title: 'Flujo de Operación P2P',
+        description: 'Nuestro sistema automatiza y optimiza las operaciones P2P, permitiéndote escalar tu negocio de manera eficiente y segura.',
+        steps: [
+          {
+            title: 'Recepción de Orden',
+            description: 'Detección automática de órdenes Binance'
+          },
+          {
+            title: 'Procesamiento',
+            description: 'Visualización del registro en sistema'
+          },
+          {
+            title: 'Verificación y Chat',
+            description: 'Indicadores de KYC y AML'
+          },
+          {
+            title: 'Finalización',
+            description: 'Confirmación de orden completada'
+          }
+        ]
+      },
+      en: {
+        title: 'P2P Operation Flow',
+        description: 'Our system automates and optimizes P2P operations, allowing you to scale your business efficiently and securely.',
+        steps: [
+          {
+            title: 'Order Reception',
+            description: 'Automatic detection of Binance orders'
+          },
+          {
+            title: 'Processing',
+            description: 'System registration visualization'
+          },
+          {
+            title: 'Verification & Chat',
+            description: 'KYC and AML indicators'
+          },
+          {
+            title: 'Completion',
+            description: 'Order completion confirmation'
+          }
+        ]
+      }
+    };
+
+    const pt = processTranslations[language];
+
     return (
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Flujo de Operación P2P</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">{pt.title}</h2>
           <p className="text-lg text-gray-600 text-center mb-12">
-            Nuestro sistema automatiza y optimiza las operaciones P2P, permitiéndote escalar tu negocio de manera eficiente y segura.
+            {pt.description}
           </p>
           <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-8">
             <div className="flex flex-col items-center space-y-4">
@@ -391,8 +440,8 @@ export default function P2PManagerPage() {
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Recepción de Orden</h3>
-                    <p className="text-gray-600">Detección automática de órdenes Binance</p>
+                    <h3 className="text-lg font-semibold">{pt.steps[0].title}</h3>
+                    <p className="text-gray-600">{pt.steps[0].description}</p>
                   </div>
                 </div>
               </div>
@@ -402,8 +451,8 @@ export default function P2PManagerPage() {
                     <Cpu className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Procesamiento</h3>
-                    <p className="text-gray-600">Visualización del registro en sistema</p>
+                    <h3 className="text-lg font-semibold">{pt.steps[1].title}</h3>
+                    <p className="text-gray-600">{pt.steps[1].description}</p>
                   </div>
                 </div>
               </div>
@@ -415,8 +464,8 @@ export default function P2PManagerPage() {
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Verificación y Chat</h3>
-                    <p className="text-gray-600">Indicadores de KYC y AML</p>
+                    <h3 className="text-lg font-semibold">{pt.steps[2].title}</h3>
+                    <p className="text-gray-600">{pt.steps[2].description}</p>
                   </div>
                 </div>
               </div>
@@ -426,8 +475,8 @@ export default function P2PManagerPage() {
                     <CheckCircle className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold">Finalización</h3>
-                    <p className="text-gray-600">Confirmación de orden completada</p>
+                    <h3 className="text-lg font-semibold">{pt.steps[3].title}</h3>
+                    <p className="text-gray-600">{pt.steps[3].description}</p>
                   </div>
                 </div>
               </div>
@@ -438,17 +487,99 @@ export default function P2PManagerPage() {
     );
   };
 
+  const footerTranslations = {
+    es: {
+      company: {
+        description: 'Soluciones tecnológicas especializadas para el sector financiero y criptomonedas.'
+      },
+      quickLinks: {
+        title: 'Enlaces Rápidos',
+        links: {
+          services: 'Servicios',
+          p2pBot: 'Bot P2P',
+          technologies: 'Tecnologías',
+          aboutUs: 'Sobre Nosotros'
+        }
+      },
+      services: {
+        title: 'Servicios',
+        items: {
+          p2pBot: 'Bot P2P Binance',
+          webDev: 'Desarrollo Web',
+          compliance: 'Compliance',
+          automation: 'Automatización'
+        }
+      },
+      contact: {
+        title: 'Contacto'
+      },
+      legal: {
+        copyright: '© {year} Silver5 AI. Todos los derechos reservados.',
+        privacy: 'Política de Privacidad',
+        terms: 'Términos de Servicio'
+      }
+    },
+    en: {
+      company: {
+        description: 'Specialized technological solutions for the financial and cryptocurrency sector.'
+      },
+      quickLinks: {
+        title: 'Quick Links',
+        links: {
+          services: 'Services',
+          p2pBot: 'P2P Bot',
+          technologies: 'Technologies',
+          aboutUs: 'About Us'
+        }
+      },
+      services: {
+        title: 'Services',
+        items: {
+          p2pBot: 'Binance P2P Bot',
+          webDev: 'Web Development',
+          compliance: 'Compliance',
+          automation: 'Automation'
+        }
+      },
+      contact: {
+        title: 'Contact'
+      },
+      legal: {
+        copyright: '© {year} Silver5 AI. All rights reserved.',
+        privacy: 'Privacy Policy',
+        terms: 'Terms of Service'
+      }
+    }
+  };
+
+  const ft = footerTranslations[language];
+
   if (showForm) {
+    const formTranslations = {
+      es: {
+        title: 'Solicitud de Demo',
+        subtitle: 'Completá el formulario',
+        description: 'Contanos sobre tu operación P2P y nos pondremos en contacto contigo para coordinar una demo personalizada.'
+      },
+      en: {
+        title: 'Demo Request',
+        subtitle: 'Complete the form',
+        description: 'Tell us about your P2P operation and we will contact you to coordinate a personalized demo.'
+      }
+    };
+
+    const formT = formTranslations[language];
+
     return (
       <div className="min-h-screen bg-[#0A0B14] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="inline-block px-3 py-1 rounded-full bg-cyan-400/10 border border-cyan-400/20 text-cyan-400 text-sm font-medium mb-4">
-              Solicitud de Demo
+              {formT.title}
             </div>
-            <h2 className="text-4xl font-bold mb-4">Completá el formulario</h2>
+            <h2 className="text-4xl font-bold mb-4">{formT.subtitle}</h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Contanos sobre tu operación P2P y nos pondremos en contacto contigo para coordinar una demo personalizada.
+              {formT.description}
             </p>
           </div>
           <ContactForm />
@@ -999,7 +1130,7 @@ export default function P2PManagerPage() {
                 <span className="font-bold text-lg">Silver5</span>
               </Link>
               <p className="text-gray-400 text-sm">
-                Soluciones tecnológicas especializadas para el sector financiero y criptomonedas.
+                {ft.company.description}
               </p>
               <div className="flex space-x-4">
                 <a 
@@ -1024,7 +1155,7 @@ export default function P2PManagerPage() {
             {/* Columna 2: Enlaces rápidos */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Enlaces Rápidos
+                {ft.quickLinks.title}
               </h3>
               <ul className="space-y-3">
                 <li>
@@ -1033,7 +1164,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                    Servicios
+                    {ft.quickLinks.links.services}
                   </Link>
                 </li>
                 <li>
@@ -1042,7 +1173,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                    Bot P2P
+                    {ft.quickLinks.links.p2pBot}
                   </Link>
                 </li>
                 <li>
@@ -1051,7 +1182,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                    Tecnologías
+                    {ft.quickLinks.links.technologies}
                   </Link>
                 </li>
                 <li>
@@ -1060,7 +1191,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 mr-2"></div>
-                    Sobre Nosotros
+                    {ft.quickLinks.links.aboutUs}
                   </Link>
                 </li>
               </ul>
@@ -1069,7 +1200,7 @@ export default function P2PManagerPage() {
             {/* Columna 3: Servicios */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Servicios
+                {ft.services.title}
               </h3>
               <ul className="space-y-3">
                 <li>
@@ -1080,7 +1211,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <Bot className="w-4 h-4 mr-2 text-cyan-400" />
-                    Bot P2P Binance
+                    {ft.services.items.p2pBot}
                   </Link>
                 </li>
                 <li>
@@ -1089,7 +1220,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <Code className="w-4 h-4 mr-2 text-purple-400" />
-                    Desarrollo Web
+                    {ft.services.items.webDev}
                   </Link>
                 </li>
                 <li>
@@ -1098,7 +1229,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <Shield className="w-4 h-4 mr-2 text-green-400" />
-                    Compliance
+                    {ft.services.items.compliance}
                   </Link>
                 </li>
                 <li>
@@ -1107,7 +1238,7 @@ export default function P2PManagerPage() {
                     className="text-gray-400 hover:text-cyan-400 transition-colors duration-200 flex items-center"
                   >
                     <Cpu className="w-4 h-4 mr-2 text-yellow-400" />
-                    Automatización
+                    {ft.services.items.automation}
                   </Link>
                 </li>
               </ul>
@@ -1116,7 +1247,7 @@ export default function P2PManagerPage() {
             {/* Columna 4: Contacto */}
             <div>
               <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-                Contacto
+                {ft.contact.title}
               </h3>
               <ul className="space-y-3">
                 <li>
@@ -1142,20 +1273,20 @@ export default function P2PManagerPage() {
           <div className="border-t border-gray-800 mt-12 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-400 text-sm">
-                © {new Date().getFullYear()} Silver5 AI. Todos los derechos reservados.
+                {ft.legal.copyright}
               </p>
               <div className="flex space-x-6">
                 <Link 
                   href="/privacidad" 
                   className="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-200"
                 >
-                  Política de Privacidad
+                  {ft.legal.privacy}
                 </Link>
                 <Link 
                   href="/terminos" 
                   className="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-200"
                 >
-                  Términos de Servicio
+                  {ft.legal.terms}
                 </Link>
               </div>
             </div>

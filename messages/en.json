@@ -1,0 +1,423 @@
+{
+    "common": {
+        "settings": "Settings",
+        "logout": "Logout",
+        "refresh": "Refresh",
+        "update": "Update",
+        "save": "Save Changes",
+        "saveChanges": "Save Changes",
+        "activate": "Activate",
+        "deactivate": "Deactivate",
+        "activating": "Loading...",
+        "deactivating": "Loading...",
+        "saving": "Saving...",
+        "loading": "Loading...",
+        "loadingCompetitors": "Loading competitors...",
+        "noCompetitorsAvailable": "No competitors available",
+        "continue": "Continue",
+        "back": "Back",
+        "create": "Create",
+        "delete": "Delete",
+        "add": "Add"
+    },
+    "bot": {
+        "title": "Bot Configuration",
+        "description": "Configure your automated trading bot",
+        "selectAd": "Select Advertisement",
+        "selectAdRequired": "Please select an advertisement",
+        "selectAdDescription": "You must select an advertisement to configure the bot parameters",
+        "selectedAdDetails": "Advertisement Details",
+        "basicParameters": "Basic Parameters to define competition",
+        "minTransaction": "Minimum Transaction",
+        "priceLimit": "Price Limit",
+        "availableAsset": "Minimum Competitor Asset Amount",
+        "paymentMethods": "Payment Methods",
+        "advertiserType": "Advertiser Type",
+        "advertiserTypeDescription": "Select which type of advertisers you want to compete with. This will filter competitor ads based on the publisher type.",
+        "allAdvertisers": "All advertisers",
+        "verifiedMerchants": "Verified merchants only",
+        "normalUsers": "Normal users only",
+        "allPaymentMethods": "All payment methods",
+        "allPaymentMethodsDescription": "If you select 'All payment methods', the bot will compete with any available method. If you prefer specific methods, deselect this option and check the ones you need.",
+        "operationMode": "Operation Mode",
+        "conservative": "Conservative",
+        "aggressive": "Aggressive",
+        "positionBased": "Fixed Position",
+        "conservativeDescription": "The Conservative mode ensures your ad is positioned first, but with a sufficient margin to avoid being easily outbid by competitors.",
+        "aggressiveDescription": "The Aggressive mode is configured to challenge competitor bots, pushing them to their maximum limit and constantly outbidding them.",
+        "positionBasedDescription": "The Fixed Position mode allows you to select exactly which position in the list you want to appear, maintaining this position consistently.",
+        "priceDifferenceThreshold": "Minimum Difference for Positioning",
+        "targetPosition": "Target position",
+        "targetPositionDescription": "Select which position in the ad list you want your ad to appear. The bot will automatically adjust the price to maintain this position.",
+        "targetPositionPlaceholder": "E.g.: 1 for first position",
+        "selectCompetitor": "Select Competitor",
+        "selectCompetitorPlaceholder": "Select a competitor",
+        "botActive": "Bot Active",
+        "botInactive": "Bot Inactive",
+        "loadingAds": "Loading advertisements...",
+        "noAdsMessage": "There are no published ads for this account. Please create ads before configuring the bot.",
+        "priceLimitTitle": "Price Limit",
+        "priceLimitDescription": "Maximum price at which the bot will operate. This limit acts as a protection to prevent the bot from operating at prices that are unfavorable to your business strategy.",
+        "priceFixedLabel": "Fixed",
+        "priceVariableLabel": "Variable",
+        "priceFixedInfo": "Maximum price at which the bot will operate. This limit acts as a protection to prevent the bot from operating at prices that are unfavorable to your business strategy.",
+        "priceVariableDescription": "Percentage of the market price that will be applied as a limit (range: 90-135%).\n\n100% = Exact market price\n<100% = Discount (e.g.: 99.5% = 0.5% below market)\n>100% = Premium (e.g.: 101% = 1% above market)",
+        "pricePercentagePlaceholder": "Price percentage (90-135%)",
+        "pricePercentageBelowMarket": "{percent}% below market price",
+        "pricePercentageAboveMarket": "{percent}% above market price",
+        "pricePercentageEqualMarket": "Equal to market price",
+        "priceVariableInfo": "The bot will use the current market price from Binance and apply the configured percentage as a limit.",
+        "fixedPriceLabel": "Fixed price set:",
+        "priceLimitPlaceholder": "Maximum allowed price",
+        "currentMarketPrice": "Current market price (Binance):",
+        "loadingPrice": "Loading price...",
+        "priceNotAvailable": "Not available",
+        "calculatedPriceWith": "Price calculated with {percentage}%:",
+        "marketPricePercentage": "Percentage over market price:",
+        "variablePriceInfo": "The bot will use the current market price and apply the configured percentage as a limit.",
+        "availableAssetDescription": "Sets the minimum amount of cryptocurrency or fiat that a competitor's ad must have available for the bot to consider it in its analysis. This helps filter out ads that cannot meet the desired transaction volume.",
+        "availableAssetOperationTitle": "Operation Mode:",
+        "availableAssetOperation": "• Buy (BUY) and Sell (SELL): In both cases, the bot uses this parameter to ensure that competitor ads have enough available quantity to satisfy your transaction needs. If an ad does not meet this limit, it will be ignored in the analysis.",
+        "availableAssetBenefit": "Benefit: By setting this value, you ensure that the bot only considers ads that can actually meet your transaction volume expectations, avoiding interactions with ads that are not suitable for your business objectives.",
+        "paymentMethodsDescription": "Select the payment methods you want to compete with. The bot will only consider competitor ads that use these payment methods.",
+        "proMerchantAds": "PRO Merchant Ads",
+        "proMerchantAdsDescription": "Filter ads to show only those from merchants with PRO badge.",
+        "enableProMerchantFilter": "Show only PRO merchant ads",
+        "proMerchantAdsHelp": "PRO merchants typically have higher liquidity and better prices.",
+        "labels": "Bot Labels",
+        "labelsDescription": "Add labels to easily identify this bot when you have multiple bots in the same account.",
+        "noLabels": "No labels. Add labels to identify this bot.",
+        "addLabel": "Add label...",
+        "transAmountDescription": {
+            "main": "Sets the transaction size that the bot will use to filter and analyze competitor ads. This ensures that the bot only considers ads that are relevant to the transaction volume you want to perform.",
+            "operationTitle": "Operation Mode:",
+            "operation": "• Buy (BUY) and Sell (SELL): Regardless of whether the bot is configured to buy or sell, transAmount is used to search for ads that can satisfy the desired transaction volume. This means that the bot will ignore ads that do not meet this minimum amount criterion, focusing only on those that are relevant to your needs.",
+            "benefit": "Benefit: By defining a transAmount, you ensure that the bot focuses on ads that can actually meet your transaction volume expectations, avoiding wasting time on ads that are not suitable for your business objectives."
+        },
+        "priceDifferenceThresholdDescription": {
+            "main": "This parameter defines the minimum difference that the bot will consider when deciding its position in the competitors list.",
+            "operationTitle": "How it works:",
+            "operationBuy": "If the price difference between the 1st and 2nd competitor is greater than this value, the bot will position itself below the first competitor instead of trying to be in first place.",
+            "operationSell": "Example: If you set the value to 10 units, the 1st competitor has a price of 100, and the 2nd competitor has a price of 88 (difference of 12 with the 1st), since 12 is greater than 10, the bot will position itself as 2nd instead of 1st.",
+            "benefit": "Benefit: This strategic approach allows you to maintain a balance between visibility and profitability, avoiding unnecessary price wars with other bots."
+        },
+        "priceAdjustment": "Price Adjustment",
+        "priceAdjustmentDescription": "Determines how much the price of your ad will be increased or decreased to position itself competitively against competitor ads.",
+        "botsList": "Configured Bots",
+        "botsCount": "bots",
+        "loadingBots": "Loading bots...",
+        "noBotsFound": "No bots found for this Binance account.",
+        "active": "Active",
+        "inactive": "Inactive",
+        "noAdLinked": "No ad linked",
+        "noAdWarning": "This bot is not linked to any active ad. You need to set up an ad for the bot to work properly.",
+        "adId": "Ad ID",
+        "hoverInfo": "Hover over help icons for more information",
+        "deleteConfirmation": "Delete bot (does not affect the ad)",
+        "tradeType": "Trade type"
+    },
+    "botPage": {
+        "title": "P2P Trading Bot",
+        "initialSetup": "Initial Setup Required",
+        "setupDescription": "To start using the P2P trading bot, you first need to set up a Binance account.",
+        "formDescription": "Complete the following form to securely connect your Binance account with our platform. Your credentials will be used exclusively for positioning in the P2P market.",
+        "securityFeature": "Security Guaranteed",
+        "securityDescription": "Your credentials are protected with bank-level encryption.",
+        "simpleProcess": "Simple Process",
+        "processDescription": "Set up your account in just two quick and easy steps.",
+        "immediateActivation": "Immediate Activation",
+        "activationDescription": "Your bot will be ready to operate immediately after setup.",
+        "videoTutorial": "Video Tutorial",
+        "watchTutorial": "Watch this tutorial video to learn how to properly set up your Binance credentials:",
+        "configureBot": "Configure Bot"
+    },
+    "binanceAccount": {
+        "basicInfo": "Basic Information",
+        "apiConfig": "API Configuration",
+        "accountInfo": "Account Information",
+        "completeBasicInfo": "Complete the basic information to get started",
+        "accountName": "Account Name",
+        "accountNamePlaceholder": "E.g.: My Main Account",
+        "mainAsset": "Main Asset",
+        "selectMainAsset": "Select the main asset",
+        "apiKeys": "API Keys Configuration",
+        "enterCredentials": "Enter your Binance account credentials securely",
+        "securityGuaranteed": "Security Guaranteed",
+        "securityFeatures": {
+            "title": "Security Features",
+            "encryptedTransmission": "Encrypted transmission via HTTPS",
+            "secureStorage": "Secure storage in AWS Secret Manager",
+            "restrictedAccess": "Access restricted to authorized services only",
+            "noPlaintext": "Keys are never stored in plain text"
+        },
+        "apiKey": "API Key",
+        "secretKey": "Secret Key",
+        "apiKeyPlaceholder": "Enter your Binance API Key",
+        "secretKeyPlaceholder": "Enter your Binance Secret Key",
+        "readOnlyPermissions": "We only request read permissions for your account. We do not perform operations without your authorization.",
+        "termsAgreement": "By creating this account, you agree that our system will use these credentials to access your Binance account for the sole purpose of positioning in the P2P market for the bot according to your settings.",
+        "createAccount": "Create account",
+        "updateAccount": "Update account"
+    },
+    "errors": {
+        "requiredAmount": "Amount is required",
+        "requiredPriceLimit": "Price limit is required",
+        "requiredCompetitor": "You must select a competitor",
+        "requiredThreshold": "Minimum difference is required",
+        "requiredPaymentMethods": "You must select at least one payment method",
+        "requiredAssetAmount": "Available asset amount is required",
+        "requiredName": "Name is required",
+        "requiredApiKey": "API Key is required",
+        "requiredSecretKey": "Secret Key is required",
+        "pricePercentageRange": "Percentage must be between 90% and 135%",
+        "requiredTargetPosition": "You must select a position between 1 and 50"
+    },
+    "security": {
+        "title": "Guaranteed Security",
+        "description": "We only need basic trading permissions. By activating only \"Enable Reading\" and \"Enable Spot & Margin Trading\" in your Binance API Keys, we ensure secure operation.",
+        "apiPermissions": "API Key Permissions",
+        "requiredPermissions": "Permissions we need:",
+        "enableReading": "Enable Reading",
+        "readingDescription": "To read balances, orders and trading history",
+        "enableTrading": "Enable Spot & Margin Trading",
+        "tradingDescription": "To execute buy and sell orders",
+        "notRequiredPermissions": "Permissions we DON'T need:",
+        "enableWithdrawals": "Enable Withdrawals",
+        "withdrawalsDescription": "We don't request or need fund withdrawal permissions",
+        "accountModification": "Account Modification",
+        "modificationDescription": "We can't modify any of your account settings",
+        "additionalSecurity": "Additional Binance Security",
+        "restrictedWithdrawals": "Restricted Withdrawals",
+        "withdrawalRequirements": "Binance requires special permissions and multiple confirmations to enable withdrawals, including:",
+        "twoFactor": "2FA Authentication",
+        "emailConfirmation": "Email confirmation",
+        "whitelistAddresses": "Whitelist of addresses",
+        "fullControl": "Full Control",
+        "instantRevocation": "Instant Revocation",
+        "revocationDescription": "You can revoke the API Key permissions at any time from your Binance dashboard, giving you full control over access.",
+        "tryButton": "Try Free and Secure"
+    },
+    "faq": {
+        "title": "Frequently Asked Questions",
+        "questions": [
+            {
+                "title": "How does the free trial period work?",
+                "content": "You get full access to all features for 7 days, with no commitment. No credit card required to start."
+            },
+            {
+                "title": "Is it safe to use Binance API Keys?",
+                "content": "Yes, the API Keys we use only have trading permissions, with no withdrawal access. Plus, you can revoke permissions anytime from Binance."
+            },
+            {
+                "title": "What happens if I want to cancel my subscription?",
+                "content": "You can cancel at any time. There are no long-term contracts or cancellation penalties."
+            },
+            {
+                "title": "What technical support do you offer?",
+                "content": "We offer 24/7 technical support via email and chat. Our team is always available to help you."
+            },
+            {
+                "title": "How do you protect my data?",
+                "content": "We use military-grade encryption for your API Keys and data. Our systems are constantly monitored and audited."
+            },
+            {
+                "title": "Can I use the bot with multiple accounts?",
+                "content": "Yes, depending on your chosen plan, you can connect multiple Binance accounts to the bot."
+            }
+        ]
+    },
+    "whatsapp": {
+        "helpMessage": "If you have questions or problems, talk in our WhatsApp group"
+    },
+    "logs": {
+        "title": "Bot Execution Logs",
+        "description": "Monitor your automated trading bot executions",
+        "manageBotsButton": "Manage Bots",
+        "refreshDataButton": "Refresh Data",
+        "authError": {
+            "title": "Authentication Error",
+            "description": "You must be logged in to access this page"
+        },
+        "noBinanceAccounts": {
+            "title": "No Binance Accounts",
+            "description": "You don't have any Binance accounts configured. Please set up an account first.",
+            "action": "Configure Binance Account"
+        },
+        "noBotsConfigured": {
+            "title": "No Bots Configured",
+            "description": "You don't have any bots configured in your Binance accounts. Please create a bot first.",
+            "action": "Create Bot"
+        },
+        "breadcrumb": {
+            "dashboard": "Dashboard",
+            "executions": "Execution Logs"
+        }
+    },
+    "botExecutions": {
+        "title": "Bot Executions: {accountName}",
+        "lastUpdate": "Last update: {time}",
+        "noBots": {
+            "title": "No Bots",
+            "description": "No bots configured for account {accountName}"
+        },
+        "configurationNeeded": {
+            "title": "Bot Not Synchronized",
+            "description": "This bot needs to be synchronized with the workflow server so its executions can be monitored."
+        },
+        "botsConfigured": {
+            "title": "Bots Correctly Configured",
+            "description": "The bots are connected to the workflow server but haven't performed any operations yet. Executions will appear here automatically when the bots start operating."
+        },
+        "status": {
+            "pendingSetup": "Setup Pending",
+            "inactive": "Inactive",
+            "active": "Active"
+        },
+        "error": {
+            "title": "Error",
+            "loadingExecutions": "Error loading bot executions. Please try again.",
+            "notConfigured": "The bots are not fully configured. They may need to be synchronized with the workflow server."
+        },
+        "table": {
+            "title": "Executions of {botName}",
+            "executionsCount": "{count} executions",
+            "headers": {
+                "date": "Date",
+                "status": "Status",
+                "action": "Mode",
+                "price": "Price",
+                "position": "Position",
+                "duration": "Duration"
+            },
+            "mode": {
+                "conservative": "Conservative",
+                "aggressive": "Aggressive",
+                "positionBased": "Position Based",
+                "default": "Not specified",
+                "notSpecified": "Mode not specified"
+            },
+            "status": {
+                "success": "Success",
+                "error": "Error",
+                "waiting": "Waiting"
+            },
+            "position": {
+                "outside": "Outside"
+            },
+            "duration": {
+                "inProgress": "In progress"
+            },
+            "emptyState": {
+                "inactive": {
+                    "title": "Bot inactive",
+                    "description": "This bot is correctly configured but is disabled. Enable the bot from the bot management section to start operating."
+                },
+                "noExecutions": {
+                    "title": "No executions available",
+                    "description": "This bot is correctly configured but hasn't performed any operations yet. Executions will appear here automatically when the bot starts operating."
+                }
+            },
+            "refreshButton": "Refresh data",
+            "details": {
+                "sections": {
+                    "botConfig": "Bot Configuration",
+                    "myAd": "My Advertisement",
+                    "competitors": "Top Competitors",
+                    "marketAnalysis": "Market Analysis"
+                },
+                "botInfo": {
+                    "mode": "Mode",
+                    "targetPosition": "Target Position",
+                    "targetCompetitor": "Target Competitor",
+                    "priceLimit": "Price Limit",
+                    "pricePercentage": "Price Percentage",
+                    "diffThreshold": "Difference Threshold",
+                    "modes": {
+                        "conservative": "Conservative",
+                        "aggressive": "Aggressive",
+                        "positionBased": "Position Based"
+                    }
+                },
+                "adInfo": {
+                    "currentPrice": "Current Price",
+                    "currentPosition": "Current Position",
+                    "outsideTop": "Outside top",
+                    "suggestedUpdate": "Suggested Update",
+                    "noUpdateNeeded": "No update needed"
+                },
+                "competitors": {
+                    "headers": {
+                        "position": "Position",
+                        "advertiser": "Advertiser",
+                        "price": "Price",
+                        "difference": "Difference"
+                    },
+                    "anonymous": "Anonymous",
+                    "targetLabel": "Target"
+                },
+                "marketAnalysis": {
+                    "recommendedAction": "Recommended Action",
+                    "reason": "Reason",
+                    "targetPosition": "Target Position",
+                    "analyzedCompetitors": "Analyzed Competitors",
+                    "notSpecified": "Not specified",
+                    "actions": {
+                        "conservativeUpdate": "Conservative Update",
+                        "aggressiveUpdate": "Competitive Attack",
+                        "updatePrice": "Update Price"
+                    },
+                    "modeInfo": {
+                        "conservative": {
+                            "title": "Conservative Mode",
+                            "description": "The bot maintains a competitive but conservative price, prioritizing maintaining safe margins over occupying specific positions in the market.",
+                            "increasingPrice": "In this case, it's increasing the price to take advantage of a stable market.",
+                            "decreasingPrice": "In this case, it's reducing the price to stay competitive."
+                        },
+                        "aggressive": {
+                            "title": "Aggressive Mode",
+                            "description": "The bot focuses on competing directly with a specific advertiser, trying to match or improve their price to capture their trading volume.",
+                            "increasingPrice": "It's increasing the price to attack competitor {competitor}.",
+                            "decreasingPrice": "It's reducing the price to stay competitive against {competitor}."
+                        },
+                        "positionBased": {
+                            "title": "Position Based Mode",
+                            "description": "The bot adjusts the price with the goal of maintaining a specific position in the market ranking (position #{position}).",
+                            "increasingPrice": "It's increasing the price to adjust to the target position.",
+                            "decreasingPrice": "It's reducing the price to reach the target position."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "contactForm": {
+        "title": "Contact Form",
+        "fullName": "Full Name",
+        "email": "Email",
+        "phone": "Phone",
+        "website": "Website or LinkedIn URL",
+        "activeAds": "Number of Active Ads",
+        "country": "Country of Residence",
+        "platforms": "Exchanges you use",
+        "monthlyVolume": "Estimated Monthly P2P Volume",
+        "accountsCount": "How many accounts do you currently manage?",
+        "challenge": "What's your biggest P2P challenge today?",
+        "needsAssistance": "Would you like to receive personalized assistance to scale your operation?",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "success": {
+            "title": "Thank you for contacting us!",
+            "description": "We'll get in touch with you soon. In the meantime, would you like to schedule a personalized demo?",
+            "scheduleDemo": "Schedule Personalized Demo",
+            "selectTime": "Select a time for your demo"
+        },
+        "volumeOptions": {
+            "select": "Select volume",
+            "lessThan1k": "Less than $1,000",
+            "1kTo10k": "$1,000 - $10,000",
+            "10kTo50k": "$10,000 - $50,000",
+            "moreThan50k": "More than $50,000"
+        },
+        "required": "This field is required"
+    }
+}
