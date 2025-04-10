@@ -1,10 +1,27 @@
 "use client";
 
-import { useLanguage } from "./LanguageContext";
+
+import { useLanguage } from "@/app/contexts/language-context";
 import enMessages from "../../messages/en.json";
 import esMessages from "../../messages/es.json";
 
 type Messages = typeof enMessages;
+
+type FaqQuestion = {
+  title: string;
+  content: string;
+};
+
+type FaqSection = {
+  title: string;
+  questions: FaqQuestion[];
+};
+
+type MessageValue = string | FaqQuestion[] | FaqSection | { [key: string]: MessageValue };
+
+type NestedMessages = {
+  [key: string]: MessageValue;
+};
 
 export function useTranslations() {
   const { language } = useLanguage();
@@ -16,10 +33,10 @@ export function useTranslations() {
     const parts = key.split(".");
     
     // Navegar por el objeto de mensajes
-    let result: any = messages;
+    let result: MessageValue = messages;
     for (const part of parts) {
-      if (result && result[part] !== undefined) {
-        result = result[part];
+      if (result && typeof result === 'object' && part in result) {
+        result = (result as NestedMessages)[part];
       } else {
         // Si no se encuentra la clave, devolver la clave original
         return key;
@@ -34,7 +51,7 @@ export function useTranslations() {
       );
     }
     
-    return result;
+    return typeof result === 'string' ? result : key;
   };
   
   return { t, language };
