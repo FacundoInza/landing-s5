@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 
 // Asegúrate de que la variable de entorno esté disponible
-const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
+const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver-5-ai/silver-5-p2p';
 
 export default function InteligenciaArtificial() {
   const { language } = useLanguage();

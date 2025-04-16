@@ -8,7 +8,7 @@ import { translations } from '../translations'
 import { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 
 // Asegúrate de que la variable de entorno esté disponible
-const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai';
+const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver-5-ai/silver-5-p2p';
 
 export default function ContactPage() {
   const { language } = useLanguage()

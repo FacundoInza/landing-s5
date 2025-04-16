@@ -126,7 +126,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <LanguageProvider>
-          <Navbar calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver5-ai'} />
+          <Navbar calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver-5-ai/silver-5-p2p'} />
           {children}
           <FloatingMenu />
         </LanguageProvider>
