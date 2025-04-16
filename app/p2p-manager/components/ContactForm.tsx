@@ -37,7 +37,7 @@ export default function ContactForm() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
-  const [calendlyUrl, setCalendlyUrl] = useState('https://calendly.com/silver5ai/15min')
+  const [calendlyUrl, setCalendlyUrl] = useState('https://calendly.com/silver-5-ai/silver-5-p2p')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -60,7 +60,7 @@ export default function ContactForm() {
 
       if (response.ok) {
         setIsSubmitted(true)
-        setCalendlyUrl('https://calendly.com/silver5ai/15min')
+        setCalendlyUrl('https://calendly.com/silver-5-ai/silver-5-p2p')
       }
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -125,7 +125,7 @@ export default function ContactForm() {
             <h3 className="text-xl font-semibold mb-4">
               {language === 'es' ? 'Seleccioná un horario para tu demo' : 'Select a time for your demo'}
             </h3>
-            <div className="calendly-inline-widget" data-url="https://calendly.com/silver5ai/15min" style={{ minWidth: '320px', height: '700px' }}></div>
+            <div className="calendly-inline-widget" data-url="https://calendly.com/silver-5-ai/silver-5-p2p" style={{ minWidth: '320px', height: '700px' }}></div>
           </div>
         </div>
 
