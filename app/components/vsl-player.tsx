@@ -12,7 +12,7 @@ export function VSLPlayer({ className = '' }: VSLPlayerProps) {
   const [videoId, setVideoId] = useState<string>('')
   
   // Obtener las URLs de los videos desde las variables de entorno
-  const spanishVideoUrl = process.env.NEXT_PUBLIC_VSL_SPANISH_URL || 'https://drive.google.com/file/d/1E47Md6PFKNA4dwNESqMdlUSq4_B-gs5H/view'
+  const spanishVideoUrl = process.env.NEXT_PUBLIC_VSL_SPANISH_URL || 'https://drive.google.com/file/d/1RZlAnUhNCvNnZNbLlnDywUnYwwIO52fD/view'
   const englishVideoUrl = process.env.NEXT_PUBLIC_VSL_ENGLISH_URL || 'https://drive.google.com/file/d/1kbJWlPap0vDWk7g5hkX4RBhXGin7p0OW/view'
   
   // Seleccionar la URL del video según el idioma

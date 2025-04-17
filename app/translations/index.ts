@@ -360,32 +360,34 @@ export const translations = {
     },
     faq: {
       title: "Preguntas Frecuentes",
+      description: "Resolvemos tus dudas más comunes sobre nuestros servicios",
       questions: [
         {
-          title: "¿Cómo funciona el periodo de prueba gratuito?",
-          content: "Obtienes acceso completo a todas las funcionalidades durante 7 días, sin compromiso. No necesitas tarjeta de crédito para comenzar."
+          title: "¿Cómo funciona la integración con Binance?",
+          content: "Nuestra plataforma se conecta de forma segura con la API oficial de Binance, permitiendo una gestión automatizada de tus operaciones P2P.",
+          list: [
+            "Conexión segura mediante API Keys",
+            "Sincronización en tiempo real",
+            "Control total sobre tus fondos"
+          ],
+          cta: {
+            text: "Ver detalles de seguridad",
+            link: "#seguridad"
+          }
         },
         {
-          title: "¿Es seguro usar las API Keys de Binance?",
-          content: "Sí, las API Keys que utilizamos solo tienen permisos de trading, sin acceso a retiros. Además, puedes revocar los permisos en cualquier momento desde Binance."
-        },
-        {
-          title: "¿Qué pasa si quiero cancelar mi suscripción?",
-          content: "Puedes cancelar en cualquier momento. No hay contratos a largo plazo ni penalizaciones por cancelación."
-        },
-        {
-          title: "¿Qué soporte técnico ofrecen?",
-          content: "Ofrecemos soporte técnico 24/7 a través de email y chat. Nuestro equipo está siempre disponible para ayudarte."
-        },
-        {
-          title: "¿Cómo protegen mis datos?",
-          content: "Utilizamos encriptación de grado militar para tus API Keys y datos. Nuestros sistemas son monitoreados y auditados constantemente."
-        },
-        {
-          title: "¿Puedo usar el bot en múltiples cuentas?",
-          content: "Sí, dependiendo del plan elegido, puedes conectar múltiples cuentas de Binance al bot."
+          title: "¿Es seguro usar el bot de trading?",
+          content: "Sí, nuestro bot opera bajo los más altos estándares de seguridad.",
+          list: [
+            "Sin acceso a retiros",
+            "Encriptación de datos",
+            "Monitoreo 24/7"
+          ]
         }
-      ]
+      ],
+      ctaTitle: "¿Tienes más preguntas?",
+      ctaDescription: "Nuestro equipo está listo para ayudarte con cualquier duda adicional",
+      ctaButton: "Contáctanos"
     }
   },
   en: {
@@ -749,32 +751,34 @@ export const translations = {
     },
     faq: {
       title: "Frequently Asked Questions",
+      description: "We answer your most common questions about our services",
       questions: [
         {
-          title: "How does the free trial period work?",
-          content: "You get full access to all features for 7 days, with no commitment. No credit card required to start."
+          title: "How does Binance integration work?",
+          content: "Our platform securely connects with Binance's official API, enabling automated management of your P2P operations.",
+          list: [
+            "Secure connection via API Keys",
+            "Real-time synchronization",
+            "Full control over your funds"
+          ],
+          cta: {
+            text: "View security details",
+            link: "#security"
+          }
         },
         {
-          title: "Is it safe to use Binance API Keys?",
-          content: "Yes, the API Keys we use only have trading permissions, with no withdrawal access. Plus, you can revoke permissions anytime from Binance."
-        },
-        {
-          title: "What happens if I want to cancel my subscription?",
-          content: "You can cancel at any time. There are no long-term contracts or cancellation penalties."
-        },
-        {
-          title: "What technical support do you offer?",
-          content: "We offer 24/7 technical support via email and chat. Our team is always available to help you."
-        },
-        {
-          title: "How do you protect my data?",
-          content: "We use military-grade encryption for your API Keys and data. Our systems are constantly monitored and audited."
-        },
-        {
-          title: "Can I use the bot with multiple accounts?",
-          content: "Yes, depending on your chosen plan, you can connect multiple Binance accounts to the bot."
+          title: "Is it safe to use the trading bot?",
+          content: "Yes, our bot operates under the highest security standards.",
+          list: [
+            "No withdrawal access",
+            "Data encryption",
+            "24/7 monitoring"
+          ]
         }
-      ]
+      ],
+      ctaTitle: "Have more questions?",
+      ctaDescription: "Our team is ready to help you with any additional questions",
+      ctaButton: "Contact Us"
     }
   }
 }
