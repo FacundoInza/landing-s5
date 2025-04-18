@@ -388,7 +388,8 @@ export const translations = {
       ctaTitle: "¿Tienes más preguntas?",
       ctaDescription: "Nuestro equipo está listo para ayudarte con cualquier duda adicional",
       ctaButton: "Contáctanos"
-    }
+    },
+    registerCTA: 'Regístrate y obtén 7 días gratis'
   },
   en: {
     nav: {
@@ -398,18 +399,18 @@ export const translations = {
       pricing: 'Pricing'
     },
     hero: {
-      title: 'Automate and Centralize Your Operations on Binance P2P',
+      title: 'Only for Binance P2P Merchants Who Want to Dominate the Market',
       titleHighlight: '',
-      description: 'Discover How to Keep Your Ads Always on Top and Multiply Your Trading Volume 🚀 Without Being Glued to the Screen, Without Manual Monitoring, and Without Losing Profit Margin',
-      cta: '👇 Activate Your Automatic Bot for FREE Today and Try It for 7 Days at No Cost 👇',
+      description: 'Discover How to Keep Your Ads Always Up and Multiply Your Trading Volume 🚀 Without Being Glued to the Screen, Without Manual Monitoring, and Without Losing Profit Margin',
+      cta: '👇 Activate Your FREE Automatic Bot Today and Try It for 7 Days at No Cost 👇',
       trialButton: 'Start Free Trial',
       noCard: 'No credit card required. Cancel anytime.',
       activateTrial: 'Activate your free trial today',
-      noCommitment: 'No commitment. Cancel anytime.'
+      noCommitment: 'No commitments. Cancel anytime.'
     },
     technologies: {
-      title: 'Technologies We Use',
-      description: 'Silver5 is a software factory specialized in enterprise applications, mobile development, and cutting-edge AI implementations.',
+      title: 'Cutting-edge technologies',
+      description: 'Silver5 is a software development agency specializing in enterprise application development, mobile development, and state-of-the-art AI implementations.',
       startProject: 'Start Project',
       viewDemo: 'View Demo',
       tryFree: 'Try for Free',
@@ -779,7 +780,8 @@ export const translations = {
       ctaTitle: "Have more questions?",
       ctaDescription: "Our team is ready to help you with any additional questions",
       ctaButton: "Contact Us"
-    }
+    },
+    registerCTA: 'Sign up and get 7 free days'
   }
 }
 

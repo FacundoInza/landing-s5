@@ -9,35 +9,37 @@ interface VSLPlayerProps {
 
 export function VSLPlayer({ className = '' }: VSLPlayerProps) {
   const { language } = useLanguage()
-  const [videoId, setVideoId] = useState<string>('')
   
-  // Obtener las URLs de los videos desde las variables de entorno
-  const spanishVideoUrl = process.env.NEXT_PUBLIC_VSL_SPANISH_URL || 'https://drive.google.com/file/d/1RZlAnUhNCvNnZNbLlnDywUnYwwIO52fD/view'
-  const englishVideoUrl = process.env.NEXT_PUBLIC_VSL_ENGLISH_URL || 'https://drive.google.com/file/d/1kbJWlPap0vDWk7g5hkX4RBhXGin7p0OW/view'
+  // Obtener las URLs de embed de los videos desde las variables de entorno
+  const spanishVideoUrl = process.env.NEXT_PUBLIC_VSL_SPANISH_URL || 'https://www.loom.com/embed/b5a9f03d1a694a32bcb753d2d95d7eca'
+  const englishVideoUrl = process.env.NEXT_PUBLIC_VSL_ENGLISH_URL || 'https://www.loom.com/embed/b5a9f03d1a694a32bcb753d2d95d7eca'
   
-  // Seleccionar la URL del video según el idioma
-  const videoUrl = language === 'es' ? spanishVideoUrl : englishVideoUrl
+  // Seleccionar la URL de embed del video según el idioma
+  const videoEmbedUrl = language === 'es' ? spanishVideoUrl : englishVideoUrl
   
-  useEffect(() => {
-    // Extraer el ID del video de la URL de Google Drive
-    const extractVideoId = (url: string) => {
-      const regex = /\/d\/([a-zA-Z0-9_-]+)/
-      const match = url.match(regex)
-      return match ? match[1] : ''
-    }
+  // No necesitamos extraer el ID ni usar useEffect para esto
+  // useEffect(() => {
+  //   // Extraer el ID del video de la URL de Google Drive
+  //   const extractVideoId = (url: string) => {
+  //     const regex = /\/d\/([a-zA-Z0-9_-]+)/
+  //     const match = url.match(regex)
+  //     return match ? match[1] : ''
+  //   }
     
-    setVideoId(extractVideoId(videoUrl))
-  }, [videoUrl, language])
+  //   setVideoId(extractVideoId(videoUrl))
+  // }, [videoUrl, language])
 
   return (
     <div className={`vsl-player-container ${className}`}>
-      {videoId ? (
+      {videoEmbedUrl ? (
         <div className="aspect-video relative w-full">
           <iframe 
-            src={`https://drive.google.com/file/d/${videoId}/preview`}
+            src={videoEmbedUrl} // Usar directamente la URL de embed
             className="absolute inset-0 w-full h-full rounded-lg shadow-lg"
-            allow="autoplay"
+            allow="autoplay; encrypted-media" // Permitir autoplay y media encriptada
+            allowFullScreen // Permitir pantalla completa
             frameBorder="0"
+            title="VSL Player" // Añadir un título por accesibilidad
           ></iframe>
         </div>
       ) : (

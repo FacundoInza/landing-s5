@@ -148,8 +148,11 @@ export default function Home() {
 
   // Rastrear cuando alguien hace clic en un botón de pricing
   const handlePricingClick = (productId: number, productName: string) => {
-    trackCustomEvent("PricingCTAClick", { productId, productName })
-    router.push("/lead-form")
+    trackCustomEvent("PricingRegisterCTAClick", { productId, productName })
+    // Redirect to external registration page
+    if (typeof window !== "undefined") {
+      window.location.href = "https://app.silver5ai.com/register";
+    }
   }
 
   if (!searchParamsReady && typeof window !== "undefined") {
@@ -256,21 +259,19 @@ export default function Home() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <Link
-                href="/lead-form"
-                onClick={(e) => {
-                  e.preventDefault()
-                  router.push("/lead-form")
-                  trackCustomEvent("HeroTopCTAClick")
-                }}
+              <a
+                href="https://app.silver5ai.com/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackCustomEvent("HeroRegisterCTAClick")}
               >
                 <Button className="group bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transform hover:scale-105">
                   <span className="flex items-center">
-                    {t.hero.trialButton}
+                    {t.registerCTA}
                     <ArrowRight className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" />
                   </span>
                 </Button>
-              </Link>
+              </a>
             </div>
 
             {/* Video Player Section */}
@@ -468,21 +469,19 @@ export default function Home() {
 
           {/* CTA */}
           <div className="mt-16 text-center">
-            <Link
-              href="/lead-form"
-              onClick={(e) => {
-                e.preventDefault()
-                router.push("/lead-form")
-                trackCustomEvent("SecurityCTAClick")
-              }}
+            <a
+              href="https://app.silver5ai.com/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCustomEvent("SecurityRegisterCTAClick")}
             >
               <Button className="group bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transform hover:scale-105">
                 <span className="flex items-center">
-                {t.security.tryButton}
+                  {t.registerCTA}
                   <ArrowRight className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" />
                 </span>
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -541,8 +540,10 @@ export default function Home() {
                         {question.cta && (
                           <div className="mt-6">
                             <Link
-                              href={question.cta.link || "/lead-form"}
+                              href={question.cta.link || "https://app.silver5ai.com/register"}
                               className="inline-flex items-center text-cyan-400 hover:text-cyan-300 transition-colors group"
+                              target={question.cta.link && question.cta.link.startsWith('http') ? "_blank" : "_self"}
+                              rel="noopener noreferrer"
                             >
                               {question.cta.text}
                               <ArrowRight className="ml-2 w-4 h-4 transform transition-transform group-hover:translate-x-1" />
@@ -565,22 +566,20 @@ export default function Home() {
                 <p className="text-gray-400 mb-6">
                   {t.faq.ctaDescription || "Nuestro equipo está listo para ayudarte con cualquier duda adicional"}
                 </p>
-                <Link
-                  href="/lead-form"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    router.push("/lead-form")
-                    trackCustomEvent("FAQCTAClick")
-                  }}
+                <a
+                  href="https://app.silver5ai.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackCustomEvent("FAQRegisterCTAClick")}
                 >
                   <Button className="group bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transform hover:scale-105">
                     <span className="flex items-center">
                       <Mail className="w-5 h-5 mr-2" />
-                      {t.faq.ctaButton || "Contáctanos"}
+                      {t.registerCTA}
                       <ArrowRight className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" />
                     </span>
                   </Button>
-                </Link>
+                </a>
           </div>
           </div>
           </div>
@@ -710,21 +709,19 @@ export default function Home() {
 
           {/* CTA */}
           <div className="mt-16 text-center">
-            <Link
-              href="/lead-form"
-              onClick={(e) => {
-                e.preventDefault()
-                router.push("/lead-form")
-                trackCustomEvent("BinanceIntegrationCTAClick")
-              }}
+            <a
+              href="https://app.silver5ai.com/register"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCustomEvent("BinanceRegisterCTAClick")}
             >
               <Button className="group bg-gradient-to-r from-[#F3BA2F] to-yellow-500 hover:from-yellow-500 hover:to-[#F3BA2F] text-gray-900 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 shadow-lg shadow-[#F3BA2F]/20 hover:shadow-[#F3BA2F]/40 transform hover:scale-105">
                 <span className="flex items-center">
-                  Comienza a Operar
+                  {t.registerCTA}
                   <ArrowRight className="ml-2 w-5 h-5 transform transition-transform group-hover:translate-x-1" />
                 </span>
               </Button>
-            </Link>
+            </a>
         </div>
         </div>
 
@@ -891,7 +888,7 @@ export default function Home() {
                           className="w-full rounded-xl bg-gradient-to-r from-cyan-400 to-cyan-500 hover:from-cyan-500 hover:to-cyan-600 text-gray-900 font-bold py-4 px-6 shadow-lg shadow-cyan-400/20 hover:shadow-cyan-400/40 transition-all duration-300 flex items-center justify-center group/button"
                       >
                           <span className="mr-2">
-                        {product.price === 0 ? t.pricing.scheduleMeeting : t.pricing.startTrial}
+                        {product.price === 0 ? t.pricing.scheduleMeeting : t.registerCTA}
                           </span>
                           <ArrowRight className="h-5 w-5 transform group-hover/button:translate-x-1 transition-transform" />
                       </button>
