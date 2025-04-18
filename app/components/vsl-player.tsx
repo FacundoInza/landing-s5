@@ -1,7 +1,6 @@
 'use client'
 
 import { useLanguage } from '../contexts/language-context'
-import { useState, useEffect } from 'react'
 
 interface VSLPlayerProps {
   className?: string
