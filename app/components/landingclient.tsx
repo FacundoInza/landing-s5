@@ -24,7 +24,6 @@ const apiUrl = "https://api.silver5ai.com/api/v1"
 
 export default function Home() {
   const { language, setLanguage } = useLanguage()
-  const router = useRouter()
   const [searchParamsReady, setSearchParamsReady] = useState(false)
   const t = translations[language]
 
