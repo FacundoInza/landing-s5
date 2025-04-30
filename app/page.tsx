@@ -580,7 +580,7 @@ export default function Home() {
               Somos un equipo de expertos en tecnología financiera con amplia experiencia en el desarrollo de soluciones para VASPs y operadores de criptomonedas.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {[
               { 
                 name: 'Julian Besteiro', 
@@ -602,14 +602,21 @@ export default function Home() {
                 linkedin: 'https://www.linkedin.com/in/miguel-angel-lupani-5847b720a/', 
                 image: '/migue.jpeg',
                 expertise: ['Trading Algorítmico', 'Binance API', 'Optimización']
+              },
+              { 
+                name: 'Francisco Inza', 
+                role: 'Sales Manager', 
+                linkedin: 'https://www.linkedin.com/in/francisco-inza/', 
+                image: '/fran.jpeg',
+                expertise: ['Ventas B2B', 'Desarrollo de Negocios', 'Estrategia Comercial']
               }
             ].map((person, index) => (
               <div 
                 key={index} 
-                className="group relative bg-gray-800/30 rounded-2xl p-8 backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/50 text-center"
+                className="group relative bg-gray-800/30 rounded-2xl p-6 backdrop-blur-sm transform transition-all duration-300 hover:scale-105 hover:bg-gray-800/50 text-center"
               >
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400/20 via-purple-400/20 to-cyan-400/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition-all duration-700 -z-10"></div>
-                <div className="relative w-32 h-32 mx-auto mb-6">
+                <div className="relative w-28 h-28 mx-auto mb-4">
                   <Image 
                     src={person.image} 
                     alt={person.name} 
@@ -618,11 +625,11 @@ export default function Home() {
                   />
                   <div className="absolute inset-0 rounded-full border-2 border-cyan-400/30 group-hover:border-cyan-400 transition-colors duration-300"></div>
                 </div>
-                <h3 className="text-2xl font-semibold mb-2">{person.name}</h3>
-                <p className="text-cyan-400 mb-4">{person.role}</p>
-                <div className="space-y-2 mb-6">
+                <h3 className="text-xl font-semibold mb-1">{person.name}</h3>
+                <p className="text-cyan-400 mb-3 text-sm">{person.role}</p>
+                <div className="space-y-1 mb-4">
                   {person.expertise.map((skill, idx) => (
-                    <div key={idx} className="text-sm text-gray-400">
+                    <div key={idx} className="text-xs text-gray-400">
                       {skill}
                     </div>
                   ))}
@@ -630,9 +637,9 @@ export default function Home() {
                 <Link 
                   href={person.linkedin}
                   target="_blank"
-                  className="inline-flex items-center text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+                  className="inline-flex items-center text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-xs"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                   Ver perfil
