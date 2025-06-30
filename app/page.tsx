@@ -155,22 +155,6 @@ export default function Home() {
           icon: <ArrowRight className="w-5 h-5" />,
           variant: 'secondary',
         }}
-        customPrimaryButton={
-          <RegisterButton 
-            size="lg" 
-            variant="primary"
-            className="shadow-lg hover:shadow-xl transform hover:scale-105"
-          />
-        }
-        customSecondaryButton={
-          <Link 
-            href={calendlyUrl}
-            className="inline-flex items-center px-8 py-3 bg-transparent border-2 border-white/20 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white/40 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            <ArrowRight className="w-5 h-5 mr-2" />
-            Ponerse en contacto
-          </Link>
-        }
       />
 
       {/* Servicios Section */}
@@ -575,6 +559,13 @@ export default function Home() {
                 linkedin: 'https://www.linkedin.com/in/miguel-angel-lupani-5847b720a/', 
                 image: '/migue.jpeg',
                 expertise: ['Trading Algorítmico', 'Binance API', 'Optimización']
+              },
+              { 
+                name: 'Santiago Sosa', 
+                role: 'Ingeniero de Software', 
+                linkedin: 'https://www.linkedin.com/in/santi-sosa/', 
+                image: '/santi-sosa.jpeg',
+                expertise: ['Trading Algorítmico', 'Arquitectura de Software', 'Sistemas Distribuidos']
               },
               { 
                 name: 'Francisco Inza', 

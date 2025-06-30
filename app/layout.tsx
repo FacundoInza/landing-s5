@@ -3,7 +3,7 @@ import './globals.css'
 import { LanguageProvider } from './contexts/language-context'
 import { Navbar } from '@/components/navbar'
 import { FloatingMenu } from '@/components/floating-menu'
-import { Footer } from '@/components/Footer'
+import { Footer } from '@/components/Footer-main'
 
 export const metadata: Metadata = {
   title: {

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Calendar, Download, MessageSquare, Play, Zap } from 'lucide-react'
+import Image from 'next/image'
 
 interface CTAButton {
   text: string
@@ -88,10 +89,11 @@ export default function CTASection({
       {/* Background Image */}
       {backgroundImage && (
         <div className="absolute inset-0 opacity-10">
-          <img 
+          <Image 
             src={backgroundImage} 
             alt="Background" 
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
         </div>
       )}
@@ -124,7 +126,7 @@ export default function CTASection({
         {testimonialQuote && (
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
             <blockquote className="text-lg text-gray-300 italic mb-4">
-              "{testimonialQuote}"
+              &ldquo;{testimonialQuote}&rdquo;
             </blockquote>
             <div className="flex items-center justify-center">
               <div className="text-center">

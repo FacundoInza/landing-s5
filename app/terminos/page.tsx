@@ -1,7 +1,8 @@
-import Footer from "@/components/footer";
+
 import { Navbar } from "@/components/navbar";
 import { terminosStyles } from "./terminos-styles";
 import { terminosContent } from "./terminos-content";
+import { Footer } from "@/components/Footer-main";
 
 export default function TerminosCondiciones() {
   return (

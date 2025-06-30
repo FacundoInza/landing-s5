@@ -512,7 +512,7 @@ export default function P2PManagerPage() {
                 ))}
                     </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
-                "P2P Manager transformó completamente nuestra operación. Pasamos de gestionar 5 cuentas manualmente a 20+ cuentas de forma automatizada. El ROI fue evidente desde la primera semana."
+                &ldquo;P2P Manager transformó completamente nuestra operación. Pasamos de gestionar 5 cuentas manualmente a 20+ cuentas de forma automatizada. El ROI fue evidente desde la primera semana.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-lg flex items-center justify-center">
@@ -533,7 +533,7 @@ export default function P2PManagerPage() {
                 ))}
                       </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
-                "La integración con Didit fue un game-changer para nuestro compliance. Ahora procesamos KYC en minutos en lugar de días, y el costo es mínimo comparado con nuestra solución anterior."
+                &ldquo;La integración con Didit fue un game-changer para nuestro compliance. Ahora procesamos KYC en minutos en lugar de días, y el costo es mínimo comparado con nuestra solución anterior.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-lg flex items-center justify-center">
@@ -554,7 +554,7 @@ export default function P2PManagerPage() {
                 ))}
                       </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
-                "Como arbitradores profesionales, necesitábamos una solución que nos permitiera escalar sin comprometer seguridad. P2P Manager nos dio exactamente eso y más."
+                &ldquo;Como arbitradores profesionales, necesitábamos una solución que nos permitiera escalar sin comprometer seguridad. P2P Manager nos dio exactamente eso y más.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-lg flex items-center justify-center">
@@ -684,7 +684,7 @@ export default function P2PManagerPage() {
           {/* Testimonial */}
           <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8">
             <blockquote className="text-lg text-gray-300 mb-4 italic">
-              "{ctaData.testimonialQuote}"
+              &ldquo;{ctaData.testimonialQuote}&rdquo;
             </blockquote>
             <div className="text-sm text-gray-400">
               <span className="font-semibold text-white">{ctaData.testimonialAuthor}</span> - {ctaData.testimonialCompany}

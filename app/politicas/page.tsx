@@ -1,6 +1,7 @@
-import Footer from "@/components/footer";
 
 
+
+import { Footer } from "@/components/Footer-main";
 import { politicasContent } from "./politicas-content";
 import { politicasStyles } from "./politicas-styles";
   import { Navbar } from "@/components/navbar";
