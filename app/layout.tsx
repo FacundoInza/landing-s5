@@ -3,6 +3,7 @@ import './globals.css'
 import { LanguageProvider } from './contexts/language-context'
 import { Navbar } from '@/components/navbar'
 import { FloatingMenu } from '@/components/floating-menu'
+import { Footer } from '@/components/Footer'
 
 export const metadata: Metadata = {
   title: {
@@ -128,6 +129,7 @@ export default function RootLayout({
         <LanguageProvider>
           <Navbar calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver-5-ai/silver-5-p2p'} />
           {children}
+          <Footer calendlyUrl={process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/silver-5-ai/silver-5-p2p'} />
           <FloatingMenu />
         </LanguageProvider>
       </body>

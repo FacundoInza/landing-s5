@@ -2,9 +2,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Bot, Shield, Cpu, Menu, X, ChevronDown, ExternalLink } from 'lucide-react'
+import { Bot, Shield, Cpu, Menu, X, ChevronDown, ExternalLink, MessageSquare, ClipboardList, Users, Brain } from 'lucide-react'
 import { LanguageSwitcher } from '@/components/language-switcher'
+import { RegisterButton } from '@/components/RegisterButton'
 import { useState, useEffect } from 'react'
+import { useLanguage } from '@/app/contexts/language-context'
 
 interface NavbarProps {
   calendlyUrl: string;
@@ -14,11 +16,73 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const { language } = useLanguage()
   
-  // Lista de servicios para el desplegable
+  // Traducciones
+  const translations = {
+    es: {
+      services: 'Servicios',
+      botP2P: 'Bot P2P',
+      silverP2PManager: 'Silver P2P Manager',
+      contact: 'Contacto',
+      pricing: 'Precios',
+      seeDemo: 'Ver Demo',
+      mainMenu: 'Menú principal',
+      modules: {
+        chats: 'Chats Centralizados',
+        bot: 'Bot de Posicionamiento',
+        orders: 'Gestión de Órdenes',
+        clients: 'Gestión de Clientes (KYC)',
+        ai: 'Agente IA'
+      }
+    },
+    en: {
+      services: 'Services',
+      botP2P: 'P2P Bot',
+      silverP2PManager: 'Silver P2P Manager',
+      contact: 'Contact',
+      pricing: 'Pricing',
+      seeDemo: 'See Demo',
+      mainMenu: 'Main menu',
+      modules: {
+        chats: 'Centralized Chats',
+        bot: 'Positioning Bot',
+        orders: 'Order Management',
+        clients: 'Client Management (KYC)',
+        ai: 'AI Agent'
+      }
+    }
+  }
+
+  const t = translations[language as keyof typeof translations]
+  
+  // Lista de servicios para el desplegable con iconos específicos
   const servicios = [
-    { path: '/servicios/compliance', name: 'Compliance', icon: <Shield className="w-4 h-4 mr-2 text-purple-400" /> },
-    { path: '/servicios/inteligencia-artificial', name: 'Inteligencia Artificial', icon: <Cpu className="w-4 h-4 mr-2 text-yellow-400" /> },
+    { 
+      path: '/p2p-manager/chats-centralizados', 
+      name: t.modules.chats, 
+      icon: <MessageSquare className="w-4 h-4 mr-2 text-silver5-chats" /> 
+    },
+    { 
+      path: '/p2p-manager/bot-posicionamiento', 
+      name: t.modules.bot, 
+      icon: <Bot className="w-4 h-4 mr-2 text-silver5-bot" /> 
+    },
+    { 
+      path: '/p2p-manager/gestion-ordenes', 
+      name: t.modules.orders, 
+      icon: <ClipboardList className="w-4 h-4 mr-2 text-silver5-orders" /> 
+    },
+    { 
+      path: '/p2p-manager/gestion-clientes', 
+      name: t.modules.clients, 
+      icon: <Users className="w-4 h-4 mr-2 text-silver5-kyc" /> 
+    },
+    { 
+      path: '/p2p-manager/agente-ia', 
+      name: t.modules.ai, 
+      icon: <Brain className="w-4 h-4 mr-2 text-silver5-ai" /> 
+    },
   ];
 
   // Añadir efecto para detectar el scroll
@@ -37,49 +101,45 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
   }, [scrolled]);
 
   return (
-    <nav className={`border-b transition-all duration-300 sticky top-0 z-50 ${
-      scrolled 
-        ? "border-gray-800/60 bg-[#0A0B14]/95 backdrop-blur-md shadow-lg" 
-        : "border-gray-800/20 bg-[#0A0B14]/80 backdrop-blur-sm"
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex items-center">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="relative overflow-hidden rounded-full p-1 group-hover:bg-cyan-400/10 transition-all duration-300">
-                <Image src="/logo-s5-w.png" alt="Silver5 AI" width={38} height={38} priority className="transform group-hover:scale-105 transition-transform duration-300" />
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
+      <div className="mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 mx-4 mt-4">
+          {/* Logo a la izquierda */}
+          <div className="flex items-center min-w-[160px]">
+            <Link href="/" className="flex items-center space-x-3 group px-4 py-2">
+              <div className="relative overflow-hidden rounded-full p-1">
+                <Image src="/logo-s5-w.png" alt="Silver5 AI" width={32} height={32} priority className="transform group-hover:scale-105 transition-transform duration-300" />
               </div>
-              <span className="font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Silver5</span>
+              <span className="font-bold text-lg bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Silver5</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Navegación central */}
+          <div className="hidden md:flex items-center justify-center flex-1 space-x-2">
             {/* Menú desplegable de servicios */}
             <div className="relative">
               <button 
-                className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
+                className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group flex items-center rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
                 onClick={() => setServicesOpen(!servicesOpen)}
               >
-                <span>Servicios</span>
+                <span>{t.services}</span>
                 <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${servicesOpen ? 'rotate-180' : ''}`} />
-                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
               </button>
               
               {/* Dropdown menu */}
               {servicesOpen && (
                 <div 
-                  className="absolute left-0 mt-2 w-64 bg-gray-900 border border-gray-800 rounded-lg shadow-xl z-50 py-2"
+                  className="absolute left-0 mt-2 w-64 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl shadow-xl z-50 py-3"
                   onMouseLeave={() => setServicesOpen(false)}
                 >
                   {servicios.map((servicio, index) => (
                     <Link
                       key={index}
                       href={servicio.path}
-                      className="flex items-center px-4 py-2.5 hover:bg-gray-800 text-gray-300 hover:text-white transition-colors"
+                      className="flex items-center px-4 py-3 hover:bg-white/10 text-gray-300 hover:text-white transition-colors rounded-xl mx-2"
                     >
                       {servicio.icon}
-                      <span>{servicio.name}</span>
+                      <span className="text-sm font-medium">{servicio.name}</span>
                     </Link>
                   ))}
                 </div>
@@ -90,55 +150,59 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
               href="https://p2p.silver5ai.com" 
               target="_blank"
               rel="noopener noreferrer"
-              className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
+              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group flex items-center rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
             >
-              <Bot className="w-4 h-4 mr-2 text-cyan-400" />
-              <span>Bot P2P</span>
+              <Bot className="w-4 h-4 mr-2 text-silver5-cyan-400" />
+              <span>{t.botP2P}</span>
               <ExternalLink className="h-3.5 w-3.5 ml-1 text-gray-500" />
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
             </Link>
 
             <Link 
               href="/p2p-manager" 
-              className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group flex items-center"
+              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group flex items-center rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
             >
-              <Bot className="w-4 h-4 mr-2 text-purple-400" />
-              <span>Silver P2P Manager</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
-            </Link>
-            
-            <Link 
-              href="/#sobre-nosotros" 
-              className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
-            >
-              <span>Sobre Nosotros</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              <Bot className="w-4 h-4 mr-2 text-silver5-orders-400" />
+              <span>{t.silverP2PManager}</span>
             </Link>
             
             <Link 
               href="/contacto" 
-              className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors duration-200 group"
+              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
             >
-              <span>Contacto</span>
-              <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+              <span>{t.contact}</span>
             </Link>
             
-            <div className="ml-2">
+            <Link 
+              href="/pricing" 
+              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
+            >
+              <span>{t.pricing}</span>
+            </Link>
+          </div>
+
+          {/* Elementos de la derecha */}
+          <div className="hidden md:flex items-center space-x-3 min-w-[280px] justify-end">
+            <div className="backdrop-blur-md bg-white/5 rounded-full border border-white/10">
               <LanguageSwitcher />
             </div>
+
+            {/* Botón Regístrate gratis usando el componente */}
+            <RegisterButton />
           </div>
 
           {/* Mobile Navigation Button */}
           <div className="flex md:hidden items-center space-x-4">
-            <LanguageSwitcher />
+            <div className="backdrop-blur-md bg-white/5 rounded-full border border-white/10">
+              <LanguageSwitcher />
+            </div>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 ${
+              className={`relative w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 backdrop-blur-md border border-white/10 ${
                 mobileMenuOpen 
-                  ? "bg-cyan-400/20 text-cyan-400" 
-                  : "bg-gray-800/70 text-gray-400 hover:bg-gray-700 hover:text-cyan-400"
+                  ? "bg-silver5-cyan-400/20 text-silver5-cyan-400" 
+                  : "bg-white/5 text-gray-300 hover:bg-white/10 hover:text-white"
               }`}
-              aria-label="Menú principal"
+              aria-label={t.mainMenu}
             >
               <div className="relative">
                 {mobileMenuOpen ? (
@@ -147,11 +211,6 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
                   <Menu className="h-5 w-5" />
                 )}
               </div>
-              <span className={`absolute inset-0 rounded-full border transition-colors duration-300 ${
-                mobileMenuOpen 
-                  ? "border-cyan-400/50" 
-                  : "border-gray-700"
-              }`}></span>
             </button>
           </div>
         </div>
@@ -159,20 +218,20 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
 
       {/* Mobile Menu */}
       <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'} z-40`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[80vh] overflow-y-auto">
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 max-h-[80vh] overflow-y-auto backdrop-blur-md bg-white/10 border border-white/20 mx-4 mt-2 rounded-2xl">
           {/* Desplegable de servicios en móvil */}
-          <div className="rounded-md bg-gray-800/50 p-3">
-            <div className="font-medium text-white mb-2">Servicios</div>
+          <div className="rounded-xl bg-white/10 p-3">
+            <div className="font-medium text-white mb-2 text-sm">{t.services}</div>
             <div className="space-y-2 ml-2">
               {servicios.map((servicio, index) => (
                 <Link
                   key={index}
                   href={servicio.path}
-                  className="flex items-center py-2 px-2 text-gray-300 hover:text-white transition-colors"
+                  className="flex items-center py-2 px-2 text-gray-300 hover:text-white transition-colors rounded-lg hover:bg-white/10"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {servicio.icon}
-                  <span>{servicio.name}</span>
+                  <span className="text-sm">{servicio.name}</span>
                 </Link>
               ))}
             </div>
@@ -182,46 +241,51 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
             href="https://p2p.silver5ai.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 flex items-center"
+            className="block px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 flex items-center"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <Bot className="w-4 h-4 mr-2 text-cyan-400" />
-            Bot P2P
+            <Bot className="w-4 h-4 mr-2 text-silver5-cyan-400" />
+            {t.botP2P}
             <ExternalLink className="h-3.5 w-3.5 ml-1 text-gray-500" />
           </Link>
           
           <Link
             href="/p2p-manager"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 flex items-center"
+            className="block px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 flex items-center"
             onClick={() => setMobileMenuOpen(false)}
           >
-            <Bot className="w-4 h-4 mr-2 text-purple-400" />
-            Silver P2P Manager
-          </Link>
-          
-          <Link
-            href="/#sobre-nosotros"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            Sobre Nosotros
+            <Bot className="w-4 h-4 mr-2 text-silver5-orders-400" />
+            {t.silverP2PManager}
           </Link>
           
           <Link
             href="/contacto"
-            className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+            className="block px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10"
             onClick={() => setMobileMenuOpen(false)}
           >
-            Contacto
+            {t.contact}
           </Link>
           
-          <div className="mt-3 px-3">
+          <Link
+            href="/pricing"
+            className="block px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {t.pricing}
+          </Link>
+          
+          <div className="mt-3 px-3 space-y-2">
+            {/* Botón de registro móvil usando el componente */}
+            <RegisterButton 
+              fullWidth={true} 
+              onClick={() => setMobileMenuOpen(false)}
+            />
             <Link
               href={calendlyUrl}
-              className="block text-center w-full px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
+              className="block text-center w-full px-4 py-3 border border-white/20 text-sm font-medium rounded-xl text-white hover:bg-white/10 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Ver Demo
+              {t.seeDemo}
             </Link>
           </div>
         </div>

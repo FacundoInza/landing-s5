@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { useLanguage } from '../../contexts/language-context'
 import Link from 'next/link'
 import Script from 'next/script'
+import { X } from 'lucide-react'
 
 interface FormData {
   fullName: string
@@ -20,7 +21,11 @@ interface FormData {
   needsAssistance: boolean
 }
 
-export default function ContactForm() {
+interface ContactFormProps {
+  onClose?: () => void
+}
+
+export default function ContactForm({ onClose }: ContactFormProps) {
   const { language } = useLanguage()
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
@@ -184,6 +189,22 @@ export default function ContactForm() {
   const t = translations[language];
 
   return (
+    <div className="p-6">
+      {/* Header con botón de cerrar */}
+      {onClose && (
+        <div className="flex items-center justify-between mb-6 pb-4 border-b border-gray-700">
+          <h2 className="text-2xl font-bold text-white">
+            {language === 'es' ? 'Solicitar Demo Personalizada' : 'Request Personalized Demo'}
+          </h2>
+          <button
+            onClick={onClose}
+            className="p-2 hover:bg-gray-800 rounded-lg transition-colors"
+          >
+            <X className="w-6 h-6 text-gray-400 hover:text-white" />
+          </button>
+        </div>
+      )}
+
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
@@ -349,5 +370,6 @@ export default function ContactForm() {
         </Button>
       </div>
     </form>
+    </div>
   )
 } 
