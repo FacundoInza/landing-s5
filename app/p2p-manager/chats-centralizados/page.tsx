@@ -20,6 +20,7 @@ import {
   User,
   Bot
 } from 'lucide-react'
+import Image from 'next/image'
 
 // Componentes compartidos
 import HeroSection from '../components/shared/HeroSection'
@@ -39,8 +40,8 @@ export default function ChatsCentralizadosPage() {
     titleHighlight: "Multicuenta",
     titleEnd: "sin Compartir Credenciales",
     description: "Gestiona todas las conversaciones P2P de múltiples cuentas Binance desde una única interfaz. Tu equipo opera sin acceso a credenciales, con visibilidad completa y control total.",
-    primaryCta: "Ver Demo del Módulo",
-    secondaryCta: "Descargar Caso de Uso",
+    primaryCta: "Ver Demo Personalizada",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "100%", label: "Visibilidad de Chats" },
       { value: "0", label: "Credenciales Compartidas" },
@@ -167,16 +168,16 @@ export default function ChatsCentralizadosPage() {
     description: "Únete a VASPs líderes que ya gestionan sus chats sin compartir credenciales. Implementación en menos de 48 horas.",
     buttons: [
       {
-        text: "Ver Demo del Módulo",
+        text: "Ver Demo Personalizada",
         action: () => setShowForm(true),
         variant: 'primary' as const,
         icon: <Play className="w-5 h-5" />
       },
       {
-        text: "Hablar con Especialista",
-        action: () => window.open(process.env.NEXT_PUBLIC_CALENDLY_URL, '_blank'),
+        text: "Registrarte Gratis",
+        action: () => window.open('https://app.silver5ai.com/register', '_blank'),
         variant: 'secondary' as const,
-        icon: <Calendar className="w-5 h-5" />
+        icon: <CheckCircle className="w-5 h-5" />
       }
     ],
     urgency: "⚡ Implementación Express: 48 horas",
@@ -192,7 +193,7 @@ export default function ChatsCentralizadosPage() {
   }
 
   const handleSecondaryAction = () => {
-    window.open('/recursos/caso-uso-chats-centralizados.pdf', '_blank')
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   return (
@@ -212,63 +213,45 @@ export default function ChatsCentralizadosPage() {
         stats={heroData.stats}
         heroVisual={
           <div className="relative">
-            {/* Chat Interface Mockup */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-silver5-chats/20 rounded-lg p-6 shadow-2xl">
-              <div className="flex items-center mb-4">
-                <MessageSquare className="w-6 h-6 text-silver5-chats mr-2" />
-                <div className="text-lg font-semibold text-white">Chats Centralizados</div>
-                <div className="ml-auto">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-silver5-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-silver5-green-400">En línea</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Chat Messages */}
-              <div className="space-y-3">
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-silver5-chats/20 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-white">¿Cuál es el precio actual de USDT?</p>
-                    <span className="text-xs text-silver5-chats">Cliente A • 14:23</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-full flex items-center justify-center">
-                    <Bot className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-silver5-bot/20 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-white">El precio actual es $0.9998. ¿Te interesa comprar?</p>
-                    <span className="text-xs text-silver5-bot">Bot Auto • 14:23</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-full flex items-center justify-center">
-                    <User className="w-4 h-4 text-white" />
-                  </div>
-                  <div className="bg-silver5-orders/20 rounded-lg p-3 max-w-xs">
-                    <p className="text-sm text-white">Sí, quiero comprar $500</p>
-                    <span className="text-xs text-silver5-orders">Cliente B • 14:24</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Active Chats Counter */}
-              <div className="mt-4 pt-4 border-t border-silver5-chats/20">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">Chats activos</span>
-                  <span className="text-silver5-chats font-semibold">23</span>
+            {/* Binance Integration Badge - Más grande y llamativo */}
+            <div className="absolute -top-6 -right-0 z-10 bg-gradient-to-br from-silver5-chats/20 to-silver5-orders/20 backdrop-blur-sm border-2 border-silver5-chats/40 rounded-full p-4 hover:scale-110 hover:border-silver5-chats/60 transition-all duration-300 shadow-lg hover:shadow-silver5-chats/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={60}
+                height={60}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
+            {/* Chats Laptop Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/chats-laptop.png"
+                alt="Chats Centralizados Dashboard - Gestión multicuenta de chats P2P Binance"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Overlay con información adicional - Más prominente */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={100}
+                    height={25}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-base font-semibold">Chats Centralizados</span>
                 </div>
               </div>
             </div>
             
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-full flex items-center justify-center shadow-lg">
+            {/* Floating Elements específicos para Chats */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-full flex items-center justify-center shadow-lg animate-pulse">
               <MessageSquare className="w-8 h-8 text-white" />
             </div>
             

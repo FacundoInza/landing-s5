@@ -138,28 +138,43 @@ export default function CTASection({
         )}
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-          {buttons.map((button, index) => (
-            <Button
-              key={index}
-              onClick={button.action}
-              size="lg"
-              className={`
-                ${button.variant === 'primary' 
-                  ? `bg-gradient-to-r ${colors.primary} text-white font-semibold shadow-lg hover:shadow-xl` 
-                  : button.variant === 'secondary'
-                  ? `bg-gradient-to-r ${colors.secondary} text-white font-semibold shadow-lg hover:shadow-xl`
-                  : 'border-white/30 text-white hover:bg-white/10 backdrop-blur-sm'
-                }
-                px-8 py-4 rounded-lg transition-all duration-300 group
-              `}
-              variant={button.variant === 'outline' ? 'outline' : 'default'}
-            >
-              {button.icon || defaultIcons.demo}
-              <span className="ml-2">{button.text}</span>
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          ))}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 items-center">
+          {buttons.map((button, index) => {
+            if (button.variant === 'primary') {
+              return (
+                <button
+                  key={index}
+                  onClick={button.action}
+                  className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-xl shadow-lg shadow-yellow-400/25 hover:shadow-yellow-400/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:scale-105 active:scale-95 min-w-[200px]"
+                  aria-label={`Ejecutar acción: ${button.text}`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center space-x-2">
+                    {button.icon || defaultIcons.demo}
+                    <span className="tracking-wide">{button.text}</span>
+                  </div>
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-500"></div>
+                </button>
+              )
+            } else {
+              return (
+                <button
+                  key={index}
+                  onClick={button.action}
+                  className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl hover:bg-white/20 hover:border-white/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-white/30 focus:scale-105 active:scale-95 min-w-[200px]"
+                  aria-label={`Ejecutar acción: ${button.text}`}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center space-x-2">
+                    {button.icon || defaultIcons.demo}
+                    <span className="tracking-wide">{button.text}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:scale-110 group-hover:translate-x-1 transition-all duration-300" />
+                  </div>
+                  <div className="absolute inset-0 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+              )
+            }
+          })}
         </div>
 
         {/* Guarantee */}

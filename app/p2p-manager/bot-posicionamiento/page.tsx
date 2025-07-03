@@ -19,6 +19,7 @@ import {
   Settings,
   ArrowUp
 } from 'lucide-react'
+import Image from 'next/image'
 
 // Componentes compartidos
 import HeroSection from '../components/shared/HeroSection'
@@ -38,8 +39,8 @@ export default function BotPosicionamientoPage() {
     titleHighlight: "Automático 24/7",
     titleEnd: "con 3 Modos Inteligentes",
     description: "Automatiza completamente la actualización de precios en tus anuncios P2P. Conservador, Agresivo o Precio Fijo. Mantén siempre la mejor posición sin intervención manual.",
-    primaryCta: "Ver Bot en Acción",
-    secondaryCta: "Descargar Estrategias",
+    primaryCta: "Ver Demo Personalizada",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "24/7", label: "Operación Continua" },
       { value: "3", label: "Modos Inteligentes" },
@@ -170,16 +171,16 @@ export default function BotPosicionamientoPage() {
     description: "Únete a traders que ya generan +45% más ventas con nuestro bot inteligente. Configuración en menos de 30 minutos.",
     buttons: [
       {
-        text: "Ver Bot en Acción",
+        text: "Ver Demo Personalizada",
         action: () => setShowForm(true),
         variant: 'primary' as const,
         icon: <Play className="w-5 h-5" />
       },
       {
-        text: "Consultoría de Estrategia",
-        action: () => window.open(process.env.NEXT_PUBLIC_CALENDLY_URL, '_blank'),
+        text: "Registrarte Gratis",
+        action: () => window.open('https://app.silver5ai.com/register', '_blank'),
         variant: 'secondary' as const,
-        icon: <Calendar className="w-5 h-5" />
+        icon: <CheckCircle className="w-5 h-5" />
       }
     ],
     urgency: "🚀 Setup Express: 30 minutos",
@@ -195,7 +196,7 @@ export default function BotPosicionamientoPage() {
   }
 
   const handleSecondaryAction = () => {
-    window.open('/recursos/estrategias-bot-posicionamiento.pdf', '_blank')
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   return (
@@ -215,60 +216,50 @@ export default function BotPosicionamientoPage() {
         stats={heroData.stats}
         heroVisual={
           <div className="relative">
-            {/* Bot Dashboard Mockup */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-silver5-bot/20 rounded-lg p-6 shadow-2xl">
-              <div className="flex items-center mb-4">
-                <Bot className="w-6 h-6 text-silver5-bot mr-2" />
-                <div className="text-lg font-semibold text-white">Bot de Posicionamiento</div>
-                <div className="ml-auto">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-silver5-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-silver5-green-400">Activo</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Bot Status */}
-              <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-silver5-bot/20 rounded-lg p-3">
-                  <div className="text-xs text-gray-400 mb-1">Posición Actual</div>
-                  <div className="text-lg font-bold text-silver5-bot">#2</div>
-                  <div className="text-xs text-silver5-green-400">↑ Subiendo</div>
-                </div>
-                <div className="bg-silver5-ai/20 rounded-lg p-3">
-                  <div className="text-xs text-gray-400 mb-1">Órdenes Activas</div>
-                  <div className="text-lg font-bold text-silver5-ai">12</div>
-                  <div className="text-xs text-silver5-orders">En proceso</div>
-                </div>
-              </div>
-              
-              {/* Recent Actions */}
-              <div className="space-y-2">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">15:23</span>
-                  <span className="text-silver5-bot">Orden actualizada</span>
-                  <TrendingUp className="w-4 h-4 text-silver5-green-400" />
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">15:21</span>
-                  <span className="text-silver5-ai">Precio ajustado</span>
-                  <Zap className="w-4 h-4 text-silver5-orders" />
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-400">15:19</span>
-                  <span className="text-silver5-chats">Posición mejorada</span>
-                  <ArrowUp className="w-4 h-4 text-silver5-green-400" />
+            {/* Binance Integration Badge - Más grande y llamativo */}
+            <div className="absolute -top-6 -right-0 z-10 bg-gradient-to-br from-silver5-bot/20 to-silver5-ai/20 backdrop-blur-sm border-2 border-silver5-bot/40 rounded-full p-4 hover:scale-110 hover:border-silver5-bot/60 transition-all duration-300 shadow-lg hover:shadow-silver5-bot/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={60}
+                height={60}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
+            {/* Bots Laptop Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/bots-laptop.png"
+                alt="Bot de Posicionamiento Dashboard - Automatización de precios P2P Binance"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Overlay con información adicional - Más prominente */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={100}
+                    height={25}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-base font-semibold">Bot de Posicionamiento</span>
                 </div>
               </div>
             </div>
             
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-full flex items-center justify-center shadow-lg">
-              <TrendingUp className="w-8 h-8 text-white" />
+            {/* Floating Elements específicos para Bot */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-full flex items-center justify-center shadow-lg animate-pulse">
+              <Bot className="w-8 h-8 text-white" />
             </div>
             
             <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-full flex items-center justify-center shadow-lg">
-              <Zap className="w-6 h-6 text-white" />
+              <TrendingUp className="w-6 h-6 text-white" />
             </div>
           </div>
         }

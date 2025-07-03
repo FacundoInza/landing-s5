@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Instagram, User, ArrowRight, ChevronDown } from 'lucide-react'
+import { Code, Shield, Bot, Box, Cpu, Mail, MapPin, Clock, Twitter, Linkedin, Github, Instagram, User, ArrowRight, ChevronDown, Users, MessageSquare, ClipboardList, Calendar } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { RegisterButton } from '@/components/RegisterButton'
 import { useLanguage } from './contexts/language-context'
@@ -18,7 +18,7 @@ export default function Home() {
   const t = translations[language]
 
   // Estado para la imagen seleccionada
-  const [selectedImage, setSelectedImage] = useState(t.useCases.cases[0].image);
+  const [selectedImage, setSelectedImage] = useState('/silver-laptop.png');
   
   // Estado para acordeones de FAQ
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -137,12 +137,12 @@ export default function Home() {
       <HeroSection
         title={
           <>
-            <span className="text-silver5-cyan-500 bg-gradient-to-r from-silver5-cyan-400 to-silver5-chats bg-clip-text text-transparent">Soluciones</span>{' '}
-            <span className="text-silver5-gray-900">de automatización financiera</span>{' '}
-            <span className="text-silver5-cyan-500 bg-gradient-to-r from-silver5-cyan-400 to-silver5-chats bg-clip-text text-transparent">para VASPs</span>
+            <span className="text-silver5-gray-900">Soluciones de automatización</span>{' '}
+            <span className="text-silver5-cyan-500 bg-gradient-to-r from-silver5-cyan-400 to-silver5-chats bg-clip-text text-transparent">financiera</span>{' '}
+            <span className="text-silver5-gray-900">para VASPs</span>
           </>
         }
-        subtitle={"Automatiza, escala y cumple con la regulación: la plataforma líder para operaciones P2P y VASPs en LATAM."}
+        subtitle={"Especialistas en automatización de procesos críticos para proveedores de servicios de activos virtuales (VASPs), integrando Binance y otras plataformas con sistemas de compliance y gestión."}
         primaryButton={{
           text: 'Regístrate gratis',
           href: 'https://app.silver5ai.com/register',
@@ -152,52 +152,106 @@ export default function Home() {
         secondaryButton={{
           text: 'Ponerse en contacto',
           href: calendlyUrl,
-          icon: <ArrowRight className="w-5 h-5" />,
+          icon: <Calendar className="w-5 h-5" />,
           variant: 'secondary',
         }}
+        image={
+          <div className="relative">
+            {/* Binance Integration Badge */}
+            <div className="absolute -top-4 -right-4 z-10 bg-gradient-to-br from-silver5-cyan-400/20 to-silver5-navy/20 backdrop-blur-sm border-2 border-silver5-cyan-400/40 rounded-full p-3 hover:scale-110 hover:border-silver5-cyan-400/60 transition-all duration-300 shadow-lg hover:shadow-silver5-cyan-400/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={50}
+                height={50}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
+            {/* Silver Laptop Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/silver-laptop.png"
+                alt="P2P Manager Dashboard - Plataforma integral para VASPs"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              
+              {/* Overlay con información */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={80}
+                    height={20}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-sm font-semibold">P2P Manager</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Floating Elements */}
+            <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-silver5-cyan-400 to-silver5-navy rounded-full flex items-center justify-center shadow-lg animate-pulse">
+              <Shield className="w-6 h-6 text-white" />
+            </div>
+            
+            <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-green-400 to-silver5-cyan-400 rounded-full flex items-center justify-center shadow-lg">
+              <Bot className="w-8 h-8 text-white" />
+            </div>
+          </div>
+        }
       />
 
-      {/* Servicios Section */}
+      {/* Módulos P2P Manager Section */}
       <section id="servicios" className="py-24 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center mb-16">
             <div className="inline-block px-3 py-1 rounded-full bg-silver5-cyan-400/10 border border-silver5-cyan-400/20 text-silver5-cyan-400 text-sm font-medium mb-4">
-              Nuestros Servicios
-                  </div>
-            <h2 className="text-4xl font-bold mb-6">{t.services?.title}</h2>
+              Módulos P2P Manager
+            </div>
+            <h2 className="text-4xl font-bold mb-6">Soluciones Especializadas para VASPs</h2>
             <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-              Soluciones especializadas que impulsan la innovación y eficiencia en el sector financiero.
+              Plataforma integral que automatiza cada aspecto de tu operación P2P con módulos especializados y compliance automático.
             </p>
-                  </div>
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Code className="h-10 w-10 text-silver5-cyan-400" />,
-                title: t.services?.custom?.title,
-                description: t.services?.custom?.description,
-                details: t.services?.custom?.details,
-                color: 'from-silver5-cyan-400'
+                icon: <Users className="h-10 w-10 text-silver5-kyc" />,
+                title: "Gestión de Clientes",
+                description: "KYC automatizado con integración Didit. Verificación en 2 minutos.",
+                details: ["Verificación KYC en 2min", "Integración Didit nativa", "Compliance automático", "Screening AML 24/7"],
+                color: 'from-silver5-kyc',
+                link: '/p2p-manager/gestion-clientes'
               },
               {
-                icon: <Cpu className="h-10 w-10 text-silver5-purple-400" />,
-                title: t.services?.mobile?.title,
-                description: t.services?.mobile?.description,
-                details: t.services?.mobile?.details,
-                color: 'from-silver5-purple-400'
+                icon: <Bot className="h-10 w-10 text-silver5-bot" />,
+                title: "Bot de Posicionamiento",
+                description: "Trading automático P2P con algoritmos avanzados de Binance.",
+                details: ["Trading 24/7 automatizado", "Algoritmos optimizados", "Gestión de riesgo", "Análisis de mercado"],
+                color: 'from-silver5-bot',
+                link: '/p2p-manager/bot-posicionamiento'
               },
               {
-                icon: <Bot className="h-10 w-10 text-silver5-green-400" />,
-                title: t.services?.ai?.title,
-                description: t.services?.ai?.description,
-                details: t.services?.ai?.details,
-                color: 'from-silver5-green-400'
+                icon: <ClipboardList className="h-10 w-10 text-silver5-orders" />,
+                title: "Gestión de Órdenes",
+                description: "Control centralizado de todas tus operaciones P2P en tiempo real.",
+                details: ["Dashboard unificado", "Seguimiento en tiempo real", "Automatización de flujos", "Reportes avanzados"],
+                color: 'from-silver5-orders',
+                link: '/p2p-manager/gestion-ordenes'
               },
               {
-                icon: <Box className="h-10 w-10 text-silver5-yellow-400" />,
-                title: t.services?.cloudMigration?.title,
-                description: t.services?.cloudMigration?.description,
-                details: t.services?.cloudMigration?.details,
-                color: 'from-silver5-yellow-400'
+                icon: <MessageSquare className="h-10 w-10 text-silver5-chats" />,
+                title: "Chats Centralizados",
+                description: "Comunicación unificada con clientes y soporte automatizado.",
+                details: ["Chat unificado", "Respuestas automáticas", "Historial completo", "Soporte 24/7"],
+                color: 'from-silver5-chats',
+                link: '/p2p-manager/chats-centralizados'
               }
             ].map((service, index) => (
               <div 
@@ -211,7 +265,7 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-gray-400 mb-4">{service.description}</p>
                 {service.details && service.details.length > 0 && (
-                  <ul className="space-y-2 text-sm text-gray-400">
+                  <ul className="space-y-2 text-sm text-gray-400 mb-6">
                     {service.details.map((item, idx) => (
                       <li key={idx} className="flex items-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-silver5-cyan-400 mr-2"></div>
@@ -220,9 +274,13 @@ export default function Home() {
                     ))}
                   </ul>
                 )}
-                <Link href={calendlyUrl} className="mt-6 inline-block">
-                  <Button variant="outline" className="border-white/20 hover:border-silver5-cyan-400 hover:bg-white/10 rounded-full transition-all duration-300">
-                    Explorar
+                <Link href={service.link} className="mt-6 inline-block">
+                  <Button 
+                    variant="outline" 
+                    className="border-white/20 hover:border-silver5-cyan-400 hover:bg-white/10 rounded-full transition-all duration-300 group/btn"
+                  >
+                    <span className="mr-2">Explorar módulo</span>
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </div>
@@ -234,14 +292,30 @@ export default function Home() {
       {/* Casos de Uso para VASPs Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-6">{t.useCases.title}</h2>
+          <h2 className="text-3xl font-bold text-center mb-6">Casos de Uso P2P Manager</h2>
           <p className="text-gray-400 text-center max-w-3xl mx-auto mb-16">
             Soluciones especializadas para proveedores de servicios de activos virtuales que automatizan procesos críticos y garantizan el cumplimiento normativo.
           </p>
           <div className="flex flex-col lg:flex-row gap-8 items-center mb-16">
             <div className="w-full lg:w-1/2 order-2 lg:order-1">
               <div className="grid grid-cols-1 gap-4">
-                {t.useCases.cases.map((useCase, index) => (
+                {[
+                  {
+                    title: "KYC Automatizado con Didit",
+                    description: "Verificación de identidad en 2 minutos con compliance automático y screening AML 24/7.",
+                    image: '/KYC-clients.png'
+                  },
+                  {
+                    title: "Trading P2P Optimizado",
+                    description: "Bots inteligentes que ejecutan operaciones 24/7 con algoritmos avanzados de posicionamiento.",
+                    image: '/bots-laptop.png'
+                  },
+                  {
+                    title: "Gestión Centralizada",
+                    description: "Control total de órdenes, chats y clientes desde un dashboard unificado en tiempo real.",
+                    image: '/orders-laptop.png'
+                  }
+                ].map((useCase, index) => (
                   <div
                     key={index}
                     className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 transform transition-all duration-300 hover:scale-105 cursor-pointer hover:border-silver5-cyan-400/30 ${selectedImage === useCase.image ? 'border-silver5-cyan-400 bg-white/10' : ''}`}
@@ -270,244 +344,45 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-red-500"></div>
                       <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
                       <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                </div>
-                    <div className="mx-auto text-sm text-gray-400">vasp.silver5ai.com</div>
-                </div>
-                  
-                  {/* Contenido dinámico según el caso de uso seleccionado */}
-                  <div className="p-4">
-                    {selectedImage === '/lead-2.png' && (
-                      <>
-                        {/* Integración Multi-Exchange */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <div className="flex items-center">
-                              <div className="w-6 h-6 rounded-full bg-silver5-cyan-400 flex items-center justify-center mr-2">
-                                <span className="text-xs font-bold text-gray-900">S5</span>
-              </div>
-                              <div className="text-silver5-cyan-400 font-medium">Integración Multi-Exchange</div>
-            </div>
-                            <div className="bg-green-500 text-xs px-2 py-1 rounded-full text-white">Conectado</div>
-          </div>
-          </div>
-                        
-                        {/* Panel de Exchanges */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <div className="text-white font-medium">Exchanges Conectados</div>
-                            <div className="bg-silver5-cyan-400 text-xs px-2 py-0.5 rounded-full text-gray-900">3</div>
-        </div>
-                          
-                          {/* Lista de exchanges */}
-                          <div className="space-y-2 mt-3">
-                            <div className="bg-gray-900 p-3 rounded-md border border-gray-700">
-                              <div className="flex justify-between items-center">
-                                <div className="flex items-center">
-                                  <div className="text-silver5-yellow-400 mr-2">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="currentColor"/>
-                                      <path d="M17 11h-4V7c0-.55-.45-1-1-1s-1 .45-1 1v4H7c-.55 0-1 .45-1 1s.45 1 1 1h4v4c0 .55.45 1 1 1s1-.45 1-1v-4h4c.55 0 1-.45 1-1s-.45-1-1-1z" fill="currentColor"/>
-                                    </svg>
-                                  </div>
-                                  <div className="font-medium">Binance</div>
-                                </div>
-                                <div className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">
-                                  Sincronizado
-                                </div>
-                              </div>
-                              <div className="mt-2 text-xs text-gray-400">
-                                Última sincronización: hace 5 minutos
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-900 p-3 rounded-md border border-gray-700">
-                              <div className="flex justify-between items-center">
-                                <div className="flex items-center">
-                                  <div className="text-blue-400 mr-2">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <circle cx="12" cy="12" r="10" fill="currentColor"/>
-                                      <path d="M8 12L11 15L16 9" stroke="white" strokeWidth="2"/>
-                                    </svg>
-                                  </div>
-                                  <div className="font-medium">Coinbase</div>
-                                </div>
-                                <div className="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded-full">
-                                  Sincronizado
-                                </div>
-                              </div>
-                              <div className="mt-2 text-xs text-gray-400">
-                                Última sincronización: hace 10 minutos
-                              </div>
-                            </div>
-                            
-                            <div className="bg-gray-900 p-3 rounded-md border border-gray-700">
-                              <div className="flex justify-between items-center">
-                                <div className="flex items-center">
-                                  <div className="text-red-400 mr-2">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                      <path d="M6 6L18 18M6 18L18 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                                    </svg>
-                                  </div>
-                                  <div className="font-medium">Kraken</div>
-                                </div>
-                                <div className="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded-full">
-                                  Reconectando
-                                </div>
-                              </div>
-                              <div className="mt-2 text-xs text-gray-400">
-                                Última sincronización: hace 1 hora
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                    
-                    {selectedImage === '/lead-1.png' && (
-                      <>
-                        {/* Compliance Automatizado */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <div className="flex items-center">
-                              <div className="w-6 h-6 rounded-full bg-silver5-cyan-400 flex items-center justify-center mr-2">
-                                <span className="text-xs font-bold text-gray-900">S5</span>
-                              </div>
-                              <div className="text-silver5-cyan-400 font-medium">Compliance Automatizado</div>
-                            </div>
-                            <div className="bg-green-500 text-xs px-2 py-1 rounded-full text-white">Activo</div>
-                          </div>
-                        </div>
-                        
-                        {/* Panel de KYC/AML */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-3">
-                            <div className="text-white font-medium">Verificaciones KYC</div>
-                            <div className="flex items-center">
-                              <div className="bg-green-500 w-2 h-2 rounded-full mr-1"></div>
-                              <span className="text-xs text-gray-400">En línea</span>
-                            </div>
-                          </div>
-                          
-                          <div className="grid grid-cols-3 gap-2 mb-3">
-                            <div className="bg-gray-900 p-2 rounded-md text-center">
-                              <div className="text-2xl font-bold text-white">24</div>
-                              <div className="text-xs text-gray-400">Pendientes</div>
-                            </div>
-                            <div className="bg-gray-900 p-2 rounded-md text-center">
-                              <div className="text-2xl font-bold text-green-400">156</div>
-                              <div className="text-xs text-gray-400">Aprobados</div>
-                            </div>
-                            <div className="bg-gray-900 p-2 rounded-md text-center">
-                              <div className="text-2xl font-bold text-red-400">8</div>
-                              <div className="text-xs text-gray-400">Rechazados</div>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-gray-900 p-3 rounded-md border border-gray-700">
-                            <div className="flex justify-between items-center mb-2">
-                              <div className="text-white font-medium">Alertas AML</div>
-                              <div className="bg-red-500 text-xs px-2 py-0.5 rounded-full text-white">3 nuevas</div>
-                            </div>
-                            
-                            <div className="space-y-2 mt-2">
-                              <div className="flex justify-between items-center text-xs">
-                                <div className="flex items-center">
-                                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
-                                  <span>Transacción sospechosa #45892</span>
-                                </div>
-                                <span className="text-gray-400">Hace 10 min</span>
-                              </div>
-                              <div className="flex justify-between items-center text-xs">
-                                <div className="flex items-center">
-                                  <div className="w-2 h-2 bg-red-500 rounded-full mr-2"></div>
-                                  <span>Coincidencia en lista de sanciones</span>
-                                </div>
-                                <span className="text-gray-400">Hace 25 min</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )}
-                    
-                    {selectedImage === '/lead-3.png' && (
-                      <>
-                        {/* Trading P2P Optimizado */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <div className="flex items-center">
-                              <div className="w-6 h-6 rounded-full bg-silver5-cyan-400 flex items-center justify-center mr-2">
-                                <span className="text-xs font-bold text-gray-900">S5</span>
-                              </div>
-                              <div className="text-silver5-cyan-400 font-medium">Trading P2P Optimizado</div>
-                            </div>
-                            <div className="bg-green-500 text-xs px-2 py-1 rounded-full text-white">Activo</div>
-                          </div>
-                        </div>
-                        
-                        {/* Panel de Rendimiento */}
-                        <div className="bg-gray-800 p-3 rounded-md mb-3">
-                          <div className="flex justify-between items-center mb-2">
-                            <div className="text-white font-medium">Rendimiento de Bots</div>
-                            <div className="text-xs text-silver5-cyan-400">Últimas 24h</div>
-                          </div>
-                          
-                          <div className="grid grid-cols-2 gap-3 mb-3">
-                            <div className="bg-gray-900 p-3 rounded-md">
-                              <div className="text-xs text-gray-400 mb-1">Operaciones</div>
-                              <div className="text-xl font-bold">32</div>
-                            </div>
-                            <div className="bg-gray-900 p-3 rounded-md">
-                              <div className="text-xs text-gray-400 mb-1">Volumen</div>
-                              <div className="text-xl font-bold text-silver5-cyan-400">$5,240</div>
-                            </div>
-                          </div>
-                          
-                          <div className="bg-gray-900 p-3 rounded-md">
-                            <div className="text-xs text-gray-400 mb-2">Actividad por hora</div>
-                            <div className="flex h-16 items-end space-x-1">
-                              {[40, 65, 35, 50, 75, 60, 80, 45, 55, 70, 30, 65].map((height, i) => (
-                                <div 
-                                  key={i} 
-                                  className="bg-silver5-cyan-400 rounded-sm w-full" 
-                                  style={{ height: `${height}%` }}
-                                ></div>
-                              ))}
-                </div>
-                            <div className="flex justify-between mt-1 text-xs text-gray-500">
-                              <span>00:00</span>
-                              <span>12:00</span>
-                              <span>23:59</span>
+                    </div>
+                    <div className="mx-auto text-sm text-gray-400">app.silver5ai.com</div>
                   </div>
-                          </div>
-                        </div>
-                        
-                        {/* Monedas activas */}
-                        <div className="bg-gray-800 p-3 rounded-md">
-                          <div className="text-white font-medium mb-2">Monedas Activas</div>
-                          <div className="flex space-x-2">
-                            <div className="bg-yellow-400/20 text-yellow-400 px-2 py-1 rounded-full text-xs">
-                              USDT
-                            </div>
-                            <div className="bg-blue-400/20 text-blue-400 px-2 py-1 rounded-full text-xs">
-                              BTC
-                            </div>
-                            <div className="bg-purple-400/20 text-purple-400 px-2 py-1 rounded-full text-xs">
-                              ETH
-                            </div>
-                            <div className="bg-green-400/20 text-green-400 px-2 py-1 rounded-full text-xs">
-                              BUSD
-                            </div>
-                          </div>
-                        </div>
-                      </>
-                    )}
+                  
+                  {/* Imagen dinámica según el caso de uso seleccionado */}
+                  <div className="relative">
+                    <Image
+                      src={selectedImage}
+                      alt="P2P Manager Dashboard"
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                    />
+                    
+                    {/* Overlay con información */}
+                    <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-3 border border-white/10">
+                      <div className="flex items-center space-x-2">
+                        <Image
+                          src="/Binance-3.svg"
+                          alt="Powered by Binance"
+                          width={60}
+                          height={15}
+                          className="opacity-90"
+                        />
+                        <div className="h-4 w-px bg-white/40"></div>
+                        <span className="text-white text-sm font-semibold">
+                          {selectedImage === '/KYC-clients.png' && 'KYC Automatizado'}
+                          {selectedImage === '/bots-laptop.png' && 'Bot Trading P2P'}
+                          {selectedImage === '/orders-laptop.png' && 'Gestión Centralizada'}
+                          {selectedImage === '/silver-laptop.png' && 'P2P Manager'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
                 {/* Decorative elements */}
                 <div className="absolute -bottom-4 -left-4 bg-purple-500 text-white px-3 py-1 rounded-md text-sm font-medium">
-                  Silver5 VASP
+                  Silver5 P2P Manager
                 </div>
                 <div className="absolute -top-2 -right-2 animate-pulse">
                   <div className="text-silver5-cyan-400 opacity-70 text-4xl font-bold">₿</div>
@@ -516,11 +391,20 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center">
-                  <Link href={calendlyUrl}>
-              <Button className="bg-silver5-cyan-400 hover:bg-silver5-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300">
-                Ver Demo
-                    </Button>
-                  </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="https://app.silver5ai.com/register">
+                <Button className="bg-silver5-cyan-400 hover:bg-silver5-cyan-500 text-gray-900 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 shadow-lg shadow-silver5-cyan-400/20 hover:shadow-silver5-cyan-400/40 hover:scale-105 flex items-center gap-2">
+                  <User className="w-5 h-5" />
+                  Regístrate gratis
+                </Button>
+              </Link>
+              <Link href={calendlyUrl}>
+                <Button variant="outline" className="border-white/20 hover:bg-white/10 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2">
+                  <Calendar className="w-5 h-5" />
+                  Ver Demo
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

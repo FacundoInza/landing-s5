@@ -53,7 +53,7 @@ export default function HeroSection({
   stats
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-silver5-cyan-500/15 via-transparent to-transparent overflow-hidden">
+    <section className="py-20 relative min-h-screen flex items-center justify-center bg-gradient-to-b from-silver5-cyan-500/15 via-transparent to-transparent overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse" />
@@ -65,11 +65,7 @@ export default function HeroSection({
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <div className="text-center lg:text-left">
-            {badge && (
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-6">
-                <span className="text-sm font-medium text-white">{badge}</span>
-              </div>
-            )}
+
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               {title}{' '}
@@ -86,26 +82,37 @@ export default function HeroSection({
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 items-center sm:items-start">
+              {/* Botón Primario */}
+              <button
                 onClick={onPrimaryCta}
-                size="lg"
-                className="bg-gradient-to-r from-silver5-chats to-silver5-orders hover:from-silver5-orders hover:to-silver5-navy text-white font-semibold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group"
+                className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-xl shadow-lg shadow-yellow-400/25 hover:shadow-yellow-400/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:scale-105 active:scale-95 min-w-[200px]"
+                aria-label="Abrir formulario para ver demo personalizada"
               >
-                <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                {primaryCta}
-              </Button>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center space-x-2">
+                  <Play className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="tracking-wide">{primaryCta}</span>
+                </div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-500"></div>
+              </button>
 
+              {/* Botón Secundario */}
               {secondaryCta && onSecondaryCta && (
-                <Button
-                  onClick={onSecondaryCta}
-                  variant="outline"
-                  size="lg"
-                  className="border-silver5-chats/30 text-white hover:bg-silver5-chats/10 backdrop-blur-sm px-8 py-4 rounded-lg transition-all duration-300 group"
+                <a
+                  href="https://app.silver5ai.com/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl hover:bg-white/20 hover:border-white/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-white/30 focus:scale-105 active:scale-95 min-w-[200px]"
+                  aria-label="Ir a página de registro gratuito"
                 >
-                  {secondaryCta}
-                  <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="relative flex items-center space-x-2">
+                    <ChevronRight className="w-4 h-4 group-hover:scale-110 group-hover:translate-x-1 transition-all duration-300" />
+                    <span className="tracking-wide">{secondaryCta}</span>
+                  </div>
+                  <div className="absolute inset-0 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </a>
               )}
             </div>
 

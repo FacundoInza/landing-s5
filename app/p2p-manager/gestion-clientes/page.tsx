@@ -18,6 +18,7 @@ import {
   Database,
   Zap
 } from 'lucide-react'
+import Image from 'next/image'
 
 // Componentes compartidos
 import HeroSection from '../components/shared/HeroSection'
@@ -34,21 +35,21 @@ export default function GestionClientesPage() {
   const heroData = {
     badge: "Módulo Especializado P2P Manager",
     title: "Gestión de Clientes",
-    titleHighlight: "KYC/AML Automatizado",
-    titleEnd: "con Didit",
-    description: "Sistema completo de gestión de clientes P2P con verificación KYC/AML automatizada mediante Didit. Cumplimiento regulatorio sin fricción para tus usuarios.",
-    primaryCta: "Ver Sistema KYC",
-    secondaryCta: "Integración Didit",
+    titleHighlight: "KYC Automatizado",
+    titleEnd: "con Integración Didit",
+    description: "Verificación KYC completa en 2 minutos con integración nativa de Didit. Cumplimiento regulatorio automático, screening AML y onboarding sin fricción para tus clientes P2P.",
+    primaryCta: "Regístrate gratis",
+    secondaryCta: "Ponerse en contacto",
     stats: [
-      { value: "2 min", label: "Verificación KYC" },
-      { value: "99.8%", label: "Precisión AML" },
-      { value: "24/7", label: "Compliance" }
+      { value: "2min", label: "Verificación KYC" },
+      { value: "100%", label: "Compliance Automático" },
+      { value: "0€", label: "Costo Adicional" }
     ]
   }
 
   const painPointsData = {
     title: "¿Cumplimiento Regulatorio Complejo?",
-    subtitle: "Los desafíos de KYC/AML manual en operaciones P2P",
+    subtitle: "Los desafíos de KYC manual en operaciones P2P",
     description: "El cumplimiento regulatorio no puede ser opcional. Los procesos manuales son lentos, costosos y propensos a errores que pueden costar millones en multas.",
     painPoints: [
       {
@@ -57,7 +58,7 @@ export default function GestionClientesPage() {
         icon: <Clock className="w-6 h-6 text-red-400" />
       },
       {
-        problem: "Verificación AML inconsistente",
+        problem: "Verificación KYC inconsistente",
         consequence: "Riesgo de multas regulatorias y pérdida de licencias",
         icon: <AlertTriangle className="w-6 h-6 text-red-400" />
       },
@@ -72,11 +73,11 @@ export default function GestionClientesPage() {
         icon: <FileCheck className="w-6 h-6 text-red-400" />
       }
     ],
-    solutionTitle: "KYC/AML Automatizado: Compliance Inteligente",
-    solutionDescription: "Integración completa con Didit para verificación automática de identidad y screening AML en tiempo real.",
+    solutionTitle: "KYC Automatizado: Compliance Inteligente",
+    solutionDescription: "Integración completa con Didit para verificación automática de identidad y screening KYC en tiempo real.",
     solutionPoints: [
       "Verificación KYC en menos de 2 minutos",
-      "Screening AML automático con 99.8% precisión",
+      "Screening KYC automático con 99.8% precisión",
       "Base de datos unificada de clientes",
       "Reportes regulatorios automáticos",
       "Cumplimiento continuo 24/7"
@@ -84,7 +85,7 @@ export default function GestionClientesPage() {
   }
 
   const benefitsData = {
-    title: "Resultados del KYC/AML Automatizado",
+    title: "Resultados del KYC Automatizado",
     subtitle: "Impacto medible desde el primer día",
     benefits: [
       {
@@ -96,7 +97,7 @@ export default function GestionClientesPage() {
         highlight: true
       },
       {
-        title: "Precisión AML",
+        title: "Precisión KYC",
         description: "Detección automática de riesgos con machine learning",
         value: "99.8%",
         metric: "Precisión",
@@ -134,7 +135,7 @@ export default function GestionClientesPage() {
   }
 
   const featuresData = {
-    title: "Características del Sistema KYC/AML",
+    title: "Características del Sistema KYC",
     subtitle: "Tecnología Didit integrada para máximo compliance",
     benefits: [
       {
@@ -143,8 +144,8 @@ export default function GestionClientesPage() {
         icon: <UserCheck className="w-8 h-8" />
       },
       {
-        title: "Screening AML Automático",
-        description: "Verificación contra listas de sanciones y PEPs en tiempo real",
+        title: "Screening KYC Automático",
+        description: "Verificación automática de identidad y documentos en tiempo real",
         icon: <Shield className="w-8 h-8" />
       },
       {
@@ -161,36 +162,36 @@ export default function GestionClientesPage() {
   }
 
   const ctaData = {
-    title: "¿Listo para Compliance Automático?",
-    description: "Únete a VASPs que ya procesan 10,000+ verificaciones KYC mensuales de forma automática. Integración Didit incluida.",
+    title: "¿Listo para Automatizar tu KYC sin Costos Adicionales?",
+    description: "Únete a VASPs que ya procesan verificaciones KYC en minutos con integración Didit incluida. Implementación inmediata.",
     buttons: [
       {
-        text: "Ver Sistema KYC",
-        action: () => setShowForm(true),
+        text: "Regístrate gratis",
+        action: () => window.open('https://app.silver5ai.com/register', '_blank'),
         variant: 'primary' as const,
-        icon: <Play className="w-5 h-5" />
+        icon: <ArrowRight className="w-5 h-5" />
       },
       {
-        text: "Consultoría Compliance",
-        action: () => window.open(process.env.NEXT_PUBLIC_CALENDLY_URL, '_blank'),
+        text: "Ponerse en contacto",
+        action: () => setShowForm(true),
         variant: 'secondary' as const,
         icon: <Calendar className="w-5 h-5" />
       }
     ],
-    urgency: "🛡️ Compliance Inmediato: Sin riesgo regulatorio",
-    guarantee: "Garantía de cumplimiento 100% desde día 1",
-    testimonialQuote: "Con el sistema KYC automatizado, reducimos el tiempo de verificación de 3 días a 2 minutos. Nuestros usuarios están encantados y cumplimos 100% con regulaciones.",
-    testimonialAuthor: "Ana Martínez",
-    testimonialCompany: "FinTech Regulada México"
+    urgency: "⚡ Integración Didit: Activación inmediata",
+    guarantee: "KYC gratuito incluido - sin costos ocultos",
+    testimonialQuote: "La integración con Didit nos ahorró miles de euros en costos de KYC. Ahora procesamos verificaciones en 2 minutos en lugar de días.",
+    testimonialAuthor: "Patricia Morales",
+    testimonialCompany: "FinTech Leader España"
   }
 
   // Funciones para las acciones
   const handlePrimaryAction = () => {
-    setShowForm(true)
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   const handleSecondaryAction = () => {
-    window.open('/recursos/integracion-didit.pdf', '_blank')
+    setShowForm(true)
   }
 
   return (
@@ -210,72 +211,69 @@ export default function GestionClientesPage() {
         stats={heroData.stats}
         heroVisual={
           <div className="relative">
-            {/* KYC Dashboard Mockup */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-silver5-kyc/20 rounded-lg p-6 shadow-2xl">
-              <div className="flex items-center mb-4">
-                <Users className="w-6 h-6 text-silver5-kyc mr-2" />
-                <div className="text-lg font-semibold text-white">Sistema KYC</div>
-                <div className="ml-auto">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-silver5-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-silver5-green-400">Didit Conectado</span>
-                  </div>
-                </div>
+            {/* Binance Integration Badge - Más grande y llamativo */}
+            <div className="absolute -top-6 -right-0 z-10 bg-gradient-to-br from-silver5-kyc/20 to-silver5-navy/20 backdrop-blur-sm border-2 border-silver5-kyc/40 rounded-full p-4 hover:scale-110 hover:border-silver5-kyc/60 transition-all duration-300 shadow-lg hover:shadow-silver5-kyc/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={60}
+                height={60}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
               </div>
               
-              {/* KYC Status */}
-              <div className="space-y-3">
-                <div className="bg-silver5-kyc/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">Juan Pérez</span>
-                    <span className="text-xs bg-silver5-green-400/20 text-silver5-green-400 px-2 py-1 rounded-full">Verificado</span>
-                  </div>
-                  <div className="text-xs text-gray-400">DNI: 12.345.678 • Nivel: Completo</div>
+            {/* Didit Integration Badge */}
+            <div className="absolute -top-2 left-6 z-10 bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-sm border-2 border-purple-500/40 rounded-full p-3 hover:scale-110 hover:border-purple-500/60 transition-all duration-300 shadow-lg hover:shadow-purple-500/25">
+              <Image
+                src="https://didit.me/icons/logos/didit.svg"
+                alt="Powered by Didit KYC"
+                width={50}
+                height={50}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
                 </div>
                 
-                <div className="bg-silver5-chats/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">María López</span>
-                    <span className="text-xs bg-silver5-orders/20 text-silver5-orders px-2 py-1 rounded-full">En revisión</span>
-                  </div>
-                  <div className="text-xs text-gray-400">DNI: 87.654.321 • Nivel: Básico</div>
-                </div>
-                
-                <div className="bg-silver5-bot/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">Carlos Ruiz</span>
-                    <span className="text-xs bg-silver5-ai/20 text-silver5-ai px-2 py-1 rounded-full">Pendiente</span>
-                  </div>
-                  <div className="text-xs text-gray-400">DNI: 11.222.333 • Nivel: Inicial</div>
-                </div>
-              </div>
-              
-              {/* Stats */}
-              <div className="mt-4 pt-4 border-t border-silver5-kyc/20">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-lg font-bold text-silver5-green-400">156</div>
-                    <div className="text-xs text-gray-400">Verificados</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-silver5-orders">12</div>
-                    <div className="text-xs text-gray-400">En revisión</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-silver5-ai">3</div>
-                    <div className="text-xs text-gray-400">Pendientes</div>
-                  </div>
+            {/* KYC Clients Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/KYC-clients.png"
+                alt="Gestión de Clientes KYC Dashboard - Sistema de verificación automática"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Overlay con información adicional - Más prominente */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={100}
+                    height={25}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <Image
+                    src="https://didit.me/icons/logos/didit.svg"
+                    alt="Didit KYC Integration"
+                    width={80}
+                    height={20}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-base font-semibold">Gestión de Clientes</span>
                 </div>
               </div>
             </div>
             
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-full flex items-center justify-center shadow-lg">
-              <Shield className="w-8 h-8 text-white" />
+            {/* Floating Elements específicos para KYC */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-full flex items-center justify-center shadow-lg animate-pulse">
+              <Users className="w-8 h-8 text-white" />
             </div>
             
             <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-silver5-green-400 to-silver5-kyc rounded-full flex items-center justify-center shadow-lg">
-              <CheckCircle className="w-6 h-6 text-white" />
+              <Shield className="w-6 h-6 text-white" />
             </div>
           </div>
         }
@@ -315,11 +313,21 @@ export default function GestionClientesPage() {
       <section className="py-20 bg-slate-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Integración Completa con Didit
+            <div className="flex items-center justify-center mb-6">
+              <Image
+                src="https://didit.me/icons/logos/didit.svg"
+                alt="Didit Logo"
+                width={120}
+                height={40}
+                className="mr-4"
+              />
+              <div className="h-8 w-px bg-purple-500/40 mx-4"></div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white">
+                Integración Completa
             </h2>
+            </div>
             <p className="text-xl text-gray-300">
-              La plataforma KYC/AML más avanzada de Latinoamérica
+              La plataforma KYC más avanzada de Latinoamérica
             </p>
           </div>
 
@@ -338,8 +346,8 @@ export default function GestionClientesPage() {
                     icon: <FileCheck className="w-6 h-6 text-purple-400" />
                   },
                   {
-                    title: "Screening AML",
-                    description: "Verificación automática contra listas de sanciones y PEPs",
+                    title: "Screening KYC",
+                    description: "Verificación automática de identidad y documentos oficiales",
                     icon: <Shield className="w-6 h-6 text-purple-400" />
                   },
                   {
@@ -363,8 +371,14 @@ export default function GestionClientesPage() {
             
             <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-8 border border-purple-500/20">
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-full mb-6">
-                  <Shield className="w-8 h-8 text-purple-400" />
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-purple-500/20 rounded-full mb-6">
+                  <Image
+                    src="https://didit.me/icons/logos/didit.svg"
+                    alt="Didit Powered"
+                    width={60}
+                    height={60}
+                    className="opacity-90"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Didit Powered</h3>
                 <p className="text-gray-300 mb-6">
@@ -378,10 +392,53 @@ export default function GestionClientesPage() {
                   </div>
                   <div>
                     <div className="text-2xl font-bold text-purple-400">99.8%</div>
-                    <div className="text-sm text-gray-400">Precisión AML</div>
+                    <div className="text-sm text-gray-400">Precisión KYC</div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+
+          {/* Didit Features Showcase */}
+          <div className="mt-16 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-2xl p-8 border border-purple-500/20">
+            <div className="text-center mb-8">
+              <div className="flex items-center justify-center mb-4">
+                <Image
+                  src="https://didit.me/icons/logos/didit.svg"
+                  alt="Didit"
+                  width={100}
+                  height={30}
+                  className="mr-3"
+                />
+                <span className="text-2xl font-bold text-white">+ P2P Manager</span>
+              </div>
+              <p className="text-lg text-gray-300">La combinación perfecta para compliance automático</p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Setup Inmediato",
+                  description: "Integración plug-and-play sin desarrollo adicional",
+                  value: "5 min"
+                },
+                {
+                  title: "Cobertura Global",
+                  description: "Verificación de documentos de +190 países",
+                  value: "190+"
+                },
+                {
+                  title: "Uptime Garantizado",
+                  description: "Disponibilidad 24/7 con SLA empresarial",
+                  value: "99.9%"
+                }
+              ].map((item, index) => (
+                <div key={index} className="text-center p-4 bg-black/20 rounded-lg border border-purple-500/10">
+                  <div className="text-3xl font-bold text-purple-400 mb-2">{item.value}</div>
+                  <h4 className="text-lg font-semibold text-white mb-2">{item.title}</h4>
+                  <p className="text-sm text-gray-400">{item.description}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -22,7 +22,6 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
   const translations = {
     es: {
       services: 'Servicios',
-      botP2P: 'Bot P2P',
       silverP2PManager: 'Silver P2P Manager',
       contact: 'Contacto',
       pricing: 'Precios',
@@ -38,7 +37,6 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
     },
     en: {
       services: 'Services',
-      botP2P: 'P2P Bot',
       silverP2PManager: 'Silver P2P Manager',
       contact: 'Contact',
       pricing: 'Pricing',
@@ -145,17 +143,6 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
                 </div>
               )}
             </div>
-            
-            <Link 
-              href="https://p2p.silver5ai.com" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative px-4 py-2 text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200 group flex items-center rounded-full backdrop-blur-md bg-white/5 border border-white/10 hover:bg-white/10"
-            >
-              <Bot className="w-4 h-4 mr-2 text-silver5-cyan-400" />
-              <span>{t.botP2P}</span>
-              <ExternalLink className="h-3.5 w-3.5 ml-1 text-gray-500" />
-            </Link>
 
             <Link 
               href="/p2p-manager" 
@@ -236,18 +223,6 @@ export function Navbar({ calendlyUrl }: NavbarProps) {
               ))}
             </div>
           </div>
-          
-          <Link
-            href="https://p2p.silver5ai.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block px-3 py-3 rounded-xl text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 flex items-center"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <Bot className="w-4 h-4 mr-2 text-silver5-cyan-400" />
-            {t.botP2P}
-            <ExternalLink className="h-3.5 w-3.5 ml-1 text-gray-500" />
-          </Link>
           
           <Link
             href="/p2p-manager"

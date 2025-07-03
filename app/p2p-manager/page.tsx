@@ -22,6 +22,7 @@ import {
   ChevronDown,
   ChevronUp
 } from 'lucide-react'
+import Image from 'next/image'
 
 // Componentes compartidos
 import HeroSection from './components/shared/HeroSection'
@@ -37,13 +38,13 @@ export default function P2PManagerPage() {
 
   // Datos de la landing principal
   const heroData = {
-    badge: "Plataforma Líder en Gestión P2P",
+    badge: "Integración Oficial con Binance",
     title: "Gestiona múltiples Cuentas Binance",
     titleHighlight: "con un Solo Panel",
     titleEnd: "sin Compartir Credenciales",
     description: "El único sistema que necesitas para escalar tu operación P2P de forma segura. Perfecto para VASPs establecidos y arbitradores que buscan profesionalizar su operación. Equipos de hasta 20+ operadores, reportes automáticos y compliance integrado.",
     primaryCta: "Ver Demo Personalizada",
-    secondaryCta: "",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "50+", label: "VASPs y Arbitradores" },
       { value: "20+", label: "Operadores por Panel" },
@@ -212,13 +213,13 @@ export default function P2PManagerPage() {
         icon: <Play className="w-5 h-5" />
       },
       {
-        text: "Probar 7 Días Gratis",
+        text: "Registrarte Gratis",
         action: () => window.open('https://app.silver5ai.com/register', '_blank'),
         variant: 'secondary' as const,
         icon: <CheckCircle className="w-5 h-5" />
       }
     ],
-    guarantee: "Trial gratuito de 7 días sin tarjeta de crédito",
+    guarantee: "Registro gratuito sin tarjeta de crédito",
     testimonialQuote: "P2P Manager transformó completamente nuestra operación. Pasamos de gestionar 5 cuentas manualmente a 20+ cuentas de forma automatizada.",
     testimonialAuthor: "Mario",
     testimonialCompany: "Nexchange"
@@ -230,8 +231,7 @@ export default function P2PManagerPage() {
   }
 
   const handleSecondaryAction = () => {
-    // Descargar caso de uso o recurso
-    window.open('/recursos/caso-uso-p2p-manager.pdf', '_blank')
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   // Función para manejar acordeones FAQ
@@ -283,30 +283,75 @@ export default function P2PManagerPage() {
         stats={heroData.stats}
         heroVisual={
           <div className="relative">
-            {/* Dashboard mockup */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-white/10 rounded-lg p-6 shadow-2xl">
-              <div className="flex items-center mb-4">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                  </div>
-                <div className="ml-4 text-sm text-gray-400">P2P Manager Dashboard</div>
-                  </div>
-              <div className="space-y-3">
-                <div className="h-4 bg-gradient-to-r from-blue-400 to-green-400 rounded opacity-80"></div>
-                <div className="h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded opacity-60"></div>
-                <div className="h-4 bg-gradient-to-r from-orange-400 to-red-400 rounded opacity-70"></div>
-                <div className="grid grid-cols-3 gap-2 mt-4">
-                  <div className="h-8 bg-blue-500/30 rounded"></div>
-                  <div className="h-8 bg-green-500/30 rounded"></div>
-                  <div className="h-8 bg-purple-500/30 rounded"></div>
+            {/* Binance Integration Badge - Más grande y llamativo */}
+            <div className="absolute -top-6 -right-0 z-10 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 backdrop-blur-sm border-2 border-yellow-400/40 rounded-full p-4 hover:scale-110 hover:border-yellow-400/60 transition-all duration-300 shadow-lg hover:shadow-yellow-400/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={60}
+                height={60}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
+            {/* Silver Laptop Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/silver-laptop.png"
+                alt="P2P Manager Dashboard en laptop - Gestión multicuenta Binance"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Overlay con información adicional - Más prominente */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={100}
+                    height={25}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-base font-semibold">P2P Manager</span>
                 </div>
               </div>
-                  </div>
-                  </div>
+            </div>
+          </div>
         }
       />
+
+      {/* Binance Integration Trust Bar - Más llamativa */}
+      <section className="py-12 bg-gradient-to-r from-yellow-500/10 via-orange-500/10 to-yellow-500/10 border-y-2 border-yellow-500/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row items-center justify-center space-y-6 md:space-y-0 md:space-x-12">
+            <div className="flex items-center space-x-4 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-yellow-500/20">
+              <Image
+                src="/Binance.svg"
+                alt="Binance"
+                width={160}
+                height={40}
+                className="opacity-90"
+              />
+              <div className="h-10 w-px bg-white/30"></div>
+              <div className="text-center">
+                <span className="text-lg font-bold text-white block">Integración Oficial API</span>
+                <span className="text-sm text-yellow-300">Certificado ✓</span>
+              </div>
+            </div>
+            <div className="flex items-center space-x-3 bg-green-500/10 backdrop-blur-sm rounded-xl p-4 border border-green-500/30">
+              <CheckCircle className="w-8 h-8 text-green-400" />
+              <span className="text-base font-semibold text-white">Certificado de Seguridad</span>
+            </div>
+            <div className="flex items-center space-x-3 bg-blue-500/10 backdrop-blur-sm rounded-xl p-4 border border-blue-500/30">
+              <Shield className="w-8 h-8 text-blue-400" />
+              <span className="text-base font-semibold text-white">API Keys Protegidas</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Pain Points Section */}
       <PainPointSection
@@ -323,8 +368,16 @@ export default function P2PManagerPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-silver5-chats/10 rounded-full text-silver5-chats text-sm font-medium mb-4">
-              NUESTROS MÓDULOS
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-yellow-400/15 to-orange-500/15 backdrop-blur-sm rounded-full border-2 border-yellow-400/30 text-silver5-chats text-base font-bold mb-6 hover:scale-105 transition-all duration-300 shadow-lg">
+              <Image
+                src="/Binance-3.svg"
+                alt="Binance"
+                width={80}
+                height={20}
+                className="mr-3 opacity-90"
+              />
+              <div className="h-6 w-px bg-yellow-400/40 mx-2"></div>
+              INTEGRACIÓN NATIVA VERIFICADA
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Todo lo que necesitas para gestionar tu operación P2P
@@ -339,11 +392,20 @@ export default function P2PManagerPage() {
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {/* Fila superior - 3 módulos */}
             <div className="bg-gradient-to-br from-silver5-chats/10 to-silver5-orders/10 border border-silver5-chats/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-silver5-chats/20 rounded-lg flex items-center justify-center">
                   <MessageSquare className="w-6 h-6 text-silver5-chats" />
-          </div>
-        </div>
+                </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Chats Centralizados</h3>
               <p className="text-gray-300 text-sm mb-4">
                 ✓ Gestiona todos los chats desde un panel<br/>
@@ -357,14 +419,23 @@ export default function P2PManagerPage() {
               >
                 Saber más
               </a>
-                  </div>
+            </div>
 
             <div className="bg-gradient-to-br from-silver5-bot/10 to-silver5-ai/10 border border-silver5-bot/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-silver5-bot/20 rounded-lg flex items-center justify-center">
                   <Bot className="w-6 h-6 text-silver5-bot" />
-                  </div>
                 </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Bot de Posicionamiento</h3>
               <p className="text-gray-300 text-sm mb-4">
                 ✓ Actualización automática 24/7<br/>
@@ -378,14 +449,23 @@ export default function P2PManagerPage() {
               >
                 Saber más
               </a>
-                </div>
+            </div>
                 
             <div className="bg-gradient-to-br from-silver5-orders/10 to-silver5-navy/10 border border-silver5-orders/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-silver5-orders/20 rounded-lg flex items-center justify-center">
                   <ClipboardList className="w-6 h-6 text-silver5-orders" />
                 </div>
-          </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Gestión de Órdenes</h3>
               <p className="text-gray-300 text-sm mb-4">
                 ✓ Captura automática 100% de órdenes<br/>
@@ -399,22 +479,33 @@ export default function P2PManagerPage() {
               >
                 Saber más
               </a>
+            </div>
           </div>
-                </div>
                 
           {/* Fila inferior - 2 módulos centrados */}
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-silver5-kyc/10 to-silver5-navy/10 border border-silver5-kyc/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-              <div className="flex items-center mb-4">
-                <div className="w-12 h-12 bg-silver5-kyc/20 rounded-lg flex items-center justify-center">
-                  <Users className="w-6 h-6 text-silver5-kyc" />
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-silver5-kyc/20 rounded-lg flex items-center justify-center">
+                    <Users className="w-6 h-6 text-silver5-kyc" />
+                  </div>
+                  <div className="ml-4">
+                    <div className="bg-silver5-green-400/20 text-silver5-green-400 text-xs px-2 py-1 rounded-full font-semibold">
+                      ✨ 100% GRATUITO
                     </div>
-                <div className="ml-4">
-                  <div className="bg-silver5-green-400/20 text-silver5-green-400 text-xs px-2 py-1 rounded-full font-semibold">
-                    ✨ 100% GRATUITO
+                  </div>
+                </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
                 </div>
               </div>
-          </div>
               <h3 className="text-xl font-bold text-white mb-2">KYC para Clientes</h3>
               <p className="text-gray-300 text-sm mb-4">
                 ✓ Verificación KYC en 2 minutos<br/>
@@ -428,14 +519,23 @@ export default function P2PManagerPage() {
               >
                 Saber más
               </a>
-        </div>
+            </div>
 
             <div className="bg-gradient-to-br from-silver5-ai/10 to-silver5-chats/10 border border-silver5-ai/20 rounded-xl p-6 hover:scale-105 transition-all duration-300">
-              <div className="flex items-center mb-4">
+              <div className="flex items-center justify-between mb-4">
                 <div className="w-12 h-12 bg-silver5-ai/20 rounded-lg flex items-center justify-center">
                   <Brain className="w-6 h-6 text-silver5-ai" />
                 </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
                 </div>
+              </div>
               <h3 className="text-xl font-bold text-white mb-2">Agente IA</h3>
               <p className="text-gray-300 text-sm mb-4">
                 ✓ Respuestas automáticas en 2 segundos<br/>
@@ -449,9 +549,9 @@ export default function P2PManagerPage() {
               >
                 Saber más
               </a>
-              </div>
-                      </div>
-                      </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Preguntas Frecuentes Section con Acordeones */}
@@ -461,10 +561,21 @@ export default function P2PManagerPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Preguntas Frecuentes
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-300 mb-6">
               Resolvemos las dudas más comunes sobre P2P Manager
             </p>
+            <div className="flex items-center justify-center space-x-3 text-base text-gray-300 bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-yellow-400/20">
+              <Image
+                src="/Binance-3.svg"
+                alt="Binance"
+                width={100}
+                height={25}
+                className="opacity-80"
+              />
+              <span>•</span>
+              <span className="font-semibold">Integración Oficial Verificada</span>
             </div>
+          </div>
             
           <div className="space-y-4">
             {faqData.map((faq, index) => (
@@ -485,7 +596,7 @@ export default function P2PManagerPage() {
                     <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                   </div>
                 )}
-                  </div>
+              </div>
             ))}
           </div>
         </div>
@@ -498,26 +609,48 @@ export default function P2PManagerPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Casos de Éxito Reales
             </h2>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-gray-300 mb-6">
               3 VASPs grandes que ya confían en P2P Manager para sus operaciones críticas
             </p>
+            <div className="flex items-center justify-center space-x-2 text-sm text-gray-400">
+              <Image
+                src="/Binance.svg"
+                alt="Binance"
+                width={80}
+                height={20}
+                className="opacity-60"
+              />
+              <span>•</span>
+              <span>Operaciones verificadas en Binance P2P</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Nexchange */}
             <div className="bg-white/5 backdrop-blur-sm border border-silver5-chats/20 rounded-lg p-8">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-                    </div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
                 &ldquo;P2P Manager transformó completamente nuestra operación. Pasamos de gestionar 5 cuentas manualmente a 20+ cuentas de forma automatizada. El ROI fue evidente desde la primera semana.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-chats to-silver5-orders rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">M</span>
-                    </div>
+                </div>
                 <div className="ml-4">
                   <div className="font-semibold text-white">Mario</div>
                   <div className="text-sm text-gray-400">Director de Operaciones - Nexchange</div>
@@ -527,18 +660,29 @@ export default function P2PManagerPage() {
 
             {/* Novudi */}
             <div className="bg-white/5 backdrop-blur-sm border border-silver5-bot/20 rounded-lg p-8">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-                      </div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
                 &ldquo;La integración con Didit fue un game-changer para nuestro compliance. Ahora procesamos KYC en minutos en lugar de días, y el costo es mínimo comparado con nuestra solución anterior.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">J</span>
-                    </div>
+                </div>
                 <div className="ml-4">
                   <div className="font-semibold text-white">Juan</div>
                   <div className="text-sm text-gray-400">Head of Compliance - Novudi</div>
@@ -548,50 +692,81 @@ export default function P2PManagerPage() {
 
             {/* Goat Finance */}
             <div className="bg-white/5 backdrop-blur-sm border border-silver5-kyc/20 rounded-lg p-8">
-              <div className="flex mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-                      </div>
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <div className="bg-yellow-400/10 backdrop-blur-sm rounded-lg p-2 border border-yellow-400/20">
+                  <Image
+                    src="/Binance.svg"
+                    alt="Binance Integration"
+                    width={32}
+                    height={32}
+                    className="opacity-80"
+                  />
+                </div>
+              </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
                 &ldquo;Como arbitradores profesionales, necesitábamos una solución que nos permitiera escalar sin comprometer seguridad. P2P Manager nos dio exactamente eso y más.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">M</span>
-                    </div>
+                </div>
                 <div className="ml-4">
                   <div className="font-semibold text-white">Marco</div>
                   <div className="text-sm text-gray-400">CEO - Goat Finance</div>
-                    </div>
-                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
           {/* Métricas de éxito */}
-          <div className="bg-gradient-to-r from-silver5-chats/10 to-silver5-kyc/10 border border-silver5-chats/20 rounded-xl p-8">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">Resultados Promedio en 30 Días</h3>
-              <p className="text-gray-300">Métricas reales de nuestros clientes VASPs</p>
-                      </div>
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-silver5-chats mb-2">+150%</div>
-                <div className="text-sm text-gray-300">Eficiencia Operativa</div>
-                    </div>
-              <div>
-                <div className="text-3xl font-bold text-silver5-bot mb-2">15hrs</div>
-                <div className="text-sm text-gray-300">Ahorradas por Semana</div>
-                    </div>
-              <div>
-                <div className="text-3xl font-bold text-silver5-kyc mb-2">100%</div>
-                <div className="text-sm text-gray-300">Reducción de Riesgos</div>
-                  </div>
-              <div>
-                <div className="text-3xl font-bold text-silver5-ai mb-2">24/7</div>
-                <div className="text-sm text-gray-300">Operación Continua</div>
-                        </div>
-                          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-400/20">
+              <div className="flex items-center justify-center mb-3">
+                <Image
+                  src="/Binance.svg"
+                  alt="Binance"
+                  width={40}
+                  height={40}
+                  className="opacity-80 mr-2"
+                />
+                <span className="text-yellow-400 text-xs font-semibold">BINANCE P2P</span>
+              </div>
+              <div className="text-3xl font-bold text-silver5-green-400 mb-2">$2.5M+</div>
+              <div className="text-gray-300">Volumen mensual gestionado</div>
+            </div>
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-400/20">
+              <div className="flex items-center justify-center mb-3">
+                <Image
+                  src="/Binance.svg"
+                  alt="Binance"
+                  width={40}
+                  height={40}
+                  className="opacity-80 mr-2"
+                />
+                <span className="text-yellow-400 text-xs font-semibold">P2P MANAGER</span>
+              </div>
+              <div className="text-3xl font-bold text-silver5-green-400 mb-2">500+</div>
+              <div className="text-gray-300">Operaciones diarias</div>
+            </div>
+            <div className="text-center bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-yellow-400/20">
+              <div className="flex items-center justify-center mb-3">
+                <Image
+                  src="/Binance.svg"
+                  alt="Binance"
+                  width={40}
+                  height={40}
+                  className="opacity-80 mr-2"
+                />
+                <span className="text-yellow-400 text-xs font-semibold">INTEGRACIÓN</span>
+              </div>
+              <div className="text-3xl font-bold text-silver5-green-400 mb-2">99.9%</div>
+              <div className="text-gray-300">Uptime garantizado</div>
+            </div>
           </div>
         </div>
       </section>
@@ -641,53 +816,76 @@ export default function P2PManagerPage() {
               size="lg"
               variant="primary"
             >
-              Probar 7 Días Gratis
+              Registrarte Gratis
             </RegisterButton>
             <p className="text-sm text-gray-400 mt-2">Sin tarjeta de crédito requerida</p>
           </div>
         </div>
       </section>
 
-      {/* CTA Final con RegisterButton */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              {ctaData.title}
-            </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              {ctaData.description}
-            </p>
-            
-            {/* Botones CTA usando RegisterButton */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <button
-                onClick={handlePrimaryAction}
-                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-silver5-chats via-silver5-bot to-silver5-orders text-white font-semibold rounded-full hover:from-silver5-orders hover:via-silver5-kyc hover:to-silver5-ai transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                <Play className="w-5 h-5 mr-2" />
-                Ver Demo Personalizada
-              </button>
-              
-              <RegisterButton 
-                size="lg"
-                variant="secondary"
-              >
-                <CheckCircle className="w-5 h-5 mr-2" />
-                Probar 7 Días Gratis
-              </RegisterButton>
+      {/* CTA Final */}
+      <section className="py-16 bg-gradient-to-r from-yellow-400/20 via-silver5-chats/20 to-yellow-400/20 border-t border-yellow-400/30">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-yellow-400/30">
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              <Image
+                src="/Binance.svg"
+                alt="Binance"
+                width={80}
+                height={80}
+                className="opacity-90"
+              />
+              <div className="text-4xl font-bold">×</div>
+              <div className="text-2xl font-bold text-white">P2P Manager</div>
             </div>
-            
-            <p className="text-sm text-gray-400 mb-8">{ctaData.guarantee}</p>
-          </div>
-          
-          {/* Testimonial */}
-          <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8">
-            <blockquote className="text-lg text-gray-300 mb-4 italic">
-              &ldquo;{ctaData.testimonialQuote}&rdquo;
-            </blockquote>
-            <div className="text-sm text-gray-400">
-              <span className="font-semibold text-white">{ctaData.testimonialAuthor}</span> - {ctaData.testimonialCompany}
+            <h2 className="text-4xl font-bold text-white mb-4">
+              Únete a la Revolución P2P
+            </h2>
+            <p className="text-xl text-gray-300 mb-8">
+              VASPs y arbitradores de toda <span className="text-yellow-400 font-bold">Latinoamérica</span> ya confían en nuestra integración oficial con Binance
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {/* Botón Primario - Ver Demo */}
+              <button 
+                onClick={() => setShowForm(true)}
+                className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-black bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-xl shadow-lg shadow-yellow-400/25 hover:shadow-yellow-400/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-yellow-400/50 focus:scale-105 active:scale-95 min-w-[200px]"
+                aria-label="Abrir formulario para ver demo personalizada"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center space-x-2">
+                  <Play className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="tracking-wide">Ver Demo Personalizada</span>
+                </div>
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-500"></div>
+              </button>
+
+              {/* Botón Secundario - Registrarte */}
+              <a 
+                href="https://app.silver5ai.com/register"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-flex items-center justify-center px-6 py-3 text-base font-bold text-white bg-white/10 backdrop-blur-sm border-2 border-white/20 rounded-xl hover:bg-white/20 hover:border-white/40 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-white/30 focus:scale-105 active:scale-95 min-w-[200px]"
+                aria-label="Ir a página de registro gratuito"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center space-x-2">
+                  <CheckCircle className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
+                  <span className="tracking-wide">Registrarte Gratis</span>
+                </div>
+                <div className="absolute inset-0 rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
+            </div>
+            <div className="mt-6 text-center">
+              <div className="inline-flex items-center space-x-4 text-sm text-gray-400 bg-white/5 backdrop-blur-sm rounded-lg px-4 py-2 border border-white/10">
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-yellow-400 font-semibold">✓ Integración verificada por Binance</span>
+                </div>
+                <div className="h-4 w-px bg-white/20"></div>
+                <span>Setup en 24 horas</span>
+                <div className="h-4 w-px bg-white/20"></div>
+                <span>Soporte 24/7</span>
+              </div>
             </div>
           </div>
         </div>

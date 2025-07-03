@@ -18,6 +18,7 @@ import {
   Target,
   BarChart3
 } from 'lucide-react'
+import Image from 'next/image'
 
 // Componentes compartidos
 import HeroSection from '../components/shared/HeroSection'
@@ -37,8 +38,8 @@ export default function GestionOrdenesPage() {
     titleHighlight: "Captura Automática",
     titleEnd: "y Control Total",
     description: "Captura automáticamente todas las órdenes P2P de múltiples cuentas en un panel centralizado. Nunca más pierdas una orden o tengas que buscar manualmente entre cuentas.",
-    primaryCta: "Ver Panel de Órdenes",
-    secondaryCta: "Descargar Flujo",
+    primaryCta: "Ver Demo Personalizada",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "100%", label: "Órdenes Capturadas" },
       { value: "0", label: "Órdenes Perdidas" },
@@ -165,16 +166,16 @@ export default function GestionOrdenesPage() {
     description: "Únete a VASPs que ya procesan 100% de sus órdenes de forma automática. Implementación inmediata.",
     buttons: [
       {
-        text: "Ver Panel de Órdenes",
+        text: "Ver Demo Personalizada",
         action: () => setShowForm(true),
         variant: 'primary' as const,
         icon: <Play className="w-5 h-5" />
       },
       {
-        text: "Consultoría Operativa",
-        action: () => window.open(process.env.NEXT_PUBLIC_CALENDLY_URL, '_blank'),
+        text: "Registrarte Gratis",
+        action: () => window.open('https://app.silver5ai.com/register', '_blank'),
         variant: 'secondary' as const,
-        icon: <Calendar className="w-5 h-5" />
+        icon: <CheckCircle className="w-5 h-5" />
       }
     ],
     urgency: "⚡ Activación Inmediata: Hoy mismo",
@@ -190,7 +191,7 @@ export default function GestionOrdenesPage() {
   }
 
   const handleSecondaryAction = () => {
-    window.open('/recursos/flujo-gestion-ordenes.pdf', '_blank')
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   return (
@@ -210,67 +211,45 @@ export default function GestionOrdenesPage() {
         stats={heroData.stats}
         heroVisual={
           <div className="relative">
-            {/* Orders Dashboard Mockup */}
-            <div className="bg-slate-800/50 backdrop-blur-sm border border-silver5-orders/20 rounded-lg p-6 shadow-2xl">
-              <div className="flex items-center mb-4">
-                <ClipboardList className="w-6 h-6 text-silver5-orders mr-2" />
-                <div className="text-lg font-semibold text-white">Panel de Órdenes</div>
-                <div className="ml-auto">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-silver5-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-silver5-green-400">Sincronizado</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Orders List */}
-              <div className="space-y-3">
-                <div className="bg-silver5-orders/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">Orden #1234</span>
-                    <span className="text-xs bg-silver5-green-400/20 text-silver5-green-400 px-2 py-1 rounded-full">Completada</span>
-                  </div>
-                  <div className="text-xs text-gray-400">USDT → ARS • $500 • Cliente: Juan P.</div>
-                </div>
-                
-                <div className="bg-silver5-chats/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">Orden #1235</span>
-                    <span className="text-xs bg-silver5-orders/20 text-silver5-orders px-2 py-1 rounded-full">En proceso</span>
-                  </div>
-                  <div className="text-xs text-gray-400">BTC → USD • $1,200 • Cliente: Maria L.</div>
-                </div>
-                
-                <div className="bg-silver5-bot/20 rounded-lg p-3">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-white">Orden #1236</span>
-                    <span className="text-xs bg-silver5-ai/20 text-silver5-ai px-2 py-1 rounded-full">Pendiente</span>
-                  </div>
-                  <div className="text-xs text-gray-400">ETH → USDT • $800 • Cliente: Carlos R.</div>
-                </div>
-              </div>
-              
-              {/* Stats */}
-              <div className="mt-4 pt-4 border-t border-silver5-orders/20">
-                <div className="grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-lg font-bold text-silver5-orders">24</div>
-                    <div className="text-xs text-gray-400">Completadas</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-silver5-chats">3</div>
-                    <div className="text-xs text-gray-400">En proceso</div>
-                  </div>
-                  <div>
-                    <div className="text-lg font-bold text-silver5-ai">1</div>
-                    <div className="text-xs text-gray-400">Pendientes</div>
-                  </div>
+            {/* Binance Integration Badge - Más grande y llamativo */}
+            <div className="absolute -top-6 -right-0 z-10 bg-gradient-to-br from-silver5-orders/20 to-silver5-navy/20 backdrop-blur-sm border-2 border-silver5-orders/40 rounded-full p-4 hover:scale-110 hover:border-silver5-orders/60 transition-all duration-300 shadow-lg hover:shadow-silver5-orders/25">
+              <Image
+                src="/Binance.svg"
+                alt="Integración oficial con Binance"
+                width={60}
+                height={60}
+                className="opacity-95 hover:opacity-100 transition-opacity"
+              />
+            </div>
+            
+            {/* Orders Laptop Image */}
+            <div className="relative overflow-hidden rounded-xl shadow-2xl">
+              <Image
+                src="/orders-laptop.png"
+                alt="Gestión de Órdenes Dashboard - Panel centralizado de control de órdenes P2P"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+                priority
+              />
+              {/* Overlay con información adicional - Más prominente */}
+              <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md rounded-xl p-4 border border-white/10">
+                <div className="flex items-center space-x-3">
+                  <Image
+                    src="/Binance-3.svg"
+                    alt="Powered by Binance"
+                    width={100}
+                    height={25}
+                    className="opacity-90"
+                  />
+                  <div className="h-6 w-px bg-white/40"></div>
+                  <span className="text-white text-base font-semibold">Gestión de Órdenes</span>
                 </div>
               </div>
             </div>
             
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-orders to-silver5-navy rounded-full flex items-center justify-center shadow-lg">
+            {/* Floating Elements específicos para Órdenes */}
+            <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-silver5-orders to-silver5-navy rounded-full flex items-center justify-center shadow-lg animate-pulse">
               <ClipboardList className="w-8 h-8 text-white" />
             </div>
             
