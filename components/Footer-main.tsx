@@ -295,7 +295,7 @@ export function Footer({ calendlyUrl = 'https://calendly.com/silver-5-ai/silver-
             </p>
             <div className="flex items-center space-x-6">
               <Link 
-                href="/privacidad" 
+                href="/politicas" 
                 className="text-gray-400 hover:text-silver5-cyan-400 text-sm transition-colors duration-200 flex items-center"
               >
                 <Shield className="w-3 h-3 mr-1" />
