@@ -214,7 +214,7 @@ export default function ServiciosLayout({
               </p>
               <div className="flex space-x-6">
                 <Link 
-                  href="/privacidad" 
+                  href="/politicas" 
                   className="text-gray-400 hover:text-cyan-400 text-sm transition-colors duration-200"
                 >
                   Política de Privacidad

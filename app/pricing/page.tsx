@@ -30,7 +30,6 @@ export default function PricingPage() {
         '+200 clientes verificados por mes',
         'Órdenes ilimitadas',
         'Soporte técnico básico',
-        'Dashboard de métricas',
         'Configuración básica de estrategias'
       ],
       notIncluded: [
@@ -64,11 +63,7 @@ export default function PricingPage() {
         'Gestión avanzada de equipos',
         '+1000 clientes verificados por mes',
         'Órdenes ilimitadas',
-        'Análisis avanzado de mercado',
-        'Reportes personalizados',
         'Soporte prioritario',
-        'Configuración avanzada de estrategias',
-        'Integración con múltiples exchanges'
       ],
       notIncluded: [
         'Agente de IA personalizado',
@@ -157,6 +152,13 @@ export default function PricingPage() {
               </div>
             )}
           </div>
+
+          {/* Price Currency Note */}
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-silver5-cyan-400/10 border border-silver5-cyan-400/20 rounded-full">
+              <span className="text-sm text-silver5-cyan-400">💰 Todos los precios están en USDT</span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -202,7 +204,7 @@ export default function PricingPage() {
                       <div>
                         <div className="flex items-center justify-center space-x-2">
                           <span className="text-3xl font-bold">
-                            ${plan.price[billingPeriod]}
+                            {plan.price[billingPeriod]} USDT
                           </span>
                           <span className="text-gray-400">
                             /{billingPeriod === 'monthly' ? 'mes' : 'año'}
@@ -210,7 +212,7 @@ export default function PricingPage() {
                         </div>
                         {plan.originalPrice && plan.originalPrice[billingPeriod] && (
                           <div className="text-sm text-gray-500 line-through">
-                            ${plan.originalPrice[billingPeriod]} {billingPeriod === 'monthly' ? '/mes' : '/año'}
+                            {plan.originalPrice[billingPeriod]} USDT {billingPeriod === 'monthly' ? '/mes' : '/año'}
                           </div>
                         )}
                       </div>
@@ -284,6 +286,10 @@ export default function PricingPage() {
           <div className="space-y-4">
             {[
               {
+                question: "¿Por qué los precios están en USDT?",
+                answer: "Utilizamos USDT (Tether) como moneda de facturación porque es la stablecoin más estable y ampliamente aceptada en el ecosistema P2P. Esto garantiza precios consistentes sin volatilidad y facilita los pagos internacionales."
+              },
+              {
                 question: "¿Puedo cambiar de plan en cualquier momento?",
                 answer: "Sí, puedes actualizar o cambiar tu plan en cualquier momento. Los cambios se aplicarán inmediatamente y se ajustará la facturación de forma proporcional."
               },
@@ -293,7 +299,7 @@ export default function PricingPage() {
               },
               {
                 question: "¿Hay periodo de prueba gratuito?",
-                answer: "Sí, todos los planes incluyen un periodo de prueba de 14 días completamente gratuito. No necesitas tarjeta de crédito para comenzar."
+                answer: "Sí, todos los planes incluyen un periodo de prueba de 7 días completamente gratuito. No necesitas tarjeta de crédito para comenzar."
               },
               {
                 question: "¿Qué soporte técnico incluye cada plan?",

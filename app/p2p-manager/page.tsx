@@ -658,7 +658,7 @@ export default function P2PManagerPage() {
               </div>
             </div>
 
-            {/* Novudi */}
+            {/* Crypto Solutions */}
             <div className="bg-white/5 backdrop-blur-sm border border-silver5-bot/20 rounded-lg p-8">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex">
@@ -677,20 +677,20 @@ export default function P2PManagerPage() {
                 </div>
               </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
-                &ldquo;La integración con Didit fue un game-changer para nuestro compliance. Ahora procesamos KYC en minutos en lugar de días, y el costo es mínimo comparado con nuestra solución anterior.&rdquo;
+                &ldquo;Como arbitradores profesionales, necesitábamos una solución que nos permitiera escalar sin comprometer seguridad. P2P Manager nos dio exactamente eso y nos permitió triplicar nuestro volumen mensual.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-bot to-silver5-ai rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">J</span>
+                  <span className="text-white font-bold text-lg">C</span>
                 </div>
                 <div className="ml-4">
-                  <div className="font-semibold text-white">Juan</div>
-                  <div className="text-sm text-gray-400">Head of Compliance - Novudi</div>
+                  <div className="font-semibold text-white">Carlos</div>
+                  <div className="text-sm text-gray-400">Fundador - Crypto Solutions</div>
                 </div>
               </div>
             </div>
 
-            {/* Goat Finance */}
+            {/* VASP Capital */}
             <div className="bg-white/5 backdrop-blur-sm border border-silver5-kyc/20 rounded-lg p-8">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex">
@@ -709,15 +709,15 @@ export default function P2PManagerPage() {
                 </div>
               </div>
               <blockquote className="text-lg text-gray-300 mb-6 italic">
-                &ldquo;Como arbitradores profesionales, necesitábamos una solución que nos permitiera escalar sin comprometer seguridad. P2P Manager nos dio exactamente eso y más.&rdquo;
+                &ldquo;La integración KYC fue fundamental para cumplir con las regulaciones locales. En 6 meses pasamos de ser arbitradores a un VASP totalmente licenciado gracias a P2P Manager.&rdquo;
               </blockquote>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-silver5-kyc to-silver5-navy rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">M</span>
+                  <span className="text-white font-bold text-lg">A</span>
                 </div>
                 <div className="ml-4">
-                  <div className="font-semibold text-white">Marco</div>
-                  <div className="text-sm text-gray-400">CEO - Goat Finance</div>
+                  <div className="font-semibold text-white">Andrea</div>
+                  <div className="text-sm text-gray-400">CEO - VASP Capital</div>
                 </div>
               </div>
             </div>

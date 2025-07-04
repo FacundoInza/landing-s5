@@ -38,8 +38,8 @@ export default function GestionClientesPage() {
     titleHighlight: "KYC Automatizado",
     titleEnd: "con Integración Didit",
     description: "Verificación KYC completa en 2 minutos con integración nativa de Didit. Cumplimiento regulatorio automático, screening AML y onboarding sin fricción para tus clientes P2P.",
-    primaryCta: "Regístrate gratis",
-    secondaryCta: "Ponerse en contacto",
+    primaryCta: "Ver Demo Personalizada",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "2min", label: "Verificación KYC" },
       { value: "100%", label: "Compliance Automático" },
@@ -187,11 +187,11 @@ export default function GestionClientesPage() {
 
   // Funciones para las acciones
   const handlePrimaryAction = () => {
-    window.open('https://app.silver5ai.com/register', '_blank')
+    setShowForm(true)
   }
 
   const handleSecondaryAction = () => {
-    setShowForm(true)
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   return (

@@ -687,7 +687,7 @@ export default function ContactForm({ onClose }: ContactFormProps) {
           
           <p className="text-center text-sm text-gray-500 mt-4">
             {language === 'es' 
-              ? 'Nos comprometemos a responder en menos de 24 horas'
+              ? 'Nos comprometemos a responder en menos de 24 horas habiles'
               : 'We commit to respond within 24 hours'
             }
           </p>

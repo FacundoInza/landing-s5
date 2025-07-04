@@ -40,8 +40,8 @@ export default function AgenteIAPage() {
     titleHighlight: "con IA Avanzada",
     titleEnd: "24/7",
     description: "Agente conversacional inteligente que atiende consultas P2P automáticamente. Modos simulado y live para máxima flexibilidad. Reduce 90% la carga de soporte mientras mejora la experiencia del cliente.",
-    primaryCta: "Ver Agente IA",
-    secondaryCta: "Demo Interactiva",
+    primaryCta: "Ver Demo Personalizada",
+    secondaryCta: "Registrarte Gratis",
     stats: [
       { value: "90%", label: "Menos Consultas" },
       { value: "24/7", label: "Disponibilidad" },
@@ -193,7 +193,7 @@ export default function AgenteIAPage() {
   }
 
   const handleSecondaryAction = () => {
-    window.open('/demo/agente-ia-interactivo', '_blank')
+    window.open('https://app.silver5ai.com/register', '_blank')
   }
 
   return (

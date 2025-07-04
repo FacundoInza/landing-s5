@@ -612,7 +612,7 @@ export default function CorreoPage() {
                   </span>
                 </summary>
                 <div className="px-6 pb-6 text-gray-300">
-                  <p>Todos nuestros planes incluyen soporte técnico. Los usuarios de los planes Básico y Pro tienen acceso a soporte por email con un tiempo de respuesta de 24 horas. Los usuarios del plan Empresarial disfrutan de soporte prioritario 24/7 por email, chat en vivo y llamadas telefónicas. También ofrecemos una extensa base de conocimientos y tutoriales en video para ayudarte a aprovechar al máximo Silver5.</p>
+                  <p>Todos nuestros planes incluyen soporte técnico. Los usuarios de los planes Básico y Pro tienen acceso a soporte por email con un tiempo de respuesta de 24 horas habiles. Los usuarios del plan Empresarial disfrutan de soporte prioritario 24/7 por email, chat en vivo y llamadas telefónicas. También ofrecemos una extensa base de conocimientos y tutoriales en video para ayudarte a aprovechar al máximo Silver5.</p>
                 </div>
               </details>
             </div>

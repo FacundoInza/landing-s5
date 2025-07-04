@@ -22,7 +22,6 @@ export function Footer({ calendlyUrl = 'https://calendly.com/silver-5-ai/silver-
       quickLinks: {
         title: 'Enlaces Rápidos',
         services: 'Servicios',
-        p2pBot: 'Bot P2P',
         p2pManager: 'P2P Manager',
         contact: 'Contacto',
         aboutUs: 'Sobre Nosotros'
@@ -146,18 +145,6 @@ export function Footer({ calendlyUrl = 'https://calendly.com/silver-5-ai/silver-
                 >
                   <div className="w-1.5 h-1.5 rounded-full bg-silver5-cyan-400/50 group-hover:bg-silver5-cyan-400 mr-3 transition-colors duration-200"></div>
                   <span className="text-sm">{t.quickLinks.services}</span>
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="https://p2p.silver5ai.com" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-silver5-cyan-400 transition-colors duration-200 flex items-center group"
-                >
-                  <Bot className="w-4 h-4 mr-3 text-silver5-cyan-400/70 group-hover:text-silver5-cyan-400 transition-colors duration-200" />
-                  <span className="text-sm">{t.quickLinks.p2pBot}</span>
-                  <ExternalLink className="h-3 w-3 ml-1 text-gray-500 group-hover:text-silver5-cyan-400 transition-colors duration-200" />
                 </Link>
               </li>
               <li>
