@@ -27,7 +27,7 @@ export default function PricingPage() {
         '3 bots de posicionamiento',
         '1 cuenta de operador',
         'Gestión de chats centralizada',
-        '+200 clientes verificados por mes',
+        '200 clientes verificados por mes',
         'Órdenes ilimitadas',
         'Soporte técnico básico',
         'Configuración básica de estrategias'
@@ -61,7 +61,7 @@ export default function PricingPage() {
         '10 bots de posicionamiento',
         '5 cuentas de operador',
         'Gestión avanzada de equipos',
-        '+1000 clientes verificados por mes',
+        '1000 clientes verificados por mes',
         'Órdenes ilimitadas',
         'Soporte prioritario',
       ],
